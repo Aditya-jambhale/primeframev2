@@ -267,19 +267,19 @@ export default function Services() {
   }, {})
 
   return (
-    <div className=\"bg-black text-white pt-20\">
+    <div className="bg-black text-white pt-20">
       {/* Hero Section */}
-      <section className=\"py-24 px-4 text-center\">
-        <div className=\"container mx-auto max-w-4xl\">
+      <section className="py-24 px-4 text-center">
+        <div className="container mx-auto max-w-4xl">
           <motion.div {...fadeIn}>
-            <h1 className=\"text-5xl md:text-6xl font-bold mb-6\">
+            <h1 className="text-5xl md:text-6xl font-bold mb-6">
               Cinematic Production Services Built for Modern Brands
             </h1>
-            <p className=\"text-xl text-neutral-400 mb-8\">
+            <p className="text-xl text-neutral-400 mb-8">
               From corporate storytelling to large-scale event coverage and immersive digital media — 
               we produce visuals designed to perform across platforms.
             </p>
-            <Button size=\"lg\" className=\"bg-white text-black hover:bg-neutral-200\">
+            <Button size="lg" className="bg-white text-black hover:bg-neutral-200">
               Book a Consultation
             </Button>
           </motion.div>
@@ -290,7 +290,7 @@ export default function Services() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
-          className=\"mt-12 text-neutral-500 text-sm\"
+          className="mt-12 text-neutral-500 text-sm"
         >
           Scroll to Services ↓
         </motion.div>
