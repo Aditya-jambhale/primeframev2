@@ -231,3 +231,85 @@ html {
     grid-template-columns: 1fr !important;
   }
 }
+
+/* ── SCROLLBAR ────────────────────────────────── */
+
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--navy-mid);
+  border-left: 1px solid var(--border);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--orange);
+  border-radius: 0px; /* sharp edges to match clip-path design language */
+  transition: background 0.25s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--orange-hot);
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--navy-mid);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--orange) var(--navy-mid);
+}
+
+
+/* ── ABOUT PAGE ───────────────────────────────── */
+
+/* Grain overlay — replaces the removed inline <style> from about.jsx */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Hero watermark text */
+.about-watermark span {
+  color: rgba(255, 255, 255, 0.022);
+}
+
+/* Vision section watermark */
+.about-vision-watermark {
+  color: rgba(249, 115, 22, 0.03);
+}
+
+/* Faint year stamp inside timeline card images */
+.about-year-stamp {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 4.5rem;
+  color: rgba(249, 115, 22, 0.12);
+  letter-spacing: 0.06em;
+}
+
+/* 
+  Hover bottom-sweep line shared by:
+  - .about-timeline-card  (timeline cards)
+  - .about-vision-card    (vision cards)
+  The div.about-card-sweep sits at the bottom of each card.
+*/
+.about-card-sweep {
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease;
+}
+
+.about-timeline-card:hover .about-card-sweep,
+.about-vision-card:hover .about-card-sweep {
+  transform: scaleX(1);
+}
