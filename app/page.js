@@ -17,22 +17,22 @@ const fadeUp = {
 
 // ── Data ──
 const whyPoints = [
-  { n: '01', title: 'Attention Is Shorter Than Ever',          body: 'Your audience scrolls in seconds. Professional videography stops the scroll and signals authority before a single word is spoken.' },
-  { n: '02', title: 'Trust Is Built Visually',                body: 'Low-quality production subconsciously signals inexperience. Cinematic visuals signal structure, reliability, and premium positioning.' },
+  { n: '01', title: 'Attention Is Shorter Than Ever', body: 'Your audience scrolls in seconds. Professional videography stops the scroll and signals authority before a single word is spoken.' },
+  { n: '02', title: 'Trust Is Built Visually', body: 'Low-quality production subconsciously signals inexperience. Cinematic visuals signal structure, reliability, and premium positioning.' },
   { n: '03', title: 'Premium Visuals Attract Premium Clients', body: 'High-end videography tells your audience you operate at a higher standard — and premium clients are drawn to premium presentation.' },
-  { n: '04', title: 'Editing Determines Performance',         body: 'Retention-focused editing improves watch time and increases conversions. Good visuals impress — strategic editing performs.' },
-  { n: '05', title: 'Video Works Across Every Platform',      body: 'Website, Instagram, LinkedIn, YouTube, paid ads. One strong video becomes multiple strategic assets for growth.' },
+  { n: '04', title: 'Editing Determines Performance', body: 'Retention-focused editing improves watch time and increases conversions. Good visuals impress — strategic editing performs.' },
+  { n: '05', title: 'Video Works Across Every Platform', body: 'Website, Instagram, LinkedIn, YouTube, paid ads. One strong video becomes multiple strategic assets for growth.' },
 ]
 
 
 
-const logos  = ['/clients/client1.jpeg', '/clients/client2.png', '/clients/client3.jpeg', '/clients/client4.jpeg', '/clients/client5.jpeg']
+const logos = ['/clients/client1.jpeg', '/clients/client2.png', '/clients/client3.jpeg', '/clients/client4.jpeg', '/clients/client5.jpeg']
 
-const stats  = [
+const stats = [
   { val: '200+', label: 'Projects Delivered' },
-  { val: '8+',   label: 'Years Experience'  },
-  { val: '3',    label: 'Countries Active'  },
-  { val: '50+',  label: 'Brand Clients'     },
+  { val: '8+', label: 'Years Experience' },
+  { val: '3', label: 'Countries Active' },
+  { val: '50+', label: 'Brand Clients' },
 ]
 
 const equipmentList = [
@@ -173,67 +173,67 @@ export default function Home() {
         </div>
       </section>
 
-     {/* ══════════════════════════════════════════
+      {/* ══════════════════════════════════════════
         ABOUT
 */}
-<section className="py-32 bg-[var(--navy)]">
-  <div className="max-w-[850px] mx-auto px-6 text-center">
+      <section className="py-32 bg-[var(--navy)]">
+        <div className="max-w-[850px] mx-auto px-6 text-center">
 
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, ease: [0.22,1,0.36,1] }}
-      viewport={{ once: true }}
-    >
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            viewport={{ once: true }}
+          >
 
-      {/* Eyebrow */}
-      <span className="eyebrow block mb-6">
-        About the Studio
-      </span>
+            {/* Eyebrow */}
+            <span className="eyebrow block mb-6">
+              About the Studio
+            </span>
 
-      {/* Headline */}
-      <h2 className="font-bebas text-[clamp(2.4rem,4vw,3.6rem)] leading-[1] tracking-[0.05em] text-white mb-10">
-        BUILT AROUND <span className="text-orange-500">STORY,</span><br />
-        EXECUTION AND DETAIL.
-      </h2>
+            {/* Headline */}
+            <h2 className="font-bebas text-[clamp(2.4rem,4vw,3.6rem)] leading-[1] tracking-[0.05em] text-white mb-10">
+              BUILT AROUND <span className="text-orange-500">STORY,</span><br />
+              EXECUTION AND DETAIL.
+            </h2>
 
-      {/* Accent Divider */}
-      <div className="w-12 h-px bg-orange-500 mx-auto mb-10" />
+            {/* Accent Divider */}
+            <div className="w-12 h-px bg-orange-500 mx-auto mb-10" />
 
-      {/* Body Copy */}
-      <div className="space-y-6 max-w-[620px] mx-auto">
+            {/* Body Copy */}
+            <div className="space-y-6 max-w-[620px] mx-auto">
 
-        <p className="font-barlow font-light text-[0.95rem] text-[var(--muted)] leading-[1.9]">
-          PrimeFrame Productions was built on a simple belief —
-          <span className="text-white font-medium"> every frame should serve a purpose.</span>
-          We combine cinematic production with performance strategy,
-          handling every step from planning to post-production with clarity and precision.
-        </p>
+              <p className="font-barlow font-light text-[0.95rem] text-[var(--muted)] leading-[1.9]">
+                PrimeFrame Productions was built on a simple belief —
+                <span className="text-white font-medium"> every frame should serve a purpose.</span>
+                We combine cinematic production with performance strategy,
+                handling every step from planning to post-production with clarity and precision.
+              </p>
 
-        <p className="font-barlow font-light text-[0.92rem] text-[var(--muted)] leading-[1.9]">
-          As we expand from India to Dubai and beyond, our mission remains unchanged:
-          deliver visuals that elevate brands above the noise.
-        </p>
+              <p className="font-barlow font-light text-[0.92rem] text-[var(--muted)] leading-[1.9]">
+                As we expand from India to Dubai and beyond, our mission remains unchanged:
+                deliver visuals that elevate brands above the noise.
+              </p>
 
-      </div>
+            </div>
 
-      {/* CTA */}
-      <div className="mt-12">
-        <Link href="/about">
-          <button className="btn-outline">
-            Our Journey →
-          </button>
-        </Link>
-      </div>
+            {/* CTA */}
+            <div className="mt-12">
+              <Link href="/about">
+                <button className="btn-outline">
+                  Our Journey →
+                </button>
+              </Link>
+            </div>
 
-    </motion.div>
+          </motion.div>
 
-  </div>
-</section>
-    {/* ══════════════════════════════════════════
+        </div>
+      </section>
+      {/* ══════════════════════════════════════════
     WHY VIDEOGRAPHY
 ══════════════════════════════════════════ */}
-<WhyVideography />
+      <WhyVideography />
       {/* ══════════════════════════════════════════
           SERVICES
       ══════════════════════════════════════════ */}
@@ -242,123 +242,123 @@ export default function Home() {
       {/* ══════════════════════════════════════════
           EQUIPMENT
       ══════════════════════════════════════════ */}
-    
-<section className="py-32 bg-[var(--navy-mid)] relative overflow-hidden">
 
-  {/* Subtle accent glow */}
-  <div className="absolute top-0 right-0 w-1/3 h-full pointer-events-none"
-       style={{ background: 'linear-gradient(135deg, transparent, rgba(249,115,22,0.06))' }} />
+      <section className="py-32 bg-[var(--navy-mid)] relative overflow-hidden">
 
-  <div className="max-w-[1200px] mx-auto px-6 grid lg:grid-cols-2 gap-20 items-center">
+        {/* Subtle accent glow */}
+        <div className="absolute top-0 right-0 w-1/3 h-full pointer-events-none"
+          style={{ background: 'linear-gradient(135deg, transparent, rgba(249,115,22,0.06))' }} />
 
-    {/* ── Left: Image Composition ── */}
-    <motion.div
-      initial={{ opacity: 0, x: -40 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.9, ease: [0.22,1,0.36,1] }}
-      viewport={{ once: true }}
-      className="relative"
-    >
-      {/* Main Image */}
-      <div className="aspect-[4/5] relative overflow-hidden rounded-lg">
-        <Image
-          src="/equip/equipmentsmain.jpeg"
-          alt="PrimeFrame Equipment"
-          fill
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-      </div>
+        <div className="max-w-[1200px] mx-auto px-6 grid lg:grid-cols-2 gap-20 items-center">
 
-      {/* Floating Secondary Frame */}
-      <div className="absolute -bottom-10 -right-10 w-40 aspect-square overflow-hidden rounded-md border border-orange-500/30 shadow-xl">
-        <Image
-          src="/equip/equipmentsmain.jpeg"
-          alt="Gear Detail"
-          fill
-          className="object-cover"
-        />
-      </div>
-
-      {/* Corner accents */}
-      <div className="absolute -top-3 -left-3 w-10 h-10 border-t-2 border-l-2 border-orange-500" />
-      <div className="absolute -bottom-3 -right-3 w-10 h-10 border-b-2 border-r-2 border-orange-500" />
-    </motion.div>
-
-    {/* ── Right: Content ── */}
-    <div>
-
-      <motion.span
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-        className="eyebrow block mb-6"
-      >
-        Our Equipment
-      </motion.span>
-
-      <motion.h2
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, delay: 0.1 }}
-        viewport={{ once: true }}
-        className="font-bebas text-[clamp(2.2rem,4.5vw,3.8rem)] leading-[0.95] tracking-[0.04em] text-white mb-8"
-      >
-        CINEMA-GRADE<br />
-        <span className="text-orange-500">TOOLS.</span><br />
-        PROFESSIONAL OUTPUT.
-      </motion.h2>
-
-      <motion.p
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.7, delay: 0.2 }}
-        viewport={{ once: true }}
-        className="font-barlow font-light text-[0.9rem] text-[var(--muted)] leading-[1.85] mb-12 max-w-[480px]"
-      >
-        We operate with full-frame cinema cameras and professional prime lenses,
-        ensuring colour accuracy, dynamic range, and cinematic depth in every production.
-      </motion.p>
-
-      {/* Equipment List */}
-      <div className="space-y-6">
-        {equipmentList.map((item, i) => (
+          {/* ── Left: Image Composition ── */}
           <motion.div
-            key={item.title}
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{
-              duration: 0.6,
-              delay: 0.25 + i * 0.1,
-              ease: [0.22,1,0.36,1]
-            }}
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
             viewport={{ once: true }}
-            className="border-b border-white/5 pb-4 group"
+            className="relative"
           >
-            <h3 className="font-bebas text-lg tracking-[0.05em] text-white mb-2 group-hover:text-orange-400 transition-colors">
-              {item.title.toUpperCase()}
-            </h3>
-            <p className="font-barlow font-light text-[0.8rem] text-[var(--muted)] leading-[1.8]">
-              {item.desc}
-            </p>
-          </motion.div>
-        ))}
-      </div>
+            {/* Main Image */}
+            <div className="aspect-[4/5] relative overflow-hidden rounded-lg">
+              <Image
+                src="/equip/equipmentsmain.jpeg"
+                alt="PrimeFrame Equipment"
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+            </div>
 
-    </div>
-  </div>
-</section>
-   {/* ══════════════════════════════════════════
+            {/* Floating Secondary Frame */}
+            <div className="absolute -bottom-10 -right-10 w-40 aspect-square overflow-hidden rounded-md border border-orange-500/30 shadow-xl">
+              <Image
+                src="/equip/equipmentsmain.jpeg"
+                alt="Gear Detail"
+                fill
+                className="object-cover"
+              />
+            </div>
+
+            {/* Corner accents */}
+            <div className="absolute -top-3 -left-3 w-10 h-10 border-t-2 border-l-2 border-orange-500" />
+            <div className="absolute -bottom-3 -right-3 w-10 h-10 border-b-2 border-r-2 border-orange-500" />
+          </motion.div>
+
+          {/* ── Right: Content ── */}
+          <div>
+
+            <motion.span
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="eyebrow block mb-6"
+            >
+              Our Equipment
+            </motion.span>
+
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+              viewport={{ once: true }}
+              className="font-bebas text-[clamp(2.2rem,4.5vw,3.8rem)] leading-[0.95] tracking-[0.04em] text-white mb-8"
+            >
+              CINEMA-GRADE<br />
+              <span className="text-orange-500">TOOLS.</span><br />
+              PROFESSIONAL OUTPUT.
+            </motion.h2>
+
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="font-barlow font-light text-[0.9rem] text-[var(--muted)] leading-[1.85] mb-12 max-w-[480px]"
+            >
+              We operate with full-frame cinema cameras and professional prime lenses,
+              ensuring colour accuracy, dynamic range, and cinematic depth in every production.
+            </motion.p>
+
+            {/* Equipment List */}
+            <div className="space-y-6">
+              {equipmentList.map((item, i) => (
+                <motion.div
+                  key={item.title}
+                  initial={{ opacity: 0, x: 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{
+                    duration: 0.6,
+                    delay: 0.25 + i * 0.1,
+                    ease: [0.22, 1, 0.36, 1]
+                  }}
+                  viewport={{ once: true }}
+                  className="border-b border-white/5 pb-4 group"
+                >
+                  <h3 className="font-bebas text-lg tracking-[0.05em] text-white mb-2 group-hover:text-orange-400 transition-colors">
+                    {item.title.toUpperCase()}
+                  </h3>
+                  <p className="font-barlow font-light text-[0.8rem] text-[var(--muted)] leading-[1.8]">
+                    {item.desc}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+
+          </div>
+        </div>
+      </section>
+      {/* ══════════════════════════════════════════
           PROCESS
       ══════════════════════════════════════════ */}
-     
+
       <ProcessSection />
 
       {/* ══════════════════════════════════════════
           TESTIMONIALS
       ══════════════════════════════════════════ */}
-     <TestimonialSection />
+      <TestimonialSection />
 
       {/* ══════════════════════════════════════════
           FINAL CTA
@@ -400,10 +400,10 @@ export default function Home() {
           <form className="flex flex-col gap-5">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5 form-grid">
               {[
-                { label: 'Full Name',    type: 'text',  placeholder: 'Your name'           },
-                { label: 'Email',        type: 'email', placeholder: 'your@email.com'       },
-                { label: 'Phone',        type: 'tel',   placeholder: '+971 00 000 0000'     },
-                { label: 'Project Type', type: 'text',  placeholder: 'e.g. Corporate Film'  },
+                { label: 'Full Name', type: 'text', placeholder: 'Your name' },
+                { label: 'Email', type: 'email', placeholder: 'your@email.com' },
+                { label: 'Phone', type: 'tel', placeholder: '+971 00 000 0000' },
+                { label: 'Project Type', type: 'text', placeholder: 'e.g. Corporate Film' },
               ].map(({ label, type, placeholder }) => (
                 <div key={label}>
                   <label className="font-barlow-condensed text-[0.62rem] tracking-[0.18em] uppercase text-orange-500/70 block mb-2.5 font-bold">
