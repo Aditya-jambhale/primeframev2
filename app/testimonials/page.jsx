@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { PlayCircle, Quote } from 'lucide-react'
+import Link from 'next/link'
 
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
