@@ -52,7 +52,7 @@ export default function WhyVideography() {
           className="object-cover  saturate-0"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black" />
-        <div className="absolute inset-0 bg-black/40" />
+       
       </div>
 
       {/* ───────────── TOP STRIP ───────────── */}
@@ -169,6 +169,7 @@ export default function WhyVideography() {
                   loop
                   muted
                   playsInline
+                  poster="/hero/hero-poster.jpg"
                   className="w-full h-full object-cover grayscale-[0.3] brightness-[0.8]"
                 >
                   <source src="/hero/hero-bg.mp4" type="video/mp4" />
@@ -176,8 +177,8 @@ export default function WhyVideography() {
               </motion.div>
 
               {/* Overlays */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/20" />
-              <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-3xl" />
+              {/* <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/20" /> */}
+              {/* <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-3xl" /> */}
 
               {/* Content on Video */}
               <div className="absolute bottom-10 left-10 right-10 z-10">

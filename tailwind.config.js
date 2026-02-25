@@ -20,6 +20,8 @@ module.exports = {
         bebas: ['Bebas Neue', 'sans-serif'],
         barlow: ['Barlow', 'sans-serif'],
         'barlow-condensed': ['Barlow Condensed', 'sans-serif'],
+        syne: ['var(--font-syne)', 'sans-serif'],
+        outfit: ['var(--font-outfit)', 'sans-serif'],
       },
 
       colors: {
@@ -31,7 +33,7 @@ module.exports = {
           navy: '#000000',
           navyMid: '#050505',
           navyLight: '#0a0a0a',
-          textMuted: '#94A3B8',
+          textMuted: '#CBD5E1',
           yellow: '#EAB308',
         },
 

@@ -14,12 +14,10 @@
 
 
 
-    /* ── TEXT SCALE (Softer Whites) ── */
-    --white: #F8FAFC;
-    /* softer than pure white */
-    --off-white: #CBD5E1;
-    /* improved readability */
-    --muted: rgba(203, 213, 225, 0.45);
+    /* ── TEXT SCALE (Brighter Whites) ── */
+    --white: #FFFFFF;
+    --off-white: #F1F5F9;
+    --muted: rgba(241, 245, 249, 0.6);
 
     /* ── BORDERS (More Subtle) ── */
     --border: rgba(255, 255, 255, 0.05);
@@ -54,7 +52,7 @@
   body {
     background-color: var(--navy);
     color: var(--off-white);
-    font-family: 'Barlow', sans-serif;
+    font-family: var(--font-outfit), 'Barlow', sans-serif;
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
   }
@@ -63,8 +61,9 @@
   h2,
   h3,
   h4 {
-    font-family: 'Bebas Neue', sans-serif;
-    letter-spacing: 0.04em;
+    font-family: var(--font-syne), 'Bebas Neue', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
     line-height: 0.95;
     color: var(--white);
   }
@@ -72,6 +71,14 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 2rem;
+}
+
+/* Optimize heavy animations */
+.motion-safe {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 /* ── HERO ─────────────────────────────────────── */

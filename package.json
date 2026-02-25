@@ -3,11 +3,11 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "reset": "git reset --hard HEAD && git clean -fdx && pnpm install"
-  },
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "reset": "git reset --hard HEAD && git clean -fdx && pnpm install"
+    },
     "dependencies": {
         "@hookform/resolvers": "^5.1.1",
         "@radix-ui/react-accordion": "^1.2.11",
@@ -65,10 +65,12 @@
         "zod": "^3.25.67"
     },
     "devDependencies": {
+        "@types/nodemailer": "^7.0.11",
         "autoprefixer": "^10.4.19",
         "globals": "^16.2.0",
+        "nodemailer": "^8.0.1",
         "postcss": "^8",
+        "sharp": "^0.34.5",
         "tailwindcss": "^3.4.1"
     }
-   
 }

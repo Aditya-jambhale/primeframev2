@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 
 const pillars = [
     {
@@ -38,10 +39,12 @@ export default function AgencyPillars() {
                     >
                         {/* GIF Container */}
                         <div className="relative w-14 h-14 sm:w-16 sm:h-16 xl:w-20 xl:h-20 flex-shrink-0 flex items-center justify-center overflow-hidden">
-                            <img
+                            <Image
                                 src={pillar.gif}
                                 alt={pillar.title}
-                                className="w-full h-full object-cover transition-all duration-700"
+                                width={80}
+                                height={80}
+                                className="object-cover transition-all duration-700"
                             />
                         </div>
 
@@ -54,12 +57,10 @@ export default function AgencyPillars() {
                                 {pillar.description}
                             </p>
                         </div>
-                      
+
                     </motion.div>
-                      
                 )
             })}
-              
         </div>
     )
 }

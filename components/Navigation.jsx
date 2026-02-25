@@ -37,7 +37,7 @@ export default function Navigation() {
         className={[
           'fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out',
           scrolled
-            ? 'bg-black/90 backdrop-blur-md border-b border-white/5 py-4 shadow-lg shadow-black/40'
+            ? 'bg-white border-b border-slate-200 py-3 shadow-sm'
             : 'bg-transparent py-6',
         ].join(' ')}
       >
@@ -45,8 +45,8 @@ export default function Navigation() {
           <div className="flex items-center justify-between">
             {/* Logo */}
             <Link href="/" className="no-underline flex items-center gap-0 group">
-              <span className="w-1 h-7 bg-yellow-500 mr-3 transition-all duration-300 group-hover:h-9" />
-              <span className="font-bebas text-2xl tracking-[0.08em] text-white leading-none">
+              <span className="w-1 h-10 bg-yellow-500 mr-3 transition-all duration-300 group-hover:h-10" />
+              <span className={`font-bebas text-2xl tracking-[0.08em] leading-none transition-colors duration-300 ${scrolled ? 'text-black' : 'text-white'}`}>
                 PRIME<span className="text-yellow-500">FRAME</span>
               </span>
             </Link>
@@ -64,11 +64,13 @@ export default function Navigation() {
                     key={link.href}
                     href={link.href}
                     className={[
-                      'no-underline font-barlow-condensed text-sm font-semibold tracking-[0.14em] uppercase',
-                      'relative transition-colors duration-200 pb-0.5',
+                      'no-underline font-barlow-condensed text-sm font-semibold tracking-[0.14em] uppercase transition-colors duration-300',
+                      'relative pb-0.5',
                       isActive
                         ? 'text-yellow-500'
-                        : 'text-slate-300 hover:text-white',
+                        : scrolled
+                          ? 'text-slate-600 hover:text-black'
+                          : 'text-slate-300 hover:text-white',
                     ].join(' ')}
                   >
                     {link.label}
@@ -82,7 +84,7 @@ export default function Navigation() {
 
             {/* Mobile Hamburger */}
             <button
-              className="md:hidden flex items-center justify-center w-10 h-10 text-white transition-colors hover:text-yellow-500"
+              className={`md:hidden flex items-center justify-center w-10 h-10 transition-colors duration-300 ${scrolled ? 'text-black' : 'text-white'} hover:text-yellow-500`}
               onClick={() => setMobileOpen(o => !o)}
               aria-label="Toggle menu"
             >

@@ -1,235 +1,105 @@
-# PrimeFrame Productions Website
+# PrimeFrame Productions - Digital Brand Experience
+### Cinematic. Strategic. High-Performance.
 
-A premium, production-ready multi-page website for PrimeFrame Productions - a Dubai-based cinematic video production agency.
-
-## 🎬 Overview
-
-PrimeFrame Productions is a premium video production house serving clients across India, Dubai, and UAE. This website showcases their comprehensive services, from corporate films to event coverage and immersive digital media.
-
-## 🚀 Tech Stack
-
-- **Framework**: Next.js 14 (App Router)
-- **Styling**: Tailwind CSS
-- **UI Components**: shadcn/ui
-- **Animations**: Framer Motion
-- **Icons**: Lucide React
-- **Fonts**: Playfair Display (headings), Inter (body)
-
-## 🎨 Design System
-
-### Colors
-- **Primary Background**: #000000 (Pure Black)
-- **Secondary Sections**: #111111 / #1A1A1A (Gray)
-- **Accent Gray**: #2A2A2A
-- **Text Primary**: #FFFFFF
-- **Text Secondary**: #A1A1AA
-- **Accent Gold**: #C6A55C (optional highlights)
-
-### Typography
-- **Headings**: Playfair Display
-- **Body**: Inter
-
-## 📄 Pages
-
-1. **Home** (`/`)
-   - Hero section with cinematic background
-   - Client logo marquee
-   - About the agency
-   - Why videography matters (detailed explanation)
-   - Services grid (18 services)
-   - Equipment showcase
-   - Process timeline (5 steps)
-   - Testimonial preview
-   - Contact form
-
-2. **About** (`/about`)
-   - Founder story and journey
-   - Timeline from 2019-2025
-   - Vision statement
-
-3. **Services** (`/services`)
-   - Comprehensive service listings
-   - Anchor navigation (#service-id)
-   - Categorized by:
-     - Corporate & Brand Production
-     - Events & Celebrations
-     - Digital & Creative Media
-
-4. **Testimonials** (`/testimonials`)
-   - Client testimonials with filtering
-   - Video testimonials
-   - Client logos
-
-5. **Contact** (`/contact`)
-   - Contact form
-   - Direct contact options (WhatsApp, Phone)
-   - Operating regions display
-
-## 🛠️ Features
-
-- **Sticky Navigation**: Responsive navbar with mobile hamburger menu
-- **Smooth Scroll**: Anchor-based navigation with smooth scrolling
-- **Framer Motion Animations**: Subtle, professional animations throughout
-- **Floating Action Buttons**: WhatsApp and Call buttons
-- **Responsive Design**: Mobile-first, fully responsive
-- **SEO Optimized**: Proper meta tags and semantic HTML
-- **Anchor Navigation**: Services link to specific sections (e.g., `/services#trade-show`)
-
-## 🚦 Getting Started
-
-### Prerequisites
-- Node.js 18+ 
-- Yarn package manager
-
-### Installation
-
-```bash
-# Install dependencies
-yarn install
-
-# Run development server
-yarn dev
-
-# Build for production
-yarn build
-
-# Start production server
-yarn start
-```
-
-The application will be available at `http://localhost:3000`
-
-## 📁 Project Structure
-
-```
-/app
-├── app/
-│   ├── api/
-│   │   └── contact/
-│   │       └── route.js          # Contact form API
-│   ├── about/
-│   │   └── page.jsx              # About page
-│   ├── services/
-│   │   └── page.jsx              # Services page
-│   ├── testimonials/
-│   │   └── page.jsx              # Testimonials page
-│   ├── contact/
-│   │   └── page.jsx              # Contact page
-│   ├── layout.js                 # Root layout
-│   ├── page.js                   # Home page
-│   └── globals.css               # Global styles
-├── components/
-│   ├── ui/                       # shadcn components
-│   ├── Navigation.jsx            # Main navigation
-│   ├── Footer.jsx                # Footer component
-│   └── FloatingActions.jsx       # Floating WhatsApp/Call buttons
-├── lib/
-│   └── utils.js                  # Utility functions
-├── tailwind.config.js            # Tailwind configuration
-└── package.json
-```
-
-## 🎯 Key Componentsh
-
-### Navigation
-- Sticky header with blur effect on scroll
-- Mobile-responsive hamburger menu
-- "Book Consultation" CTA button
-
-### Services
-- 18 comprehensive service offerings
-- Anchor-based navigation
-- Category organization
-- Detailed service pages with deliverables
-
-### Process Timeline
-- 5-step production process
-- Zig-zag desktop layout
-- Vertical mobile timeline
-- Animated on scroll
-
-## 🖼️ Image Placeholders
-
-All images are currently high-quality placeholders from Unsplash and Pexels. Replace with actual:
-- Client footage
-- Equipment photos
-- Behind-the-scenes shots
-- Founder portraits
-- Project screenshots
-
-Look for comments like:
-```javascript
-/* Replace with actual equipment image provided by client */
-```
-
-## 📧 Contact Form
-
-The contact form currently logs submissions to console. In production, integrate with:
-- SendGrid
-- Resend
-- Nodemailer
-- Your preferred email service
-
-See `/app/api/contact/route.js` for implementation.
-
-## 🎨 Customization
-
-### Colors
-Update colors in `tailwind.config.js` and `globals.css`
-
-### Fonts
-Fonts are loaded from Google Fonts in `globals.css`. Change imports to use different fonts.
-
-### Content
-All content is directly in page files for easy editing. Update:
-- Service descriptions
-- Timeline content
-- Testimonials
-- Contact information
-
-## 📱 Responsive Breakpoints
-
-- Mobile: < 768px
-- Tablet: 768px - 1024px
-- Desktop: > 1024px
-
-## 🔗 Important Links
-
-- Contact WhatsApp: Update in `FloatingActions.jsx` and contact page
-- Contact Phone: Update in `FloatingActions.jsx` and contact page
-- Email: Update in footer and contact page
-
-## 📝 TODO for Production
-
-- [ ] Replace all image placeholders with actual client images
-- [ ] Update contact information (phone, email, WhatsApp)
-- [ ] Integrate contact form with email service
-- [ ] Add client logos to logo marquee
-- [ ] Add actual testimonial videos
-- [ ] Replace video background in hero (if desired)
-- [ ] Set up analytics (Google Analytics, etc.)
-- [ ] Configure SEO meta tags with actual keywords
-- [ ] Add favicon and app icons
-- [ ] Test all anchor navigation links
-- [ ] Optimize images for production
-- [ ] Add SSL certificate
-
-## 🚀 Deployment
-
-This Next.js app can be deployed to:
-- Vercel (recommended)
-- Netlify
-- AWS
-- Any Node.js hosting platform
-
-## 📄 License
-
-Prorietary - PrimeFrame Productions
-
-## 🤝 Support
-
-For support or questions, contact PrimeFrame Productions.
+A state-of-the-art, multi-page digital platform engineered for **PrimeFrame Productions**, a premier video production studio operating in Dubai and India. This project is built to reflect the agency's "Every frame serves a purpose" philosophy through high-end motion design and cinematic UI.
 
 ---
 
-**Built with precision and attention to detail** - just like PrimeFrame's production philosophy.
+## 🏗️ Premium Tech Stack
+This project uses a modern, high-performance stack selected for speed, SEO, and visual fidelity.
+
+- **Framework**: [Next.js 14.2](https://nextjs.org/) (App Router) — The industry standard for high-performance React applications.
+- **Core**: [React 18](https://react.dev/) with full Server Component optimization.
+- **Styling**: [Tailwind CSS 3.4](https://tailwindcss.com/) — Utility-first styling for precise design control.
+- **Motion & DX**: [Framer Motion](https://www.framer.com/motion/) — Advanced scroll-linked animations and stagger effects. 
+- **Typography**: 
+  - **Syne**: A bold, cinematic font used for headings to command attention.
+  - **Outfit**: A clean, geometric sans-serif for high readability across all devices.
+- **Backend Architecture**: 
+  - **Node.js API Routes**: Secure server-side processing.
+  - **MongoDB**: Fully integrated database support for scalable content management.
+  - **Nodemailer**: Integrated SMTP service for professional email lead generation.
+- **Package Management**: [pnpm](https://pnpm.io/) — Fast, disk-efficient package management.
+
+---
+
+## 💎 Elite Features & Functionality
+
+### 1. Cinematic Visual Identity
+- **Dynamic Hero Section**: Supports high-definition video backgrounds with mobile-optimized fallback images.
+- **The Journey Watermark**: A high-end background watermark system with entrance animations to emphasize the studio's legacy.
+- **Interactive Brand Marquee**: A grayscale-to-color interactive marquee showcasing global client partnerships.
+
+### 2. Strategic Service Architecture
+- **Digital Service Ecosystem**: 18+ specialized production services organized for maximum SEO authority.
+- **Anchor-Link System**: Allows direct linking from ads/social media to specific service details (e.g., `/services#viral-shorts`).
+
+### 3. "The Arsenal" - Equipment Showcase
+- **Motion-Linked Grid**: High-fidelity equipment cards that fade, scale, and stagger as the user scrolls.
+- **3D Depth Effects**: Individual gear images (FX3, A7 IV, Prime Lenses) with custom shadow-casting and hover rotation.
+- **Rounded UI Design**: Modern floating-card aesthetics with ultra-rounded corners (`rounded-[4.5rem]`).
+
+### 4. Conversion Engine
+- **Lead Capture System**: A secure, server-validated contact form that pipes inquiries directly to agency directors.
+- **Omnichannel Support**: Floating "Book a Consultation" and WhatsApp/Call actions for immediate client engagement.
+- **Strategic Process Timeline**: A 6-step blueprint (`Discovery` to `Delivery`) designed to build trust through transparency.
+
+### 5. Performance & SEO
+- **Zero Layout Shift**: Optimized font loading and image components.
+- **Region-Specific SEO**: Metadata tailored for Dubai and Indian production markets.
+- **Adaptive Layout**: Pixel-perfect responsiveness from 4k monitors to mobile handsets.
+
+---
+
+## 📂 Strategic Project Structure
+
+```bash
+├── app/                  # Next.js App Router (Routing & Pages)
+│   ├── api/contact/      # Secure Nodemailer Lead Engine
+│   ├── about/            # Agency Story & Timeline
+│   ├── services/         # Strategic Service Listings
+│   ├── testimonials/     # Client Proof & Social Evidence
+│   ├── globals.css       # Core Design System & Tokens
+│   └── layout.js         # Root architecture & Typography setup
+├── components/           # Modular UI Components
+│   ├── ui/               # Lower-level Atomic Components
+│   ├── Navigation.jsx    # Dynamic White-on-Scroll Navbar
+│   ├── homeservice.jsx   # Hero Service Grid logic
+│   └── Arsenal.jsx       # Advanced Equipment Motion Grid
+├── public/               # High-fidelity Assets (4k Images/Gear PNGs)
+├── tailwind.config.js    # Custom Brand Palette & Typography Tokens
+└── jsconfig.json         # Path Alias configurations (@/*)
+```
+
+---
+
+## 💰 Commercial Value & Cost Factors
+*Note to Lead Developer: Use these points when generating the cost for the client.*
+
+1. **Custom Motion Design**: Unlike template-based sites, this project uses bespoke Framer Motion logic that requires advanced front-end engineering.
+2. **Lead Generation Integration**: Includes a full backend SMTP integration, removing the need for 3rd party "form-to-email" subscriptions ($15-30/mo savings).
+3. **Optimized SEO Architecture**: Built with semantic HTML5 and Next.js Metadata API to ensure ranking in competitive production markets.
+4. **Cinematic Asset Management**: Custom handling of high-resolution images and video backgrounds for balance between quality and load speed.
+
+---
+
+## 🚀 Deployment & Operations
+
+### Local Development
+```bash
+pnpm install
+pnpm dev
+```
+
+### Production Build
+```bash
+pnpm build
+pnpm start
+```
+
+**Deployment Recommendation**: This architecture is optimized for **Vercel** but compatible with any Node.js environment (AWS, DigitalOcean, etc.).
+
+---
+**Build Status**: Active Development 
+**Version**: 2.1.0 (Cinematic Overhaul)
+**Agency**: PrimeFrame Productions

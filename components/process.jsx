@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 
 /* ─────────────────────────────────────────
    Step Data
@@ -10,37 +11,37 @@ const steps = [
     n: '01',
     title: 'Discovery & Briefing',
     desc: 'We understand your brand\'s mission, goals, target audience, and visual tone to define a clear creative direction.',
-    img: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&q=80&fit=crop',
+    img: '/process/discovery.png',
   },
   {
     n: '02',
     title: 'Script & Concept',
     desc: 'Our writers craft a compelling story and structured script tailored to your message and audience.',
-    img: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=800&q=80&fit=crop',
+    img: '/process/script.png',
   },
   {
     n: '03',
     title: 'Pre-Production',
     desc: 'We handle location scouting, casting, production design, and scheduling for a smooth shoot day.',
-    img: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&q=80&fit=crop',
+    img: '/process/preprod.png',
   },
   {
     n: '04',
     title: 'Production',
     desc: 'Our crew brings the vision to life using industry-grade cameras and professional on-set direction.',
-    img: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=800&q=80&fit=crop',
+    img: '/process/prod.jpg',
   },
   {
     n: '05',
     title: 'Post-Production',
     desc: 'Editing, colour grading, sound design and motion graphics refined for maximum engagement.',
-    img: 'https://images.unsplash.com/photo-1581090700227-4c4f50e48e2b?w=800&q=80&fit=crop',
+    img: '/process/postprod.png',
   },
   {
     n: '06',
     title: 'Delivery & Deploy',
     desc: 'Final formats optimised for web, social, and broadcast — with publishing support if needed.',
-    img: 'https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=800&q=80&fit=crop',
+    img: '/process/delivery.png',
   },
 ]
 
@@ -95,15 +96,15 @@ export default function ProcessSection() {
                   style={{ aspectRatio: '4/3' }}>
 
                   {/* Image */}
-                  <motion.img
-                    src={step.img}
-                    alt={step.title}
-                    className="w-full h-full object-cover"
-                    initial={{ scale: 1.05 }}
-                    whileHover={{ scale: 1.12 }}
-                    transition={{ duration: 0.9, ease: 'easeOut' }}
-                    style={{ filter: ' brightness(1)' }}
-                  />
+                  <div className="relative w-full h-full transition-transform duration-700 ease-out group-hover:scale-110">
+                    <Image
+                      src={step.img}
+                      alt={step.title}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 16vw"
+                    />
+                  </div>
 
                   {/* Gradient overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />

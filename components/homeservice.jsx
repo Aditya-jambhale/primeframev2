@@ -10,94 +10,58 @@ import {
 
 const allServices = [
   {
-    id: 'short-form-video',
-    title: 'Short-Form Video',
-    description: 'High-impact, concise content designed for rapid consumption and high retention.',
-    icon: Smartphone
-  },
-  {
-    id: 'promo-videos',
-    title: 'Promotional Brand Videos',
-    description: 'Strategic campaign videos built to drive engagement and market presence.',
-    icon: TrendingUp
-  },
-  {
-    id: 'corporate-films',
-    title: 'Corporate Films',
-    description: 'Professional brand stories that build authority and communicate global vision.',
-    icon: Briefcase
-  },
-  {
-    id: 'social-reels',
-    title: 'Social Media Reels',
-    description: 'Platform-optimized vertical content engineered for reach and viral potential.',
+    id: 'viral-shorts',
+    title: 'Viral social media Shorts',
+    description: 'High-impact, concise content engineered for rapid reach and algorithmic amplification.',
     icon: Zap
   },
   {
-    id: 'documentary-shoot',
-    title: 'Documentary shoot',
-    description: 'Deep-dive storytelling that captures authentic human experiences and cultural narratives.',
-    icon: FileText
-  },
-  {
-    id: 'event-coverage',
-    title: 'Event Coverage',
-    description: 'Full-scale documentation of exhibitions, conferences, and large-scale gatherings.',
+    id: 'event-production',
+    title: 'Event photography & videography',
+    description: 'Full-scale documentation of exhibitions, conferences, and large-scale gatherings with cinematic precision.',
     icon: Users
   },
   {
-    id: 'long-form-video',
-    title: 'Long-Form Video',
-    description: 'Comprehensive video productions for in-depth educational or entertainment content.',
-    icon: Film
-  },
-  {
-    id: 'podcast-mgmt',
-    title: 'Podcast Management',
-    description: 'End-to-end podcast production, from multi-cam recording to final distribution.',
-    icon: Radio
-  },
-  {
-    id: 'burj-projection',
-    title: 'Burj Khalifa Projection',
-    description: 'Exclusive production services for landmark projections on the world\'s tallest building.',
-    icon: Sparkles
-  },
-  {
-    id: 'executive-interviews',
-    title: 'Executive Interviews',
-    description: 'Cinematic interview setups with structured lighting and professional audio capture.',
-    icon: MessageSquare
-  },
-  {
-    id: 'real-estate',
-    title: 'Real Estate Product Demo',
-    description: 'Luxury property walkthroughs designed to attract high-end global buyers.',
-    icon: Home
-  },
-  {
-    id: 'drone-cinematography',
-    title: 'Drone Cinematography',
-    description: 'Cinema-grade aerial perspectives that capture scale and cinematic grandeur.',
-    icon: Plane
-  },
-  {
-    id: 'wedding-videos',
-    title: 'Wedding Videos',
-    description: 'Elegant personal storytelling that preserves your most significant milestones.',
+    id: 'wedding-coverage',
+    title: 'Wedding Coverage',
+    description: 'Timeless, emotional storytelling that preserves your most significant life milestones.',
     icon: Heart
   },
   {
-    id: 'youtube-mgmt',
-    title: 'Youtube Management',
-    description: 'Strategic channel growth through consistent high-quality content production.',
+    id: 'documentary-shoot',
+    title: 'Documentary Shoot',
+    description: 'Deep-dive storytelling that captures authentic human experiences and powerful narratives.',
+    icon: FileText
+  },
+  {
+    id: 'long-form-youtube',
+    title: 'Long form YouTube Videos',
+    description: 'Comprehensive video productions optimized for high-retention and digital authority.',
     icon: Youtube
+  },
+  {
+    id: 'podcast-production',
+    title: 'Podcast Production',
+    description: 'Professional multi-cam recordings and end-to-end management for global distribution.',
+    icon: Radio
+  },
+  {
+    id: 'drone-shoot',
+    title: 'Drone Shoot',
+    description: 'Cinema-grade aerial perspectives capturing cinematic scale and dynamic motion.',
+    icon: Plane
   },
   {
     id: 'tour-videography',
     title: 'Tour Videography',
-    description: 'Dynamic coverage for travel, tourism, and destination-based brand stories.',
+    description: 'Dynamic coverage for travel, tourism, and destination-based brand narratives.',
     icon: Globe
+  },
+  {
+    id: 'dubai-sightseeing',
+    title: 'Dubai Sightseeing Shoot',
+    description: 'Exclusive cinematic production capturing the grandeur of Dubai landmarks.',
+    icon: Sparkles
   },
 ]
 
