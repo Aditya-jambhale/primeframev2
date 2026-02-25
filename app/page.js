@@ -137,7 +137,7 @@ export default function Home() {
       {/* ══════════════════════════════════════════
           CLIENT LOGOS
       ══════════════════════════════════════════ */}
-      <section className="py-20 bg-black border-y border-white/5 relative overflow-hidden">
+      <section className="py-20 bg-black  relative overflow-hidden">
         {/* Subtle background glow */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[100px] bg-yellow-500/5 blur-[100px] pointer-events-none" />
 
@@ -181,65 +181,68 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-32 bg-black border-y border-white/5">
-        <div className="max-w-7xl mx-auto px-2">
-          <div className="grid grid-cols-1 lg:grid-cols-[1.26fr_0.74fr] gap-20 items-center">
+      <section className="py-20 bg-black overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 md:px-14">
+          <div className="grid grid-cols-1 lg:grid-cols-[0.4fr_0.6fr] gap-16 lg:gap-15 items-start">
 
-            {/* Left Column: Text Content */}
+            {/* Left Content */}
             <motion.div
-              initial={{ opacity: 0, x: -40 }}
+              initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="text-left"
+              className="sticky "
             >
-              {/* Eyebrow */}
-              <span className="font-barlow-condensed text-sm  font-semibold tracking-[0.22em] uppercase text-yellow-500 block mb-6">
+              <span className="font-barlow-condensed text-sm font-semibold tracking-[0.22em] uppercase text-yellow-500 block mb-4">
                 About the Studio
               </span>
-
-              {/* Headline */}
-              <h2 className="font-bebas text-6xl leading-[0.95] tracking-[0.05em] text-white mb-2">
-                BUILT AROUND <span className="text-yellow-500">STORY,</span><br />
-                EXECUTION AND DETAIL.
+              <h2 className="font-bebas text-5xl md:text-5xl leading-[0.95] tracking-[0.05em] text-white mb-4">
+                BUILT AROUND <span className="text-yellow-500">STORY,</span> EXECUTION AND DETAIL.
               </h2>
+              <div className="w-6 h-px bg-yellow-500 mb-10" />
+              <p className="font-barlow font-light text-[1.05rem] text-textMuted leading-[1.8] tracking-wide mb-10">
+                PrimeFrame Productions was built on a simple belief — <span className=" font-semibold">Every frame must serve a purpose.</span>
 
-              <div className="w-16 h-px bg-yellow-500 mb-10" />
+                We don’t create content for attention. We create visuals that drive meaning, memory, and measurable impact.
 
+                From concept to post-production, every detail is engineered with clarity, discipline, and cinematic precision.
 
-              {/* Body Copy */}
-              <div className="space-y-6 max-w-[620px]">
-                <p className="font-barlow font-light text-[1.12rem] text-textMuted leading-[1.8] tracking-wide">
-                  PrimeFrame Productions was built on a simple belief —
-                  <span className="text-white font-medium"> every frame should serve a purpose.</span>
-                  We combine cinematic production with performance strategy,
-                  handling every step from planning to post-production with clarity and precision.
-                </p>
+                As we expand from India to Dubai, our philosophy remains unchanged
 
-                <p className="font-barlow font-light text-[1.08rem] text-textMuted leading-[1.8] tracking-wide">
-                  As we expand from India to Dubai and beyond, our mission remains unchanged:
-                  deliver visuals that elevate brands above the noise.
-                </p>
-              </div>
+              </p>
 
-              {/* CTA */}
-              <div className="mt-12">
-                <Link href="/about">
-                  <button className="bg-transparent text-white font-barlow-condensed text-[0.82rem] font-bold tracking-[0.18em] uppercase px-[36px] py-[13px] border border-yellow-500 cursor-pointer transition-all duration-250 [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))] hover:border-yellow hover:text-yellow-500 hover:bg-yellow-500/5">
-                    Our Journey →
-                  </button>
-                </Link>
-              </div>
+              <Link href="/about">
+                <button className="font-bebas text-[0.8rem] tracking-[0.2em] text-white border border-yellow-500 px-8 py-3 hover:bg-yellow-500 hover:text-black transition-all duration-300 uppercase [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))]">
+                  Our Journey →
+                </button>
+              </Link>
             </motion.div>
 
-            {/* Right Column: Pillars Highlights */}
+            {/* Right Pillars - 3 Column Grid */}
             <div className="relative">
-              {/* Decorative elements */}
-              <div className="absolute -top-10 -right-10 w-50 h-50 bg-yellow-500/5 blur-[80px] pointer-events-none" />
+              <div className="absolute -top-30 -right-20 w-64 h-64 bg-yellow-500/5 blur-[100px] pointer-events-none" />
               <AgencyPillars />
+
+              {/* Added Tagline below the grid */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                viewport={{ once: true }}
+                className="mt-12 flex items-center justify-end gap-6 group"
+              >
+                <div className="w-1 h-7 bg-yellow-500  transition-all duration-300 group-hover:h-9" />
+                <p className="font-barlow-condensed text-[0.95rem] md:text-[1.1rem] tracking-[0.1em] text-white/50 uppercase text-right leading-tight">
+                  Craft work that cuts through noise — <br className="md:hidden" />
+                  <span className="text-yellow-500 font-medium">and elevates brands with intention.</span>
+                </p>
+
+              </motion.div>
             </div>
 
+
           </div>
+
         </div>
       </section>
 

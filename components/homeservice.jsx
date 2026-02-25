@@ -1,328 +1,191 @@
 'use client'
 
-import { useState, useRef, useEffect, useCallback } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import Link from 'next/link'
-import Image from 'next/image'
 import {
-  Camera, Film, Briefcase, Users, Building, Sparkles, Video,
-  TrendingUp, Globe, Lightbulb, Palette, Box,
-  Smartphone, Plane, PartyPopper, GraduationCap, Radio, ArrowUpRight, ChevronLeft, ChevronRight
+  FileText, Film, Smartphone, Users, Sparkles, Briefcase, TrendingUp,
+  MessageSquare, Zap, Radio, Home, Plane, Heart, Youtube, Globe, ArrowRight
 } from 'lucide-react'
 
-const categories = [
+const allServices = [
   {
-    label: 'Corporate',
-    services: [
-      { title: 'Corporate Films', href: '/services#corporate-films', description: 'Brand stories crafted to build authority, trust, and long-term positioning.', image: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80' },
-      { title: 'Promotional Brand Videos', href: '/services#brand-videos', description: 'Strategic promotional videos designed to elevate brand perception and drive engagement.', image: 'https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=800&q=80' },
-      { title: 'Executive Interviews', href: '/services#executive-interviews', description: 'High-quality interview production with cinematic lighting and structured storytelling.', image: 'https://images.unsplash.com/photo-1551818255-e6e10975bc17?w=800&q=80' },
-      { title: 'Behind The Scenes Videos', href: '/services#bts', description: 'Authentic behind-the-scenes coverage that builds brand transparency and connection.', image: 'https://images.unsplash.com/photo-1585503418537-88331351ad99?w=800&q=80' },
-    ]
+    id: 'documentary-shoot',
+    title: 'Documentary shoot',
+    description: 'Deep-dive storytelling that captures authentic human experiences and cultural narratives.',
+    icon: FileText
   },
   {
-    label: 'Events',
-    services: [
-      { title: 'Exhibitions & Trade Show Filming', href: '/services#trade-show', description: 'Capture large-scale events with cinematic precision, multi-camera coverage, and professional audio.', image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80' },
-      { title: 'Event Filming', href: '/services#event-filming', description: 'Full-scale event production for corporate, political, and business gatherings.', image: 'https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&q=80' },
-      { title: 'Event AV Setup with Live Feed', href: '/services#live-av', description: 'Complete AV solutions with real-time broadcasting and live production management.', image: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=800&q=80' },
-      { title: 'Burj Khalifa Projection', href: '/services#burj-projection', description: 'Large-scale projection production and execution for landmark events.', image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80' },
-    ]
+    id: 'long-form-video',
+    title: 'Long-Form Video',
+    description: 'Comprehensive video productions for in-depth educational or entertainment content.',
+    icon: Film
   },
   {
-    label: 'Personal',
-    services: [
-      { title: 'Wedding Videos', href: '/services#wedding', description: 'Cinematic wedding films designed to preserve memories with elegance and emotion.', image: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80' },
-      { title: 'Save The Date', href: '/services#save-the-date', description: 'Creative pre-wedding cinematic invitations designed for digital sharing.', image: 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800&q=80' },
-      { title: 'Graduation Videos', href: '/services#graduation', description: 'Professional coverage for academic milestones and institutional events.', image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&q=80' },
-    ]
+    id: 'short-form-video',
+    title: 'Short-Form Video',
+    description: 'High-impact, concise content designed for rapid consumption and high retention.',
+    icon: Smartphone
   },
   {
-    label: 'Real Estate',
-    services: [
-      { title: 'Real Estate Product Demo', href: '/services#real-estate', description: 'Luxury property walkthroughs and real estate visuals built to attract premium buyers.', image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80' },
-      { title: 'Aerial & Drone Cinematography', href: '/services#aerial', description: 'Professional aerial cinematography for real estate, events, and large-scale productions.', image: 'https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=800&q=80' },
-    ]
+    id: 'event-coverage',
+    title: 'Event Coverage',
+    description: 'Full-scale documentation of exhibitions, conferences, and large-scale gatherings.',
+    icon: Users
   },
   {
-    label: 'Digital',
-    services: [
-      { title: 'Social Media Reels', href: '/services#reels', description: 'High-impact short-form vertical videos optimized for reach and engagement.', image: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=800&q=80' },
-      { title: 'Teaser / Trailer Videos', href: '/services#trailers', description: 'Short-form cinematic trailers that generate anticipation and audience excitement.', image: 'https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=800&q=80' },
-      { title: '2D Animation Videos', href: '/services#2d-animation', description: 'Custom 2D animated videos for explainers, corporate messaging, and campaigns.', image: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&q=80' },
-      { title: '3D Animation Videos', href: '/services#3d-animation', description: 'High-end 3D visual production for immersive brand storytelling.', image: 'https://images.unsplash.com/photo-1617791160536-598cf32026fb?w=800&q=80' },
-      { title: '360 / VR Videos', href: '/services#vr', description: 'Immersive virtual experiences designed to elevate digital interaction.', image: 'https://images.unsplash.com/photo-1593508512255-86ab42a8e620?w=800&q=80' },
-    ]
+    id: 'burj-projection',
+    title: 'Burj Khalifa Projection',
+    description: 'Exclusive production services for landmark projections on the world\'s tallest building.',
+    icon: Sparkles
+  },
+  {
+    id: 'corporate-films',
+    title: 'Corporate Films',
+    description: 'Professional brand stories that build authority and communicate global vision.',
+    icon: Briefcase
+  },
+  {
+    id: 'promo-videos',
+    title: 'Promotional Brand Videos',
+    description: 'Strategic campaign videos built to drive engagement and market presence.',
+    icon: TrendingUp
+  },
+  {
+    id: 'executive-interviews',
+    title: 'Executive Interviews',
+    description: 'Cinematic interview setups with structured lighting and professional audio capture.',
+    icon: MessageSquare
+  },
+  {
+    id: 'social-reels',
+    title: 'Social Media Reels',
+    description: 'Platform-optimized vertical content engineered for reach and viral potential.',
+    icon: Zap
+  },
+  {
+    id: 'podcast-mgmt',
+    title: 'Podcast Management',
+    description: 'End-to-end podcast production, from multi-cam recording to final distribution.',
+    icon: Radio
+  },
+  {
+    id: 'real-estate',
+    title: 'Real Estate Product Demo',
+    description: 'Luxury property walkthroughs designed to attract high-end global buyers.',
+    icon: Home
+  },
+  {
+    id: 'drone-cinematography',
+    title: 'Drone Cinematography',
+    description: 'Cinema-grade aerial perspectives that capture scale and cinematic grandeur.',
+    icon: Plane
+  },
+  {
+    id: 'wedding-videos',
+    title: 'Wedding Videos',
+    description: 'Elegant personal storytelling that preserves your most significant milestones.',
+    icon: Heart
+  },
+  {
+    id: 'youtube-mgmt',
+    title: 'Youtube Management',
+    description: 'Strategic channel growth through consistent high-quality content production.',
+    icon: Youtube
+  },
+  {
+    id: 'tour-videography',
+    title: 'Tour Videography',
+    description: 'Dynamic coverage for travel, tourism, and destination-based brand stories.',
+    icon: Globe
   },
 ]
 
-function ServiceCard({ service, index }) {
-  const [hovered, setHovered] = useState(false)
-
-  return (
-    <Link
-      href={service.href}
-      className="no-underline block flex-shrink-0 w-[260px]"
-    >
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: index * 0.05, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
-        className="relative w-full h-80 rounded-sm overflow-hidden cursor-pointer"
-      >
-        {/* Background image */}
-        <Image
-          src={service.image}
-          alt={service.title}
-          fill
-          className="object-cover"
-          style={{
-            transition: 'transform 0.6s ease',
-            transform: hovered ? 'scale(1.07)' : 'scale(1)',
-            filter: 'grayscale(20%)',
-          }}
-        />
-
-        {/* Gradient overlay */}
-        <div
-          className={`absolute inset-0 transition-all duration-500 ${hovered
-            ? 'bg-gradient-to-t from-black/95 via-black/55 to-black/15'
-            : 'bg-gradient-to-t from-black/90 via-black/35 to-black/5'
-            }`}
-        />
-
-        {/* pf-yellow top accent line */}
-        <div
-          className="absolute top-0 left-0 h-0.5 bg-yellow-500 transition-all duration-500"
-          style={{ width: hovered ? '100%' : '40px' }}
-        />
-
-        {/* Bottom content */}
-        <div className="absolute bottom-0 left-0 right-0 p-6 flex items-end justify-between gap-3">
-          <div>
-            {/* Description — slides up on hover */}
-            <div
-              className={`mb-2 transition-all duration-300 ${hovered ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1.5'
-                }`}
-            >
-              <p className="font-barlow font-light text-xs text-slate-400 leading-relaxed line-clamp-2">
-                {service.description}
-              </p>
-            </div>
-            <h3 className="font-bebas text-lg tracking-widest text-white leading-tight m-0">
-              {service.title.toUpperCase()}
-            </h3>
-          </div>
-
-          {/* Arrow button */}
-          <div
-            className={`w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 ${hovered ? 'scale-110 -rotate-12 shadow-[0_0_20px_rgba(234,179,8,0.5)]' : ''
-              }`}
-          >
-            <ArrowUpRight size={18} className="text-white" />
-          </div>
-        </div>
-      </motion.div>
-    </Link>
-  )
-}
-
 export default function ServicesSection() {
-  const [activeTab, setActiveTab] = useState(0)
-  const [paused, setPaused] = useState(false)
-  const scrollRef = useRef(null)
-  const intervalRef = useRef(null)
-
-  const startAutoSwitch = useCallback(() => {
-    intervalRef.current = setInterval(() => {
-      setActiveTab(prev => (prev + 1) % categories.length)
-    }, 3500)
-  }, [])
-
-  const stopAutoSwitch = () => {
-    if (intervalRef.current) clearInterval(intervalRef.current)
-  }
-
-  useEffect(() => {
-    if (!paused) startAutoSwitch()
-    return stopAutoSwitch
-  }, [paused, startAutoSwitch])
-
-  useEffect(() => {
-    if (scrollRef.current) scrollRef.current.scrollLeft = 0
-  }, [activeTab])
-
-  const handleTabClick = (i) => {
-    setActiveTab(i)
-    stopAutoSwitch()
-    setPaused(true)
-    setTimeout(() => setPaused(false), 8000)
-  }
-
-  const scroll = (dir) => {
-    if (scrollRef.current) scrollRef.current.scrollBy({ left: dir * 580, behavior: 'smooth' })
-  }
-
   return (
-    <section
-      className="py-32 overflow-hidden bg-black"
-      onMouseEnter={() => { stopAutoSwitch(); setPaused(true) }}
-      onMouseLeave={() => setPaused(false)}
-    >
-      <div className="max-w-[1300px] mx-auto px-6">
+    <section className="py-32 bg-black overflow-hidden border-y border-white/5">
+      <div className="max-w-7xl mx-auto px-6">
 
-        {/* ── Header ── */}
-        <div className="flex justify-between items-end flex-wrap gap-8 mb-14">
-          <div>
-            <span className="font-barlow-condensed text-[0.72rem] font-bold tracking-[0.22em] uppercase text-yellow-500 block mb-4">What We Do</span>
-            <h2 className="font-bebas text-[clamp(3rem,7vw,5.5rem)] tracking-widest text-white leading-none">
-              OUR <span className="text-yellow-500">SERVICES</span>
-            </h2>
-          </div>
-          <p className="font-barlow font-light text-textMuted text-base leading-relaxed max-w-sm">
-            18 services across corporate, events, real estate, digital, and personal production — all under one roof.
-          </p>
-        </div>
-
-        {/* ── Tabs + Nav ── */}
-        <div className="flex justify-between items-center flex-wrap gap-4 mb-0.5">
-
-          {/* Tabs */}
-          <div className="flex gap-0.5 flex-wrap">
-            {categories.map((cat, i) => (
-              <button
-                key={i}
-                onClick={() => handleTabClick(i)}
-                className={[
-                  'font-barlow-condensed text-xs font-bold tracking-[0.18em] uppercase',
-                  'px-7 py-3 border-none cursor-pointer transition-all duration-250 relative',
-                  activeTab === i
-                    ? 'bg-yellow-500 text-white'
-                    : 'bg-pf-card text-textMuted hover:text-white',
-                ].join(' ')}
-              >
-                {cat.label}
-
-                {/* Sweeping progress bar — auto mode */}
-                {activeTab === i && !paused && (
-                  <motion.div
-                    key={`prog-${activeTab}-${i}`}
-                    initial={{ scaleX: 0 }}
-                    animate={{ scaleX: 1 }}
-                    transition={{ duration: 3.5, ease: 'linear' }}
-                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-white/50 origin-left"
-                  />
-                )}
-                {/* Static bar — paused */}
-                {activeTab === i && paused && (
-                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-white/50" />
-                )}
-              </button>
-            ))}
-          </div>
-
-          {/* Scroll arrows */}
-          <div className="flex gap-2">
-            <button
-              onClick={() => scroll(-1)}
-              className="w-10 h-10 bg-pf-card border border-white/5 flex items-center justify-center cursor-pointer transition-all duration-200 hover:bg-yellow-500"
-              style={{ clipPath: 'polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px))' }}
-            >
-              <ChevronLeft size={18} color="white" />
-            </button>
-            <button
-              onClick={() => scroll(1)}
-              className="w-10 h-10 bg-yellow-500 border-none flex items-center justify-center cursor-pointer transition-all duration-200 hover:bg-yellow-600"
-              style={{ clipPath: 'polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px))' }}
-            >
-              <ChevronRight size={18} color="white" />
-            </button>
-          </div>
-        </div>
-
-        {/* ── Card Row ── */}
-        <AnimatePresence mode="wait">
+        {/* Header */}
+        <div className="flex flex-col items-center text-center gap-2 mb-20">
           <motion.div
-            key={activeTab}
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -20 }}
-            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}  
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
           >
-            <div
-              ref={scrollRef}
-              className="flex gap-4 overflow-x-auto pb-6 pt-6 cursor-grab"
-              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-              onMouseDown={e => {
-                const el = e.currentTarget
-                el.style.cursor = 'grabbing'
-                const startX = e.pageX - el.offsetLeft
-                const scrollLeft = el.scrollLeft
-                const onMove = ev => { el.scrollLeft = scrollLeft - (ev.pageX - el.offsetLeft - startX) }
-                const onUp = () => { el.style.cursor = 'grab'; window.removeEventListener('mousemove', onMove); window.removeEventListener('mouseup', onUp) }
-                window.addEventListener('mousemove', onMove)
-                window.addEventListener('mouseup', onUp)
-              }}
-            >
-              <style>{`div::-webkit-scrollbar { display: none; }`}</style>
-
-              {categories[activeTab].services.map((s, i) => (
-                <ServiceCard key={`${activeTab}-${i}`} service={s} index={i} />
-              ))}
-
-              {/* All Services CTA card */}
-              <Link href="/services" className="no-underline flex-shrink-0 w-[260px] block">
-                <div
-                  className="h-80 bg-yellow-500/5 border border-yellow/20 flex flex-col justify-center items-center text-center p-8 cursor-pointer rounded-sm transition-all duration-300 hover:bg-yellow-500/10 hover:border-yellow/40 group/cta"
-                >
-                  <div className="w-14 h-14 bg-yellow-500 rounded-full flex items-center justify-center mb-6 transition-transform group-hover/cta:scale-110">
-                    <ArrowUpRight size={24} className="text-white" />
-                  </div>
-                  <h3 className="font-bebas text-2xl tracking-widest text-white leading-tight mb-3">
-                    VIEW ALL<br />18 SERVICES
-                  </h3>
-                  <p className="font-barlow font-light text-textMuted text-xs leading-relaxed">
-                    Explore our complete production catalogue
-                  </p>
-                </div>
-              </Link>
-            </div>
-
-            {/* Progress dots */}
-            <div className="flex gap-1.5 mt-2">
-              {categories[activeTab].services.map((_, i) => (
-                <div
-                  key={i}
-                  className={`h-0.5 rounded-sm transition-all duration-300 ${i === 0 ? 'w-6 bg-yellow-500' : 'w-1.5 bg-white/15'
-                    }`}
-                />
-              ))}
-            </div>
+            <span className="font-barlow-condensed text-xs font-bold tracking-[0.25em] uppercase text-yellow-500 mb-2 block">
+              Specialized Production
+            </span>
+            <h2 className="font-bebas text-5xl md:text-7xl text-white tracking-widest leading-none m-0">
+              OUR <span className="text-yellow-500">EXPERTISE</span>
+            </h2>
           </motion.div>
-        </AnimatePresence>
-
-        {/* ── Bottom CTA bar ── */}
-        <div className="mt-16 flex justify-between items-center flex-wrap gap-8 p-10 bg-pf-card border-l-[3px] border-yellow-500">
-          <p className="font-bebas text-[clamp(1.25rem,2.5vw,2rem)] tracking-widest text-white">
-            NOT SURE WHICH SERVICE FITS YOUR{' '}
-            <span className="text-yellow-500">VISION?</span>
-          </p>
-          <div className="flex gap-3 flex-wrap">
-            <Link href="/contact">
-              <button className="bg-yellow-500 text-white font-barlow-condensed text-[0.82rem] font-bold tracking-[0.18em] uppercase px-[30px] py-[12px] border-none cursor-pointer transition-all duration-250 [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))] hover:bg-yellow-600 hover:-translate-y-0.5">
-                Book a Consultation
-              </button>
-            </Link>
-            <Link href="/services">
-              <button className="bg-transparent text-white font-barlow-condensed text-[0.82rem] font-bold tracking-[0.18em] uppercase px-[30px] py-[11px] border border-yellow/50 cursor-pointer transition-all duration-250 [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))] hover:border-yellow hover:text-yellow-500 hover:bg-yellow-500/5">
-                Browse All Services
-              </button>
-            </Link>
-          </div>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="font-barlow font-light text-textMuted text-lg max-w-2xl leading-relaxed"
+          >
+            15 specialized services engineered for authority, impact, and cinematic excellence.
+          </motion.p>
         </div>
 
+        {/* Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+          {allServices.map((service, index) => {
+            const Icon = service.icon
+            return (
+              <motion.div
+                key={service.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.05 }}
+                viewport={{ once: true }}
+                className="group bg-pf-card border border-white/5 p-8 rounded-xl transition-all duration-500 hover:border-yellow-500/30 hover:bg-yellow-500/5 hover:-translate-y-1 relative overflow-hidden"
+              >
+                {/* Decorative Glow */}
+                <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-500/10 blur-[50px] -translate-y-1/2 translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity" />
+
+                <div className="relative z-10 h-full flex flex-col">
+                  <div className="w-12 h-12 bg-white/5 rounded-lg flex items-center justify-center mb-6 transition-colors group-hover:bg-yellow-500/10">
+                    <Icon className="text-yellow-500" size={24} />
+                  </div>
+
+                  <h3 className="font-bebas text-2xl text-white tracking-widest mb-3 transition-colors group-hover:text-yellow-500">
+                    {service.title.toUpperCase()}
+                  </h3>
+
+                  <p className="font-barlow font-light text-sm text-textMuted leading-relaxed mb-8 flex-grow">
+                    {service.description}
+                  </p>
+
+                  <Link href={`/services#${service.id}`}>
+                    <button className="flex items-center gap-2 font-barlow-condensed text-[0.7rem] font-bold tracking-[0.2em] uppercase text-white/50 group-hover:text-yellow-500 transition-all">
+                      Explore More
+                      <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+                    </button>
+                  </Link>
+                </div>
+              </motion.div>
+            )
+          })}
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="mt-24 p-12 bg-pf-card border border-white/5 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-10">
+          <div className="text-left">
+            <h4 className="font-bebas text-3xl text-white tracking-[0.05em] mb-2">
+              READY TO <span className="text-yellow-500">START?</span>
+            </h4>
+            <p className="font-barlow font-light text-textMuted">Book a session with our directors to discuss your requirements.</p>
+          </div>
+          <Link href="/contact">
+            <button className="bg-yellow-500 text-white font-barlow-condensed text-[0.82rem] font-bold tracking-[0.18em] uppercase px-[40px] py-[16px] transition-all duration-300 [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))] hover:bg-yellow-600 hover:-translate-y-0.5">
+              Book Consultation
+            </button>
+          </Link>
+        </div>
       </div>
     </section>
   )

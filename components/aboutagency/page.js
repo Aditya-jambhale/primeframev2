@@ -1,77 +1,65 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Clapperboard, Video, SlidersHorizontal } from 'lucide-react'
 
 const pillars = [
     {
         title: 'Story',
         description:
             'We craft cinematic narratives that connect emotionally and elevate brands.',
-        Icon: Clapperboard
+        gif: '/gif/clapper.gif'
     },
     {
         title: 'Execution',
         description:
             'From pre-production to on-set direction, we deliver flawless shoots.',
-        Icon: Video
+        gif: '/gif/filmshooting.gif'
     },
     {
         title: 'Detail',
         description:
             'Editing, grading, sound design — precision in every final frame.',
-        Icon: SlidersHorizontal
+        gif: '/gif/videoeditor.gif'
     }
 ]
 
 export default function AgencyPillars() {
     return (
-        <div className="grid grid-cols-1 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-0 border border-yellow-500 shadow-2xl shadow-yellow-500/20 rounded-2xl mt-10 overflow-hidden">
             {pillars.map((pillar, index) => {
-                const Icon = pillar.Icon
-
                 return (
                     <motion.div
                         key={pillar.title}
-                        initial={{ opacity: 0, x: 30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.7, delay: index * 0.2 }}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: index * 0.1 }}
                         viewport={{ once: true }}
-                        className="group flex items-start gap-6 text-left"
+                        className="group flex flex-row sm:flex-col items-center sm:items-start gap-5 sm:gap-2 text-left p-6 sm:p-8 xl:p-9 border-b sm:border-b-0 sm:border-r border-white/5 last:border-b-0 sm:[&:nth-child(2)]:border-r-0 xl:[&:nth-child(2)]:border-r border-white/5 transition-all duration-500 h-full hover:bg-white/5"
                     >
-                        {/* Icon Container with Animated Glow */}
-                        <div className="relative flex-shrink-0">
-                            <motion.div
-                                animate={{ rotate: [0, 360] }}
-                                transition={{
-                                    duration: 20,
-                                    repeat: Infinity,
-                                    ease: 'linear'
-                                }}
-                                className="absolute inset-0 flex items-center justify-center opacity-20"
-                            >
-                                <div className="w-16 h-16 border border-yellow-500 rounded-lg" />
-                            </motion.div>
-
-                            <div className="relative z-10 w-16 h-16 bg-pf-card border border-white/10 rounded-lg flex items-center justify-center transition-all duration-300 group-hover:border-yellow group-hover:bg-yellow-500/10">
-                                <Icon
-                                    size={32}
-                                    className="text-yellow-500 transition-colors duration-300"
-                                />
-                            </div>
+                        {/* GIF Container */}
+                        <div className="relative w-14 h-14 sm:w-16 sm:h-16 xl:w-20 xl:h-20 flex-shrink-0 flex items-center justify-center overflow-hidden">
+                            <img
+                                src={pillar.gif}
+                                alt={pillar.title}
+                                className="w-full h-full object-cover transition-all duration-700"
+                            />
                         </div>
 
-                        <div>
-                            <h3 className="font-bebas text-2xl text-white tracking-widest mb-1.5 transition-colors duration-300 group-hover:text-yellow-500">
-                                {pillar.title.toUpperCase()}
+                        {/* Text Content */}
+                        <div className="flex flex-col flex-1 mt-0 sm:mt-2">
+                            <h3 className="font-bebas text-lg sm:text-xl text-white tracking-widest mb-1 sm:mb-2 transition-colors duration-300 group-hover:text-yellow-500 uppercase">
+                                {pillar.title}
                             </h3>
-                            <p className="font-barlow font-light text-[1.05rem] text-textMuted leading-relaxed max-w-xs transition-colors duration-300 group-hover:text-slate-200">
+                            <p className="font-barlow font-light text-[0.85rem] sm:text-[0.95rem] xl:text-[1rem] text-textMuted leading-relaxed transition-colors duration-300 group-hover:text-slate-200 line-clamp-2 sm:line-clamp-none">
                                 {pillar.description}
                             </p>
                         </div>
+                      
                     </motion.div>
+                      
                 )
             })}
+              
         </div>
     )
 }
