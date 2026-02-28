@@ -1,4 +1,4 @@
-import { Inter, Syne, Outfit } from 'next/font/google'
+import { Inter, Syne, Outfit, Montserrat } from 'next/font/google'
 import './globals.css'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
@@ -7,6 +7,7 @@ import FloatingActions from '@/components/FloatingActions'
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const syne = Syne({ subsets: ['latin'], variable: '--font-syne' })
 const outfit = Outfit({ subsets: ['latin'], variable: '--font-outfit' })
+const montserrat = Montserrat({ subsets: ['latin'], variable: '--font-montserrat' })
 
 export const metadata = {
   title: 'PrimeFrame Productions | Premium Video Production in Dubai & India',
@@ -17,7 +18,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="dark">
-      <body className={`${inter.variable} ${syne.variable} ${outfit.variable} font-sans`}>
+      <body className={`${inter.variable} ${syne.variable} ${outfit.variable} ${montserrat.variable} font-sans`}>
         <Navigation />
         <main className="min-h-screen">
           {children}

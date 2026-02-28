@@ -105,22 +105,22 @@ function ServiceSection({ service }) {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <span className="font-barlow-condensed text-[0.72rem] font-bold tracking-[0.22em] uppercase text-yellow-500 block mb-4">
+              <span className="font-outfit text-[0.72rem] font-bold tracking-[0.22em] uppercase text-yellow-500 block mb-4">
                 Specialized Service
               </span>
-              <h2 className="font-bebas text-5xl md:text-6xl text-white tracking-widest leading-[0.9] mb-4">
-                {service.title.toUpperCase()}
+              <h2 className="text-section-title text-white mb-4 uppercase">
+                {service.title}
               </h2>
-              <p className="font-barlow-condensed text-xl text-yellow-500/80 tracking-wide mb-2 italic">
+              <p className="font-outfit text-xl text-yellow-500/80 tracking-wide mb-2 italic">
                 "{service.valueProp}"
               </p>
-              <p className="font-barlow font-medium text-white mb-8 border-l-2 border-yellow-500 pl-4 py-1">
+              <p className="font-outfit font-medium text-white mb-8 border-l-2 border-yellow-500 pl-4 py-1">
                 {service.outcome}
               </p>
 
               <div className="flex gap-4 mb-12">
                 <Link href="/contact">
-                  <button className="bg-yellow-500 text-white font-barlow-condensed text-[0.82rem] font-bold tracking-[0.18em] uppercase px-[30px] py-[13px] [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))] hover:bg-yellow-600 transition-all">
+                  <button className="bg-yellow-500 text-white font-outfit text-[0.82rem] font-bold tracking-[0.18em] uppercase px-[30px] py-[13px] [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))] hover:bg-yellow-600 transition-all">
                     Request Proposal
                   </button>
                 </Link>
@@ -128,17 +128,17 @@ function ServiceSection({ service }) {
 
               <div className="space-y-8">
                 <div>
-                  <h4 className="font-bebas text-xl text-white tracking-widest mb-3">SERVICE OVERVIEW</h4>
-                  <p className="font-barlow font-light text-textMuted leading-relaxed">
+                  <h4 className="font-montserrat font-black text-xl text-white tracking-tight mb-3 uppercase">SERVICE OVERVIEW</h4>
+                  <p className="font-outfit font-light text-textMuted leading-relaxed">
                     {service.overview}
                   </p>
                 </div>
 
                 <div>
-                  <h4 className="font-bebas text-xl text-white tracking-widest mb-4">WHAT WE DELIVER</h4>
+                  <h4 className="font-montserrat font-black text-xl text-white tracking-tight mb-4 uppercase">WHAT WE DELIVER</h4>
                   <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3">
                     {service.deliverables.map((item, i) => (
-                      <li key={i} className="flex items-center gap-3 text-sm text-slate-300">
+                      <li key={i} className="flex items-center gap-3 text-sm text-foreground font-outfit">
                         <CheckCircle size={16} className="text-yellow-500 flex-shrink-0" />
                         {item}
                       </li>
@@ -146,15 +146,15 @@ function ServiceSection({ service }) {
                   </ul>
                 </div>
 
-                <div className="p-6 bg-pf-card rounded-xl border border-white/5">
-                  <h4 className="font-barlow-condensed text-[0.7rem] font-bold tracking-[0.2em] uppercase text-yellow-500 mb-2">Our Process</h4>
-                  <p className="font-barlow font-light text-xs text-textMuted leading-relaxed">
+                <div className="p-6 bg-card rounded-xl border border-white/5">
+                  <h4 className="font-outfit text-[0.7rem] font-bold tracking-[0.2em] uppercase text-yellow-500 mb-2">Our Process</h4>
+                  <p className="font-outfit font-light text-xs text-textMuted leading-relaxed">
                     {service.process}
                   </p>
                 </div>
 
                 <Link href="/contact">
-                  <button className="flex items-center gap-2 group text-white font-barlow-condensed text-sm font-bold tracking-[0.2em] uppercase opacity-60 hover:opacity-100 transition-opacity">
+                  <button className="flex items-center gap-2 group text-white font-outfit text-sm font-bold tracking-[0.2em] uppercase opacity-60 hover:opacity-100 transition-opacity">
                     Start Your Project
                     <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                   </button>
@@ -165,23 +165,22 @@ function ServiceSection({ service }) {
 
           {/* Visual Column - Placeholder Decoration */}
           <div className="relative pt-10">
-            <div className="aspect-[4/5] relative rounded-2xl overflow-hidden border border-yellow-500/20 group">
-              <div className="absolute inset-0 bg-pf-card animate-pulse" />
+            <div className="aspect-[4/5] relative rounded-2xl overflow-hidden border border-yellow-500/20 group hover-lift">
+              <div className="absolute inset-0 bg-card animate-pulse" />
               <div className="absolute inset-0 flex items-center justify-center">
-                <span className="font-bebas text-white/5 text-[10rem] select-none pointer-events-none">
-                  {service.id.toUpperCase().charAt(0)}
+                <span className="font-montserrat font-black text-white/5 text-[10rem] select-none pointer-events-none uppercase">
+                  {service.id.charAt(0)}
                 </span>
               </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
+              <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black to-transparent" />
               <div className="absolute bottom-10 left-10">
                 <div className="w-12 h-1 bg-yellow-500 mb-4" />
-                <h3 className="font-bebas text-3xl text-white tracking-widest leading-none">
-                  {service.id.replace(/-/g, ' ').toUpperCase()}
+                <h3 className="font-montserrat font-black text-3xl text-white tracking-tight leading-none uppercase">
+                  {service.id.replace(/-/g, ' ')}
                 </h3>
               </div>
             </div>
-            {/* Decorative background glow */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-yellow-500/10 blur-[120px] -z-10 rounded-full" />
+            {/* Decorative background glow removed */}
           </div>
         </div>
       </div>
@@ -191,13 +190,12 @@ function ServiceSection({ service }) {
 
 export default function ServicesPage() {
   return (
-    <div className="bg-black min-h-screen text-slate-300">
+    <div className="bg-background min-h-screen text-foreground">
 
       {/* HERO */}
       <section className="relative h-[80vh] flex items-center justify-center overflow-hidden border-b border-white/5">
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/40 to-black z-10" />
-          <div className="absolute inset-0 bg-black/60 z-10" />
+          <div className="absolute inset-0 bg-black/70 z-10" />
           <Image
             src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=1800&q=80"
             alt="Services Hero"
@@ -211,7 +209,7 @@ export default function ServicesPage() {
           <motion.span
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="font-barlow-condensed text-sm font-bold tracking-[0.25em] uppercase text-yellow-500 block mb-6"
+            className="font-outfit text-sm font-bold tracking-[0.25em] uppercase text-yellow-500 block mb-6"
           >
             Our Production Suite
           </motion.span>
@@ -219,7 +217,7 @@ export default function ServicesPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="font-bebas text-[clamp(3.5rem,10vw,8rem)] text-white tracking-widest leading-[0.9] mb-8"
+            className="text-hero text-white mb-8 uppercase"
           >
             THE <span className="text-yellow-500">SERVICES</span>
           </motion.h1>
@@ -227,7 +225,7 @@ export default function ServicesPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="font-barlow font-light text-xl text-textMuted max-w-2xl mx-auto leading-relaxed"
+            className="font-outfit font-light text-xl text-textMuted max-w-2xl mx-auto leading-relaxed"
           >
             Exploring the bounds of cinema and story. From rapid-fire social content to global event milestones — every frame engineered for purpose.
           </motion.p>
@@ -235,11 +233,11 @@ export default function ServicesPage() {
       </section>
 
       {/* SERVICES NAV - Infinite Marquee with Hover Pause */}
-      <div className="!sticky top-[64px] z-[40] bg-black/95 backdrop-blur-xl border-y border-white/5">
+      <div className="!sticky top-[64px] z-[40] bg-background/95 backdrop-blur-xl border-y border-white/5">
         <div className="relative overflow-hidden py-4 group">
           {/* Edge Fades */}
-          <div className="absolute inset-y-0 left-0 w-16 md:w-32 bg-gradient-to-r from-black via-black/40 to-transparent z-10 pointer-events-none" />
-          <div className="absolute inset-y-0 right-0 w-16 md:w-32 bg-gradient-to-l from-black via-black/40 to-transparent z-10 pointer-events-none" />
+          <div className="absolute inset-y-0 left-0 w-16 md:w-32 bg-gradient-to-r from-background via-background/40 to-transparent z-10 pointer-events-none" />
+          <div className="absolute inset-y-0 right-0 w-16 md:w-32 bg-gradient-to-l from-background via-background/40 to-transparent z-10 pointer-events-none" />
 
           <motion.div
             initial={{ x: 0 }}
@@ -262,7 +260,7 @@ export default function ServicesPage() {
                     window.scrollTo({ top: y, behavior: 'smooth' });
                   }
                 }}
-                className="font-barlow-condensed text-[0.7rem] md:text-[0.75rem] font-bold tracking-[0.25em] uppercase text-white/40 hover:text-yellow-500 transition-all duration-300"
+                className="font-outfit text-[0.7rem] md:text-[0.75rem] font-bold tracking-[0.25em] uppercase text-white/40 hover:text-yellow-500 transition-all duration-300"
               >
                 {service.title}
               </button>
@@ -272,22 +270,21 @@ export default function ServicesPage() {
       </div>
 
       {/* CONTENT REEL */}
-      <div className="bg-black">
+      <div className="bg-background">
         {allServices.map((service, j) => (
           <ServiceSection key={j} service={service} />
         ))}
       </div>
 
       {/* FINAL CTA */}
-      <section className="py-40 bg-black border-t border-white/5 text-center px-6 overflow-hidden relative">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-80 bg-yellow-500/10 blur-[150px] pointer-events-none" />
+      <section className="py-40 bg-background border-t border-white/5 text-center px-6 overflow-hidden relative">
         <div className="relative z-10">
-          <h2 className="font-bebas text-5xl md:text-8xl text-white tracking-widest leading-[0.9] mb-10">
+          <h2 className="text-hero text-white leading-[0.9] mb-10 uppercase">
             READY TO CRAFT <br />
             YOUR NEXT <span className="text-yellow-500">MASTERPIECE?</span>
           </h2>
           <Link href="/contact">
-            <button className="bg-yellow-500 text-white font-barlow-condensed text-[1rem] font-bold tracking-[0.2em] uppercase px-[60px] py-[20px] [clip-path:polygon(0_0,calc(100%-12px)_0,100%_12px,100%_100%,12px_100%,0_calc(100%-12px))] hover:bg-yellow-600 transition-all hover:scale-105 active:scale-95">
+            <button className="bg-yellow-500 text-white font-outfit text-[1rem] font-bold tracking-[0.2em] uppercase px-[60px] py-[20px] [clip-path:polygon(0_0,calc(100%-12px)_0,100%_12px,100%_100%,12px_100%,0_calc(100%-12px))] hover:bg-yellow-600 transition-all hover:scale-105 active:scale-95">
               Book a Consultation Now
             </button>
           </Link>

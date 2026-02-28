@@ -1,9 +1,22 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
-import { PlayCircle, Quote } from 'lucide-react'
+import { PlayCircle, Quote, Star, MessageSquare } from 'lucide-react'
 import Link from 'next/link'
+
+function getYoutubeEmbedUrl(url) {
+  if (!url) return ''
+  let id = ''
+  if (url.includes('shorts/')) {
+    id = url.split('shorts/')[1].split('?')[0]
+  } else if (url.includes('youtu.be/')) {
+    id = url.split('youtu.be/')[1].split('?')[0]
+  } else if (url.includes('v=')) {
+    id = url.split('v=')[1].split('&')[0]
+  }
+  return `https://www.youtube.com/embed/${id}`
+}
 
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
@@ -11,254 +24,247 @@ const fadeIn = {
   transition: { duration: 0.6 }
 }
 
+const videos = [
+  {
+    url: 'https://youtube.com/shorts/vOHPMhu_r9c?si=M2HvczBXiTM5wCZv',
+    name: 'Dr Eric Weiss',
+    role: 'Founder, Clamp Time',
+    desc: 'On transforming complex medical concepts into viral digital content.'
+  },
+  {
+    url: 'https://youtube.com/shorts/0oQ2103A6H8?si=z1TuS7S9yqN8Mnte',
+    name: 'Dr Brenda',
+    role: 'TedX Speaker',
+    desc: 'Impact of cinematic storytelling on public speaker branding.'
+  },
+  {
+    url: 'https://youtu.be/WecJOuguoRA?si=SrnICxGV0kHbvdsb',
+    name: 'Lynne B',
+    role: 'Podcast Host',
+    desc: 'How professional production scaled my podcast to global rankings.'
+  }
+]
+
+const testimonials = [
+  {
+    category: 'commercial',
+    clientName: 'Sarah Johnson',
+    company: 'TechVision Inc.',
+    testimonial: 'Working with PrimeFrame Productions transformed our brand presence. The attention to detail and cinematic quality exceeded our expectations.',
+    size: 'large'
+  },
+  {
+    category: 'events',
+    clientName: 'Mohammed Al-Rashid',
+    company: 'Dubai Events Co.',
+    testimonial: 'Their event coverage was exceptional. They captured every important moment with professional precision and delivered ahead of schedule.',
+    size: 'normal'
+  },
+  {
+    category: 'podcast',
+    clientName: 'Priya Sharma',
+    company: 'The Growth Podcast',
+    testimonial: 'The editing quality and turnaround time are unmatched. Our podcast production has never been better.',
+    size: 'accent'
+  },
+  {
+    category: 'commercial',
+    clientName: 'David Chen',
+    company: 'Luxury Real Estate',
+    testimonial: 'The property walkthroughs they created helped us sell premium listings faster. Absolutely world-class work.',
+    size: 'normal'
+  },
+  {
+    category: 'social media',
+    clientName: 'Aisha Khan',
+    company: 'Fashion Brand',
+    testimonial: 'Our Instagram engagement tripled after working with PrimeFrame. Their understanding of social media content is exceptional.',
+    size: 'normal'
+  },
+  {
+    category: 'events',
+    clientName: 'Robert Martinez',
+    company: 'Corporate Solutions',
+    testimonial: 'They covered our annual conference with multiple camera setups and delivered a highlight reel that captured the energy perfectly.',
+    size: 'large'
+  }
+]
+
 export default function Testimonials() {
   const [filter, setFilter] = useState('all')
-
   const categories = ['all', 'podcast', 'commercial', 'events', 'social media']
-
-  const testimonials = [
-    {
-      category: 'commercial',
-      clientName: 'Sarah Johnson',
-      company: 'TechVision Inc.',
-      testimonial: 'Working with PrimeFrame Productions transformed our brand presence. The attention to detail and cinematic quality exceeded our expectations.',
-      video: true,
-      size: 'large' // tall card
-    },
-    {
-      category: 'events',
-      clientName: 'Mohammed Al-Rashid',
-      company: 'Dubai Events Co.',
-      testimonial: 'Their event coverage was exceptional. They captured every important moment with professional precision and delivered ahead of schedule.',
-      video: true,
-      size: 'normal'
-    },
-    {
-      category: 'podcast',
-      clientName: 'Priya Sharma',
-      company: 'The Growth Podcast',
-      testimonial: 'The editing quality and turnaround time are unmatched. Our podcast production has never been better.',
-      video: false,
-      size: 'accent' // wide accent card
-    },
-    {
-      category: 'commercial',
-      clientName: 'David Chen',
-      company: 'Luxury Real Estate',
-      testimonial: 'The property walkthroughs they created helped us sell premium listings faster. Absolutely world-class work.',
-      video: true,
-      size: 'normal'
-    },
-    {
-      category: 'social media',
-      clientName: 'Aisha Khan',
-      company: 'Fashion Brand',
-      testimonial: 'Our Instagram engagement tripled after working with PrimeFrame. Their understanding of social media content is exceptional.',
-      video: false,
-      size: 'normal'
-    },
-    {
-      category: 'events',
-      clientName: 'Robert Martinez',
-      company: 'Corporate Solutions',
-      testimonial: 'They covered our annual conference with multiple camera setups and delivered a highlight reel that captured the energy perfectly.',
-      video: true,
-      size: 'large'
-    }
-  ]
 
   const filteredTestimonials = filter === 'all'
     ? testimonials
     : testimonials.filter(t => t.category === filter)
 
   return (
-    <div className="bg-black text-slate-300">
-
+    <div className="bg-black text-white min-h-screen">
       {/* Hero Section */}
-      <section className="py-28 px-4 text-center relative overflow-hidden">
-        {/* Decorative diagonal line */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            backgroundImage: 'linear-gradient(135deg, rgba(234,179,8,0.04) 1px, transparent 1px)',
-            backgroundSize: '60px 60px'
-          }}
-        />
-        <div className="container mx-auto max-w-7xl relative">
+      <section className="py-32 px-6 text-center relative overflow-hidden">
+        <div className="container mx-auto max-w-7xl relative z-10">
           <motion.div {...fadeIn}>
-            <p className="font-barlow-condensed text-[0.72rem] font-bold tracking-[0.22em] uppercase text-yellow-500 mb-4">Client Stories</p>
-            <h1 className="font-bebas text-[clamp(3rem,8vw,6rem)] tracking-[0.04em] leading-[0.95] text-white mb-6">
-              Work That Speaks<br />
-              <span className="text-yellow-500">Before We Do</span>
+            <span className="font-outfit text-xs font-bold tracking-[0.4em] uppercase text-yellow-500 mb-6 block border border-yellow-500/20 w-fit mx-auto px-6 py-2 rounded-full bg-black/40 backdrop-blur-md">
+              The Voice of Excellence
+            </span>
+            <h1 className="font-montserrat font-semibold text-[clamp(2.5rem,8vw,5.5rem)] leading-[0.85] tracking-tight text-white mb-8 uppercase">
+              WORK THAT SPEAKS<br />
+              <span className="text-yellow-500">BEFORE WE DO.</span>
             </h1>
-            <p className="text-textMuted font-barlow text-lg">
-              Hear from brands and creators we've worked with across India, Dubai, and beyond.
+            <p className="text-white/60 italic font-outfit font-light text-xl max-w-2xl mx-auto leading-relaxed">
+              Real results for brands and creators across India, Dubai, and beyond. Every frame engineered for impact.
             </p>
           </motion.div>
         </div>
+
+        {/* Subtle Background Accent */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-yellow-500/5 blur-[120px] rounded-full -z-10" />
       </section>
 
-      {/* Filter Buttons */}
-      <section className="px-4 pb-12">
-        <div className="container mx-auto">
-          <div className="flex flex-wrap justify-center gap-3">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setFilter(category)}
-                className={`font-barlow-condensed text-[0.75rem] font-bold tracking-[0.18em] uppercase px-[24px] py-[10px] border cursor-pointer transition-all duration-250 [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))] ${filter === category
-                  ? 'bg-yellow-500 text-white border-yellow'
-                  : 'bg-transparent text-white border-yellow/50 hover:border-yellow hover:text-yellow-500 hover:bg-yellow-500/5'
-                  }`}
+      {/* Video Content Grid */}
+      <section className="pb-32 px-6">
+        <div className="container mx-auto max-w-7xl">
+          <div className="flex items-center gap-6 mb-16">
+            <h2 className="font-montserrat font-black text-2xl text-white tracking-[0.2em] uppercase flex items-center gap-6">
+              <span className="w-16 h-px bg-yellow-500" />
+              Featured Video Journeys
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+            {videos.map((video, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: i * 0.1 }}
+                viewport={{ once: true }}
+                className="group"
               >
-                {category.charAt(0).toUpperCase() + category.slice(1)}
-              </button>
+                <div className="relative aspect-[9/16] rounded-[2rem] overflow-hidden border border-white/5 bg-[#0a0a0a] mb-8 shadow-2xl hover:border-yellow-500/40 transition-colors duration-500">
+                  <iframe
+                    src={getYoutubeEmbedUrl(video.url)}
+                    className="absolute inset-0 w-full h-full object-cover"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                  <div className="absolute inset-0 pointer-events-none border border-white/5 rounded-[2rem]" />
+                </div>
+                <div className="px-4">
+                  <h3 className="font-montserrat font-black text-2xl text-white uppercase tracking-tight mb-2 group-hover:text-yellow-500 transition-colors duration-300">
+                    {video.name}
+                  </h3>
+                  <p className="font-outfit text-xs font-bold text-yellow-500 uppercase tracking-widest mb-4 border-b border-yellow-500/20 pb-4">
+                    {video.role}
+                  </p>
+                  <p className="font-outfit font-light text-base text-white/50 leading-relaxed italic">
+                    "{video.desc}"
+                  </p>
+                </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Creative Testimonials Grid */}
-      <section className="py-12 px-4">
-        <div className="container mx-auto">
-          {/*
-            Creative grid layout:
-            Row 1: [Large tall card (spans 2 rows)] + [Normal] + [Normal]
-            Row 2: [Wide accent card (spans 2 cols)] + [Large tall card (spans 2 rows)]
-            Row 3: [Normal] + [Normal]
-          */}
-          <div
-            className="grid gap-5"
-            style={{
-              gridTemplateColumns: 'repeat(3, 1fr)',
-              gridAutoRows: '260px'
-            }}
-          >
-            {filteredTestimonials.map((testimonial, index) => {
-              // Assign creative grid positions cyclically
-              const positions = [
-                { gridRow: 'span 2' },   // large tall
-                { gridRow: 'span 1' },   // normal
-                { gridRow: 'span 1' },   // normal
-                { gridColumn: 'span 2', gridRow: 'span 1' }, // wide accent
-                { gridRow: 'span 1' },   // normal
-                { gridRow: 'span 2' },   // large tall
-              ]
-              const pos = positions[index % positions.length]
+      {/* Filterable Text Testimonials */}
+      <section className="py-32 bg-[#050505] border-y border-white/5">
+        <div className="container mx-auto px-6 max-w-7xl">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-12 mb-20">
+            <div className="max-w-xl">
+              <span className="font-outfit text-xs font-bold tracking-[0.4em] uppercase text-yellow-500 mb-6 block">The Archive</span>
+              <h2 className="font-montserrat font-black text-[clamp(2rem,5vw,3.5rem)] leading-[0.95] tracking-tight text-white uppercase">
+                Client <span className="text-yellow-500">Stories.</span>
+              </h2>
+            </div>
 
-              return (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 24 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.08, duration: 0.5 }}
-                  className="bg-pf-card border border-white/5 p-8 flex flex-col justify-between relative overflow-hidden transition-all duration-300 cursor-default group hover:border-yellow/30 hover:bg-pf-dark"
-                  style={pos}
+            <div className="flex flex-wrap gap-3">
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  onClick={() => setFilter(category)}
+                  className={`px-8 py-3 font-outfit text-[0.75rem] font-bold tracking-[0.2em] uppercase transition-all duration-300 border
+                    ${filter === category
+                      ? 'bg-yellow-500 text-black border-yellow-500'
+                      : 'border-white/10 text-white/40 hover:border-yellow-500/50 hover:text-white'}`}
+                  style={{ clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))' }}
                 >
-                  {/* yellow-500 sweep line at bottom */}
-                  <div className="absolute bottom-0 left-0 w-full h-0.5 bg-yellow-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
-
-                  {/* Corner accent */}
-                  <div className="absolute top-0 right-0 w-10 h-10 border-b border-l border-yellow/30" />
-
-                  {/* Video thumbnail for video testimonials */}
-                  {testimonial.video && pos.gridRow === 'span 2' && (
-                    <div className="aspect-video bg-black border border-white/10 rounded overflow-hidden flex items-center justify-center mb-6 cursor-pointer group/vid transition-all">
-                      <PlayCircle size={52} className="text-yellow-500 opacity-85 group-hover/vid:scale-110 transition-transform" />
-                    </div>
-                  )}
-
-                  {/* Small play icon badge for non-tall video cards */}
-                  {testimonial.video && pos.gridRow !== 'span 2' && (
-                    <div className="flex items-center gap-1.5 mb-3">
-                      <PlayCircle size={14} className="text-yellow-500" />
-                      <span className="font-barlow-condensed text-[0.6rem] font-bold tracking-[0.18em] uppercase text-yellow-500">
-                        Watch Testimonial
-                      </span>
-                    </div>
-                  )}
-
-                  {/* Quote icon */}
-                  <Quote size={24} className="text-yellow-500/50 mb-3" />
-
-                  {/* Testimonial text */}
-                  <p
-                    className={`font-barlow italic text-slate-200 leading-relaxed flex-grow overflow-hidden ${pos.gridColumn === 'span 2' ? 'text-lg' : 'text-sm'
-                      }`}
-                    style={{
-                      display: '-webkit-box',
-                      WebkitLineClamp: pos.gridRow === 'span 2' ? 6 : 4,
-                      WebkitBoxOrient: 'vertical',
-                    }}
-                  >
-                    "{testimonial.testimonial}"
-                  </p>
-
-                  {/* Client info */}
-                  <div className="mt-5 pt-4 border-t border-white/5 flex items-center justify-between">
-                    <div>
-                      <p className="font-barlow-condensed font-bold text-white tracking-[0.05em] text-[0.95rem]">
-                        {testimonial.clientName}
-                      </p>
-                      <p className="font-barlow text-textMuted text-[0.75rem] mt-0.5">
-                        {testimonial.company}
-                      </p>
-                    </div>
-                    <span className="font-barlow-condensed text-[0.55rem] font-bold tracking-[0.15em] uppercase text-yellow-500 px-2 py-1 border border-yellow/30 bg-yellow-500/5">
-                      {testimonial.category}
-                    </span>
-                  </div>
-                </motion.div>
-              )
-            })}
+                  {category}
+                </button>
+              ))}
+            </div>
           </div>
 
-          {/* Mobile fallback — single column */}
-          <style>{`
-            @media (max-width: 768px) {
-              .testimonials-grid {
-                grid-template-columns: 1fr !important;
-              }
-              .testimonials-grid > * {
-                grid-row: span 1 !important;
-                grid-column: span 1 !important;
-              }
-            }
-          `}</style>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <AnimatePresence mode="popLayout">
+              {filteredTestimonials.map((testimonial, index) => {
+                const isTall = testimonial.size === 'large'
+                const isWide = testimonial.size === 'accent'
+
+                return (
+                  <motion.div
+                    key={testimonial.clientName}
+                    layout
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.9 }}
+                    transition={{ duration: 0.5 }}
+                    className={`bg-[#0a0a0a] border border-white/5 p-10 flex flex-col justify-between relative overflow-hidden transition-all duration-500 group hover:border-yellow-500/30 rounded-[2rem]
+                      ${isTall ? 'row-span-2' : ''} ${isWide ? 'md:col-span-2' : ''}`}
+                  >
+                    <div className="absolute top-0 right-0 w-24 h-24 bg-yellow-500/[0.02] -mr-12 -mt-12 rounded-full blur-2xl group-hover:bg-yellow-500/10 transition-all duration-700" />
+
+                    <div>
+                      <Quote size={40} className="text-yellow-500/20 mb-8 group-hover:text-yellow-500/40 transition-colors duration-500" />
+                      <p className={`font-outfit font-light italic text-white/80 leading-relaxed mb-8 ${isWide ? 'text-2xl' : 'text-lg'}`}>
+                        "{testimonial.testimonial}"
+                      </p>
+                    </div>
+
+                    <div className="pt-8 border-t border-white/5">
+                      <p className="font-montserrat font-bold text-lg text-white uppercase tracking-tight mb-1">
+                        {testimonial.clientName}
+                      </p>
+                      <div className="flex items-center justify-between">
+                        <p className="font-outfit text-white/40 text-[0.8rem]">
+                          {testimonial.company}
+                        </p>
+                        <span className="font-outfit text-[0.6rem] font-bold tracking-[0.2em] uppercase text-yellow-500/60 bg-yellow-500/5 px-3 py-1 rounded-full border border-yellow-500/10">
+                          {testimonial.category}
+                        </span>
+                      </div>
+                    </div>
+                  </motion.div>
+                )
+              })}
+            </AnimatePresence>
+          </div>
         </div>
       </section>
 
       {/* Client Logos */}
-      <section className="py-24 px-4 bg-black border-y border-white/5 overflow-hidden">
-        <div className="container mx-auto">
-          <motion.div {...fadeIn} className="text-center mb-16">
-            <p className="font-barlow-condensed text-[0.72rem] font-bold tracking-[0.22em] uppercase text-yellow-500 mb-3">Our Partners</p>
-            <h2 className="font-bebas text-[clamp(2rem,5vw,3.5rem)] tracking-[0.04em] text-white">
-              Trusted by Leading Brands
+      <section className="py-32 px-6 bg-black border-b border-white/5 overflow-hidden">
+        <div className="container mx-auto max-w-7xl">
+          <motion.div {...fadeIn} className="text-center mb-20">
+            <span className="font-outfit text-xs font-bold tracking-[0.3em] uppercase text-yellow-500 mb-6 block">Our Global Partners</span>
+            <h2 className="font-montserrat font-black text-[clamp(2rem,5vw,3.5rem)] leading-[0.95] tracking-tight text-white uppercase">
+              TRUSTED BY<br />
+              <span className="text-yellow-500">INDUSTRY LEADERS.</span>
             </h2>
-            <div className="w-12 h-0.5 mx-auto bg-yellow-500 mt-4 opacity-50" />
           </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
             {[
-              '/companies/microsoft.png',
-              '/companies/byjus.png',
-              '/companies/Arise.png',
-              '/companies/Fulcrum.png',
-              '/companies/Hammad.png',
-              '/companies/sarvam.svg',
-              '/companies/edwise.png',
-              '/companies/flind.png',
-              '/companies/ashis.png',
-              '/companies/kundlas.png',
-              '/companies/jc.png',
-              '/companies/balance.png'
+              '/companies/microsoft.png', '/companies/byjus.png', '/companies/Arise.png',
+              '/companies/Fulcrum.png', '/companies/Hammad.png', '/companies/sarvam.svg',
+              '/companies/edwise.png', '/companies/flind.png', '/companies/ashis.png',
+              '/companies/kundlas.png', '/companies/jc.png', '/companies/balance.png'
             ].map((logo, i) => (
               <div
                 key={i}
-                className="aspect-square bg-pf-card border border-white/5 flex items-center justify-center grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-500 p-8 [clip-path:polygon(0_0,calc(100%-8px)_0,100%_8px,100%_100%,8px_100%,0_calc(100%-8px))]"
+                className="aspect-square bg-[#0a0a0a] border border-white/5 flex items-center justify-center transition-all duration-700 p-10 rounded-2xl group hover:border-yellow-500/30 shadow-xl"
               >
-                <img src={logo} alt="Partner Logo" className="w-full h-full object-contain" />
+                <img src={logo} alt="Partner Logo" className="w-full h-full object-contain grayscale opacity-30 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700" />
               </div>
             ))}
           </div>
@@ -266,32 +272,34 @@ export default function Testimonials() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 px-4 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_60%_at_50%_50%,rgba(234,179,8,0.06)_0%,transparent_70%)] pointer-events-none" />
-        <div className="container mx-auto max-w-3xl text-center relative">
-          <motion.div {...fadeIn}>
-            <p className="font-barlow-condensed text-[0.72rem] font-bold tracking-[0.22em] uppercase text-yellow-500 mb-4">Let's Collaborate</p>
-            <h2 className="font-bebas text-[clamp(2.5rem,6vw,5rem)] tracking-[0.04em] leading-[0.95] text-white mb-6">
-              Ready to Join Our<br />
-              <span className="text-yellow-500">Success Stories?</span>
+      <section className="py-32 px-6 relative overflow-hidden bg-[#050505]">
+        <div className="container mx-auto max-w-4xl text-center relative z-10">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1 }}
+          >
+            <h2 className="font-montserrat font-black text-[clamp(2rem,6vw,4.5rem)] leading-[0.9] tracking-tight text-white mb-10 uppercase">
+              READY TO BE OUR NEXT<br />
+              <span className="text-yellow-500 italic">SUCCESS STORY?</span>
             </h2>
-            <p className="text-textMuted font-barlow text-lg mb-10">
-              Let's create something exceptional together.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="flex flex-wrap justify-center gap-6">
               <Link href="/contact">
-                <button className="bg-yellow-500 text-white font-barlow-condensed text-[0.82rem] font-bold tracking-[0.18em] uppercase px-[36px] py-[14px] border-none cursor-pointer transition-all duration-250 [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))] hover:bg-yellow-600 hover:-translate-y-0.5">
+                <button className="bg-yellow-500 text-black font-outfit text-[0.85rem] font-bold tracking-[0.2em] uppercase px-12 py-5 transition-all duration-500 hover:bg-white hover:-translate-y-1" style={{ clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))' }}>
                   Start Your Project
                 </button>
               </Link>
               <Link href="/services">
-                <button className="bg-transparent text-white font-barlow-condensed text-[0.82rem] font-bold tracking-[0.18em] uppercase px-[36px] py-[13px] border border-yellow/50 cursor-pointer transition-all duration-250 [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))] hover:border-yellow hover:text-yellow-500 hover:bg-yellow-500/5">
-                  View Our Work
+                <button className="bg-transparent text-white border border-white/20 font-outfit text-[0.85rem] font-bold tracking-[0.2em] uppercase px-12 py-5 transition-all duration-500 hover:border-yellow-500 hover:text-yellow-500" style={{ clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))' }}>
+                  Our Expertise
                 </button>
               </Link>
             </div>
           </motion.div>
         </div>
+
+        {/* Cinematic Flare */}
+        <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-yellow-500/50 to-transparent" />
       </section>
     </div>
   )

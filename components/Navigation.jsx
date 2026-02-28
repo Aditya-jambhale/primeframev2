@@ -46,7 +46,7 @@ export default function Navigation() {
             {/* Logo */}
             <Link href="/" className="no-underline flex items-center gap-0 group">
               <span className="w-1 h-10 bg-yellow-500 mr-3 transition-all duration-300 group-hover:h-10" />
-              <span className={`font-bebas text-2xl tracking-[0.08em] leading-none transition-colors duration-300 ${scrolled ? 'text-black' : 'text-white'}`}>
+              <span className={`font-montserrat font-semibold text-xl tracking-[0.08em] leading-none transition-colors duration-300 ${scrolled ? 'text-black' : 'text-white'}`}>
                 PRIME<span className="text-yellow-500">FRAME</span>
               </span>
             </Link>
@@ -64,13 +64,13 @@ export default function Navigation() {
                     key={link.href}
                     href={link.href}
                     className={[
-                      'no-underline font-barlow-condensed text-sm font-semibold tracking-[0.14em] uppercase transition-colors duration-300',
+                      'no-underline font-outfit text-sm font-semibold tracking-[0.14em] uppercase transition-colors duration-300',
                       'relative pb-0.5',
                       isActive
                         ? 'text-yellow-500'
                         : scrolled
-                          ? 'text-slate-600 hover:text-black'
-                          : 'text-slate-300 hover:text-white',
+                          ? 'text-black hover:text-black'
+                          : 'text-white hover:text-white',
                     ].join(' ')}
                   >
                     {link.label}
@@ -113,7 +113,7 @@ export default function Navigation() {
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
                   className={[
-                    'no-underline font-barlow-condensed text-sm font-semibold tracking-[0.14em] uppercase',
+                    'no-underline font-outfit text-sm font-bold tracking-[0.14em] uppercase',
                     'py-3 border-b border-white/5 transition-colors duration-200 flex items-center gap-3',
                     isActive
                       ? 'text-yellow-500'

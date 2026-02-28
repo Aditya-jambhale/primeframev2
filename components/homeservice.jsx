@@ -70,7 +70,7 @@ export default function ServicesSection() {
   const visibleServices = showAll ? allServices : allServices.slice(0, 8)
 
   return (
-    <section className="py-32 bg-black overflow-hidden border-y border-white/5">
+    <section className="py-24 bg-black overflow-hidden border-y border-white/5">
       <div className="max-w-7xl mx-auto px-6">
 
         {/* Header */}
@@ -81,10 +81,10 @@ export default function ServicesSection() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <span className="font-barlow-condensed text-xs font-bold tracking-[0.25em] uppercase text-yellow-500 mb-2 block">
+            <span className="font-outfit text-xs font-bold tracking-[0.25em] uppercase text-yellow-500 mb-2 block">
               Specialized Production
             </span>
-            <h2 className="font-bebas text-5xl md:text-7xl text-white tracking-widest leading-none m-0">
+            <h2 className="font-montserrat font-semibold font-black text-5xl md:text-7xl text-white tracking-tight leading-none m-0 uppercase">
               OUR <span className="text-yellow-500">EXPERTISE</span>
             </h2>
           </motion.div>
@@ -93,7 +93,7 @@ export default function ServicesSection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            className="font-barlow font-light text-textMuted text-lg max-w-2xl leading-relaxed"
+            className="font-outfit font-light text-textMuted text-lg max-w-2xl leading-relaxed"
           >
             {allServices.length} specialized services engineered for authority, impact, and cinematic excellence.
           </motion.p>
@@ -127,16 +127,16 @@ export default function ServicesSection() {
                       <Icon className="text-yellow-500" size={24} />
                     </div>
 
-                    <h3 className="font-bebas text-2xl text-white tracking-widest mb-3 transition-colors group-hover:text-yellow-500">
-                      {service.title.toUpperCase()}
+                    <h3 className="font-montserrat font-bold text-2xl text-white tracking-wide mb-3 transition-colors group-hover:text-yellow-500 uppercase">
+                      {service.title}
                     </h3>
 
-                    <p className="font-barlow font-light text-sm text-textMuted leading-relaxed mb-8 flex-grow">
+                    <p className="font-outfit font-light text-sm text-textMuted leading-relaxed mb-8 flex-grow">
                       {service.description}
                     </p>
 
                     <Link href={`/services#${service.id}`}>
-                      <button className="flex items-center gap-2 font-barlow-condensed text-[0.7rem] font-bold tracking-[0.2em] uppercase text-white/50 group-hover:text-yellow-500 transition-all">
+                      <button className="flex items-center gap-2 font-outfit text-[0.7rem] font-bold tracking-[0.2em] uppercase text-white/50 group-hover:text-yellow-500 transition-all">
                         Explore More
                         <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
                       </button>
@@ -154,7 +154,7 @@ export default function ServicesSection() {
             onClick={() => setShowAll(!showAll)}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="flex items-center gap-3 font-barlow-condensed text-[0.8rem] font-bold tracking-[0.3em] uppercase text-yellow-500 bg-white/5 border border-white/10 px-8 py-4 rounded-full transition-all hover:bg-yellow-500/10 hover:border-yellow-500/30"
+            className="flex items-center gap-3 font-outfit text-[0.8rem] font-bold tracking-[0.3em] uppercase text-yellow-500 bg-white/5 border border-white/10 px-8 py-4 rounded-full transition-all hover:bg-yellow-500/10 hover:border-yellow-500/30"
           >
             {showAll ? 'See Less' : 'See More Services'}
             <motion.div
@@ -169,13 +169,13 @@ export default function ServicesSection() {
         {/* Bottom Bar */}
         <div className="mt-24 p-12 bg-pf-card border border-white/5 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-10">
           <div className="text-left">
-            <h4 className="font-bebas text-3xl text-white tracking-[0.05em] mb-2">
+            <h4 className="font-montserrat font-black text-3xl text-white tracking-tight mb-2 uppercase">
               READY TO <span className="text-yellow-500">START?</span>
             </h4>
-            <p className="font-barlow font-light text-textMuted">Book a session with our directors to discuss your requirements.</p>
+            <p className="font-outfit font-light text-textMuted">Book a session with our directors to discuss your requirements.</p>
           </div>
           <Link href="/contact">
-            <button className="bg-yellow-500 text-white font-barlow-condensed text-[0.82rem] font-bold tracking-[0.18em] uppercase px-[40px] py-[16px] transition-all duration-300 [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))] hover:bg-yellow-600 hover:-translate-y-0.5">
+            <button className="bg-yellow-500 text-white font-outfit text-[0.82rem] font-bold tracking-[0.18em] uppercase px-[40px] py-[16px] transition-all duration-300 [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))] hover:bg-yellow-600 hover:-translate-y-0.5">
               Book Consultation
             </button>
           </Link>

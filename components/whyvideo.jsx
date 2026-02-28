@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
+import Link from 'next/link'
 
 const whyPoints = [
   {
@@ -41,7 +42,7 @@ export default function WhyVideography() {
   const videoY = useTransform(scrollYProgress, [0, 1], ['-2%', '2%'])
 
   return (
-    <section ref={containerRef} className="relative bg-black overflow-hidden py-32">
+    <section ref={containerRef} className="relative bg-black overflow-hidden py-24">
 
       {/* Background Image Overlay */}
       <div className="absolute inset-0 z-0">
@@ -52,7 +53,7 @@ export default function WhyVideography() {
           className="object-cover  saturate-0"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black" />
-       
+
       </div>
 
       {/* ───────────── TOP STRIP ───────────── */}
@@ -67,7 +68,7 @@ export default function WhyVideography() {
               {['80% higher conversion', '3× organic reach', 'Trust built in 8 seconds', 'Highest ROI asset', 'Cinematic Precision', 'Brand Storytelling'].map((t, ti) => (
                 <span key={ti} className="inline-flex items-center gap-4 px-12">
                   <span className="w-1.5 h-1.5 rounded-full bg-yellow-500 shrink-0" />
-                  <span className="font-barlow-condensed text-[0.75rem] font-medium tracking-[0.2em] uppercase text-white/40">{t}</span>
+                  <span className="font-outfit text-[0.75rem] font-bold tracking-[0.2em] uppercase text-white/40">{t}</span>
                 </span>
               ))}
             </span>
@@ -85,8 +86,8 @@ export default function WhyVideography() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <span className="font-barlow-condensed text-sm font-semibold tracking-[0.3em] uppercase text-yellow-500 block mb-4">The Impact of Video</span>
-            <h2 className="font-bebas text-[clamp(2.2rem,5vw,4.2rem)] leading-[0.9] tracking-[0.04em] text-white">
+            <span className="font-outfit text-sm font-bold tracking-[0.3em] uppercase text-yellow-500 block mb-4">The Impact of Video</span>
+            <h2 className="font-section-title font-semibold text-[clamp(2.2rem,5vw,4.2rem)] leading-[0.9] tracking-tight text-white uppercase">
               WHY BRANDS INVEST<br />
               IN <span className="text-yellow-500">DIGITAL VIDEO</span>
             </h2>
@@ -112,11 +113,11 @@ export default function WhyVideography() {
                   {/* Stat Card */}
                   <div className="shrink-0">
                     <div className="w-20 h-20 rounded-2xl bg-pf-card border border-white/10 flex items-center justify-center transition-all duration-300 group-hover:border-yellow group-hover:bg-yellow-500/5 shadow-2xl">
-                      <span className="font-bebas text-3xl text-yellow-500">
+                      <span className="font-montserrat font-black text-3xl text-yellow-500 uppercase">
                         {item.stat}
                       </span>
                     </div>
-                    <span className="block mt-3 font-barlow-condensed text-[0.65rem] font-bold tracking-[0.15em] uppercase text-white/40 text-center">
+                    <span className="block mt-3 font-outfit text-[0.65rem] font-bold tracking-[0.15em] uppercase text-white/40 text-center">
                       {item.label}
                     </span>
                   </div>
@@ -124,15 +125,15 @@ export default function WhyVideography() {
                   {/* Info */}
                   <div className="pt-2">
                     <div className="flex items-center gap-4 mb-3">
-                      <span className="font-bebas text-sm tracking-widest text-yellow-500/40">{item.n}</span>
+                      <span className="font-montserrat font-black text-sm tracking-widest text-yellow-500/40 uppercase">{item.n}</span>
                       <div className="h-px w-8 bg-yellow-500/20" />
                     </div>
 
-                    <h3 className="font-bebas text-xl lg:text-2xl tracking-wide text-white mb-4 group-hover:text-yellow-500 transition-colors duration-300">
-                      {item.title.toUpperCase()}
+                    <h3 className="font-montserrat font-bold text-xl lg:text-2xl tracking-wide text-white mb-4 group-hover:text-yellow-500 transition-colors duration-300 uppercase">
+                      {item.title}
                     </h3>
 
-                    <p className="font-barlow font-light text-[0.95rem] text-textMuted leading-[1.7] max-w-[520px] transition-colors duration-300 group-hover:text-slate-200">
+                    <p className="font-outfit font-light text-[0.95rem] text-textMuted leading-[1.7] max-w-[520px] transition-colors duration-300 group-hover:text-slate-200">
                       {item.body}
                     </p>
                   </div>
@@ -147,9 +148,9 @@ export default function WhyVideography() {
               viewport={{ once: true }}
               className="pt-10"
             >
-              <button className="bg-yellow-500 text-white font-barlow-condensed text-[0.9rem] font-bold tracking-[0.2em] uppercase px-[48px] py-[18px] border-none cursor-pointer transition-all duration-250 [clip-path:polygon(0_0,calc(100%-12px)_0,100%_12px,100%_100%,12px_100%,0_calc(100%-12px))] hover:bg-yellow-600 hover:-translate-y-1 shadow-xl">
+              <Link href="/services" className="bg-yellow-500 text-white font-outfit text-[0.9rem] font-bold tracking-[0.2em] uppercase px-[48px] py-[18px] border-none cursor-pointer transition-all duration-250 [clip-path:polygon(0_0,calc(100%-12px)_0,100%_12px,100%_100%,12px_100%,0_calc(100%-12px))] hover:bg-yellow-600 hover:-translate-y-1 shadow-xl">
                 Scale Your Brand With Video
-              </button>
+              </Link>
             </motion.div>
           </div>
 
@@ -190,11 +191,11 @@ export default function WhyVideography() {
                   className="flex flex-col gap-4"
                 >
                   <div className="w-12 h-1 bg-yellow-500" />
-                  <p className="font-bebas text-2xl lg:text-3xl tracking-wider text-white leading-[1.1]">
+                  <p className="font-montserrat font-black text-2xl lg:text-3xl tracking-wider text-white leading-[1.1] uppercase">
                     VIDEO IS A <span className="text-yellow-500">COMPOUNDING</span><br />
                     BRAND ASSET.
                   </p>
-                  <p className="font-barlow-condensed text-xs font-bold tracking-[0.2em] uppercase text-white/50">
+                  <p className="font-outfit text-xs font-bold tracking-[0.2em] uppercase text-white/50">
                     Cinema-grade production for modern brands
                   </p>
                 </motion.div>

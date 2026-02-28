@@ -60,8 +60,8 @@ export default function ProcessSection() {
           viewport={{ once: true }}
           className="mb-16 text-center"
         >
-          <span className="font-barlow-condensed text-[0.72rem] font-bold tracking-[0.22em] uppercase text-yellow-500 block mb-4">How We Work</span>
-          <h2 className="font-bebas text-[clamp(2.4rem,6vw,4.5rem)] tracking-[0.04em] text-white leading-[0.95]">
+          <span className="font-outfit text-[0.72rem] font-bold tracking-[0.22em] uppercase text-yellow-500 block mb-4">How We Work</span>
+          <h2 className="font-montserrat font-black text-[clamp(2.4rem,6vw,4.5rem)] tracking-tight text-white leading-[0.95] uppercase">
             OUR <span className="text-yellow-500">PRODUCTION</span><br />PROCESS
           </h2>
         </motion.div>
@@ -123,7 +123,7 @@ export default function ProcessSection() {
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 0.18, y: 0 }}
                     transition={{ delay: i * 0.12 + 0.3 }}
-                    className="absolute bottom-1 left-3 font-bebas text-[4rem] sm:text-[3.5rem] leading-none text-white select-none"
+                    className="absolute bottom-1 left-3 font-montserrat font-black text-[4rem] sm:text-[3.5rem] leading-none text-white select-none uppercase"
                   >
                     {step.n}
                   </motion.span>
@@ -151,7 +151,7 @@ export default function ProcessSection() {
                 <div className="xl:pt-8 transition-all duration-300 group-hover:translate-y-1">
 
                   <div className="flex items-center gap-2 mb-2">
-                    <span className="font-bebas text-yellow-500 text-sm tracking-widest">
+                    <span className="font-montserrat font-black text-yellow-500 text-sm tracking-widest uppercase">
                       {step.n}
                     </span>
                     <motion.div
@@ -162,11 +162,11 @@ export default function ProcessSection() {
                     />
                   </div>
 
-                  <h3 className="font-bebas text-[1.5rem] tracking-[0.05em] text-white mb-2 uppercase leading-tight transition-colors duration-300 group-hover:text-yellow-500">
+                  <h3 className="font-montserrat font-bold text-[1.25rem] tracking-wide text-white mb-2 uppercase leading-tight transition-colors duration-300 group-hover:text-yellow-500">
                     {step.title}
                   </h3>
 
-                  <p className="font-barlow font-light text-[1rem] text-textMuted leading-[1.75] transition-colors duration-300 group-hover:text-white/70">
+                  <p className="font-outfit font-light text-[1rem] text-textMuted leading-[1.75] transition-colors duration-300 group-hover:text-white/70">
                     {step.desc}
                   </p>
                 </div>

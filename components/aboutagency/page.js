@@ -26,7 +26,7 @@ const pillars = [
 
 export default function AgencyPillars() {
     return (
-        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-0 border border-yellow-500 shadow-2xl shadow-yellow-500/20 rounded-2xl mt-10 overflow-hidden">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-0 border border-yellow-500 shadow-2xl shadow-yellow-500/20 rounded-2xl mt-32 overflow-hidden">
             {pillars.map((pillar, index) => {
                 return (
                     <motion.div
@@ -50,10 +50,10 @@ export default function AgencyPillars() {
 
                         {/* Text Content */}
                         <div className="flex flex-col flex-1 mt-0 sm:mt-2">
-                            <h3 className="font-bebas text-lg sm:text-xl text-white tracking-widest mb-1 sm:mb-2 transition-colors duration-300 group-hover:text-yellow-500 uppercase">
+                            <h3 className="font-montserrat font-bold text-lg sm:text-xl text-white tracking-widest mb-1 sm:mb-2 transition-colors duration-300 group-hover:text-yellow-500 uppercase">
                                 {pillar.title}
                             </h3>
-                            <p className="font-barlow font-light text-[0.85rem] sm:text-[0.95rem] xl:text-[1rem] text-textMuted leading-relaxed transition-colors duration-300 group-hover:text-slate-200 line-clamp-2 sm:line-clamp-none">
+                            <p className="font-outfit font-light text-[0.85rem] sm:text-[0.95rem] xl:text-[1rem] text-textMuted leading-relaxed transition-colors duration-300 group-hover:text-slate-200 line-clamp-2 sm:line-clamp-none">
                                 {pillar.description}
                             </p>
                         </div>

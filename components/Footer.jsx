@@ -12,13 +12,13 @@ const quickLinks = [
 ]
 
 const serviceLinks = [
-  { href: '/services#corporate-films', label: 'Corporate Films' },
-  { href: '/services#brand-videos', label: 'Brand Videos' },
-  { href: '/services#trade-show', label: 'Event Filming' },
-  { href: '/services#wedding', label: 'Wedding Films' },
-  { href: '/services#real-estate', label: 'Real Estate Videos' },
-  { href: '/services#reels', label: 'Social Media Reels' },
-  { href: '/services#aerial', label: 'Drone Cinematography' },
+  { href: '/services#viral-shorts', label: 'Viral Shorts' },
+  { href: '/services#event-production', label: 'Event Production' },
+  { href: '/services#wedding-coverage', label: 'Wedding Coverage' },
+  { href: '/services#documentary-shoot', label: 'Documentary Films' },
+  { href: '/services#long-form-youtube', label: 'YouTube Production' },
+  { href: '/services#podcast-production', label: 'Podcast Production' },
+  { href: '/services#drone-shoot', label: 'Drone Shoots' },
 ]
 
 const socials = [
@@ -31,29 +31,29 @@ export default function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="bg-black border-t border-white/5">
+    <footer className="bg-gray-800 border-t border-white/5">
 
       {/* ── Top CTA band ── */}
-      <div className="border-b border-white/5">
-        <div className="max-w-[1300px] mx-auto px-6 py-10 flex items-center justify-between flex-wrap gap-6">
+      {/* <div className="border-b border-white/5">
+        <div className="max-w-[1300px] mx-auto px-6 py-8 flex items-center justify-between flex-wrap gap-6">
           <div>
-            <p className="font-barlow-condensed text-xs font-bold tracking-[0.22em] uppercase text-yellow-500 mb-2">
+            <p className="font-outfit text-xs font-bold tracking-[0.22em] uppercase text-yellow-500 mb-2">
               Ready to Start?
             </p>
-            <h3 className="font-bebas text-[clamp(1.75rem,4vw,3rem)] tracking-widest text-white leading-none">
+            <h3 className="font-montserrat font-black text-[clamp(1.75rem,4vw,3rem)] tracking-tight text-white leading-none uppercase">
               LET'S BUILD SOMETHING <span className="text-yellow-500">EXCEPTIONAL.</span>
             </h3>
           </div>
           <Link href="/contact" className="no-underline flex-shrink-0">
-            <button className="bg-yellow-500 text-white font-barlow-condensed text-[0.82rem] font-bold tracking-[0.18em] uppercase px-[30px] py-[12px] border-none cursor-pointer transition-all duration-250 [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))] hover:bg-yellow-600 hover:-translate-y-0.5">
+            <button className="bg-yellow-500 text-white font-outfit text-[0.82rem] font-bold tracking-[0.18em] uppercase px-[30px] py-[12px] border-none cursor-pointer transition-all duration-250 [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))] hover:bg-yellow-600 hover:-translate-y-0.5">
               Book a Consultation
             </button>
           </Link>
         </div>
-      </div>
+      </div> */}
 
       {/* ── Main footer grid ── */}
-      <div className="max-w-[1300px] mx-auto px-6 py-16">
+      <div className="max-w-[1300px] mx-auto px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1.5fr_1.5fr] gap-12">
 
           {/* ── Brand column ── */}
@@ -61,12 +61,12 @@ export default function Footer() {
             {/* Logo */}
             <Link href="/" className="no-underline flex items-center gap-0 group mb-5 w-fit">
               <span className="w-1 h-7 bg-yellow-500 mr-3 transition-all duration-300 group-hover:h-9" />
-              <span className="font-bebas text-2xl tracking-[0.08em] text-white leading-none">
+              <span className="font-montserrat font-black text-2xl tracking-[0.08em] text-white leading-none">
                 PRIME<span className="text-yellow-500">FRAME</span>
               </span>
             </Link>
 
-            <p className="font-barlow font-light text-sm text-textMuted leading-relaxed mb-6 max-w-[240px]">
+            <p className="font-outfit font-light text-sm text-textMuted leading-relaxed mb-6 max-w-[240px]">
               Premium cinematic production for brands across India, Dubai, and the UAE. Every frame with purpose.
             </p>
 
@@ -90,7 +90,7 @@ export default function Footer() {
 
           {/* ── Quick Links ── */}
           <div>
-            <h4 className="font-barlow-condensed text-xs font-bold tracking-[0.22em] uppercase text-yellow-500 mb-5">
+            <h4 className="font-montserrat font-bold text-xs font-bold tracking-[0.22em] uppercase text-yellow-500 mb-5">
               Quick Links
             </h4>
             <ul className="flex flex-col gap-3">
@@ -98,7 +98,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="no-underline font-barlow font-light text-sm text-textMuted hover:text-white transition-colors duration-200 flex items-center gap-2 group"
+                    className="no-underline font-outfit font-light text-sm text-textMuted hover:text-white transition-colors duration-200 flex items-center gap-2 group"
                   >
                     <span className="w-0 h-px bg-yellow-500 group-hover:w-4 transition-all duration-300" />
                     {link.label}
@@ -110,7 +110,7 @@ export default function Footer() {
 
           {/* ── Services ── */}
           <div>
-            <h4 className="font-barlow-condensed text-xs font-bold tracking-[0.22em] uppercase text-yellow-500 mb-5">
+            <h4 className="font-montserrat font-bold text-xs font-bold tracking-[0.22em] uppercase text-yellow-500 mb-5">
               Services
             </h4>
             <ul className="flex flex-col gap-3">
@@ -118,7 +118,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="no-underline font-barlow font-light text-sm text-textMuted hover:text-white transition-colors duration-200 flex items-center gap-2 group"
+                    className="no-underline font-outfit font-light text-sm text-textMuted hover:text-white transition-colors duration-200 flex items-center gap-2 group"
                   >
                     <span className="w-0 h-px bg-yellow-500 group-hover:w-4 transition-all duration-300" />
                     {link.label}
@@ -130,13 +130,13 @@ export default function Footer() {
 
           {/* ── Contact ── */}
           <div>
-            <h4 className="font-barlow-condensed text-xs font-bold tracking-[0.22em] uppercase text-yellow-500 mb-5">
+            <h4 className="font-montserrat font-bold text-xs font-bold tracking-[0.22em] uppercase text-yellow-500 mb-5">
               Contact
             </h4>
             <ul className="flex flex-col gap-4 mb-8">
               <li className="flex items-start gap-3">
                 <MapPin size={15} className="text-yellow-500 flex-shrink-0 mt-0.5" />
-                <span className="font-barlow font-light text-sm text-textMuted leading-relaxed">
+                <span className="font-outfit font-light text-sm text-textMuted leading-relaxed">
                   India | Dubai, UAE
                 </span>
               </li>
@@ -144,7 +144,7 @@ export default function Footer() {
                 <Phone size={15} className="text-yellow-500 flex-shrink-0" />
                 <a
                   href="tel:+971XXXXXXXXX"
-                  className="no-underline font-barlow font-light text-sm text-textMuted hover:text-white transition-colors duration-200"
+                  className="no-underline font-outfit font-light text-sm text-textMuted hover:text-white transition-colors duration-200"
                 >
                   +971 XX XXX XXXX
                 </a>
@@ -153,7 +153,7 @@ export default function Footer() {
                 <Mail size={15} className="text-yellow-500 flex-shrink-0" />
                 <a
                   href="mailto:info@primeframe.com"
-                  className="no-underline font-barlow font-light text-sm text-textMuted hover:text-white transition-colors duration-200"
+                  className="no-underline font-outfit font-light text-sm text-textMuted hover:text-white transition-colors duration-200"
                 >
                   info@primeframe.com
                 </a>
@@ -179,8 +179,8 @@ export default function Footer() {
 
       {/* ── Bottom bar ── */}
       <div className="border-t border-white/5">
-        <div className="max-w-[1300px] mx-auto px-6 py-5 flex items-center justify-between flex-wrap gap-4">
-          <p className="font-barlow font-light text-xs text-textMuted">
+        <div className="max-w-[1300px] mx-auto px-6 py-4 flex items-center justify-between flex-wrap gap-4">
+          <p className="font-outfit font-light text-xs text-textMuted">
             © {year} PrimeFrame Productions. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
@@ -188,7 +188,7 @@ export default function Footer() {
               <Link
                 key={item}
                 href="/contact"
-                className="no-underline font-barlow font-light text-xs text-textMuted hover:text-yellow-500 transition-colors duration-200"
+                className="no-underline font-outfit font-light text-xs text-textMuted hover:text-yellow-500 transition-colors duration-200"
               >
                 {item}
               </Link>
