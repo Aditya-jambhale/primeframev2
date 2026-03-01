@@ -134,16 +134,17 @@ export default function Home() {
           </div> */}
 
           {/* Video Background - Hidden on mobile, shown on md+ */}
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="hidden md:block absolute inset-0 w-full h-full object-cover"
-          >
-            <source src="/hero/hero-bg.mp4" type="video/mp4" />
-          </video>
-          <div className="absolute inset-0 bg-black/60" />
+          <div className="hidden md:block absolute inset-0 w-full h-full pointer-events-none">
+            <iframe
+              src="https://www.youtube.com/embed/6fySMsilxJQ?autoplay=1&mute=1&loop=1&playlist=6fySMsilxJQ&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&playsinline=1"
+              title="Skylume Hero Video"
+              className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2 object-cover"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+          <div className="absolute inset-0 bg-black/20" />
         </div>
 
         {/* Content */}
@@ -154,20 +155,28 @@ export default function Home() {
           className="relative z-10 text-center px-6 max-w-7xl mx-auto"
         >
           {/* Headline — tighter, more refined */}
-          <h1 className="text-hero  text-white mb-2 uppercase">
+          <h1 className="text-hero text-white mb-1 uppercase">
             Skylume
           </h1>
 
           {/* Eyebrow */}
           <motion.div
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}
-            className="flex items-center justify-center gap-3.5 mb-8"
+            className="flex flex-col items-center justify-center gap-3.5 mb-8"
           >
-            <span className="font-outfit text-[13px] font-semibold tracking-[0.25em] uppercase text-white/90">Global Production Company</span>
+            <span className="font-outfit text-[12px] font-semibold tracking-[0.25em] uppercase text-white/90">
+              Cinematic Video Production | Dubai & India
+            </span>
+            {/* Visually hidden but SEO-rich description */}
+            <p className="sr-only">
+              Skylume Productions is a premier cinematic video production house in Dubai and India.
+              We specialize in high-end brand films, real estate videography, and commercial content
+              that scales global brands with precision and impact.
+            </p>
           </motion.div>
           <div className="flex gap-4 justify-center flex-wrap">
-            <Link href="/services">
-              <button className="px-8 uppercase tracking-[0.2em] py-4 border border-yellow-500 text-white font-outfit font-semibold text-[0.7rem] transition-all hover:bg-yellow-600 [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))] shadow-2xl hover:-translate-y-0.5">
+            <Link href="#ourwork">
+              <button className="px-8 uppercase tracking-[0.2em] py-4 border border-yellow-500 text-white font-outfit font-semibold text-[0.7rem] transition-all bg-yellow-600 [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))] shadow-2xl hover:-translate-y-0.5">
                 Explore Our Work
               </button>
             </Link>

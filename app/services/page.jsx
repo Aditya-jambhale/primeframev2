@@ -11,6 +11,7 @@ const allServices = [
   {
     id: "viral-shorts",
     title: "Viral social media Shorts",
+    src: "/services/reel.png",
     valueProp: "Rapid-fire cinematic content built for high-speed engagement.",
     outcome: "Increased reach, engagement, and follower growth across social platforms.",
     overview: "We specialize in condensing complex messages into short, high-production videos that hit hard and stick in the viewer's memory. Optimized for Instagram Reels, YouTube Shorts, and TikTok.",
@@ -20,6 +21,7 @@ const allServices = [
   {
     id: "event-production",
     title: "Event photography & videography",
+    src: "/services/eventfilm.png",
     valueProp: "Capturing the scale and energy of your most significant live milestones.",
     outcome: "A comprehensive video archive and a high-impact event highlight film.",
     overview: "From global conferences to intimate industry gatherings, we capture the atmosphere and key moments without disrupting the flow of your event. Full-scale coverage with professional stills and video.",
@@ -29,6 +31,7 @@ const allServices = [
   {
     id: "wedding-coverage",
     title: "Wedding Coverage",
+    src: "/services/wedding.png",
     valueProp: "Preserving your legacy through cinematic emotion.",
     outcome: "A timeless wedding film that captures the soul of your celebration.",
     overview: "We approach weddings like cinema. Our focus is on the emotional nuances, the family legacy, and the grandeur of the celebration, delivered in a film you'll watch for decades.",
@@ -38,6 +41,7 @@ const allServices = [
   {
     id: "documentary-shoot",
     title: "Documentary Shoot",
+    src: "/services/bts.png",
     valueProp: "Humanizing complex narratives through authentic documentation.",
     outcome: "An emotional, resonant story that builds deep brand connection.",
     overview: "Our documentary services focus on authentic storytelling. We dive deep into subjects to capture the raw, real, and resonant moments that define human experience and brand history.",
@@ -47,6 +51,7 @@ const allServices = [
   {
     id: "long-form-youtube",
     title: "Long form YouTube Videos",
+    src: "/services/promotional brand.png",
     valueProp: "In-depth content strategy for high-retention education and entertainment.",
     outcome: "A detailed authority-building asset for your channel or platform.",
     overview: "We produce extended content that maintains engagement. Ideal for educational courses, detailed industry breakdowns, or entertainment series that require high production value.",
@@ -56,6 +61,7 @@ const allServices = [
   {
     id: "podcast-production",
     title: "Podcast Production",
+    src: "/services/interview.png",
     valueProp: "Elevating the podcast experience with multi-camera cinematic production.",
     outcome: "A professional video-first podcast that signals structure and authority.",
     overview: "We handle the technical complexity of modern podcasting. From multi-cam video setups to professional audio mixing, we make your podcast look like a Skylume-time broadcast.",
@@ -65,6 +71,7 @@ const allServices = [
   {
     id: "drone-shoot",
     title: "Drone Shoot",
+    src: "/services/drone.png",
     valueProp: "Scale from a higher perspective.",
     outcome: "Breath-taking aerial visuals that signal premium production value.",
     overview: "Professional drone cinematography adds a layer of grandeur to any production. FPV and cinematic drone shots provide a dynamic look that standard cameras cannot reach.",
@@ -74,6 +81,7 @@ const allServices = [
   {
     id: "tour-videography",
     title: "Tour Videography",
+    src: "/services/corporate.png",
     valueProp: "Dynamic documentation for travel and tourism leadership.",
     outcome: "Enchanting travel content that inspires and moves global audiences.",
     overview: "We follow the journey. Whether it's a luxury tour, a destination-based campaign, or a personal travel story, we capture the spirit of exploration with high-end visuals.",
@@ -83,11 +91,22 @@ const allServices = [
   {
     id: "dubai-sightseeing",
     title: "Dubai Sightseeing Shoot",
+    src: "/services/realestate.png",
     valueProp: "Exclusive cinematic production capturing the grandeur of Dubai.",
     outcome: "World-class visual assets that dominate global social media and travel platforms.",
     overview: "Capturing Dubai's iconic landmarks requires technical precision and creative vision. We produce high-end sightseeing content specifically tailored for global digital audiences.",
     deliverables: ["Landmark Feature Films", "Sightseeing Highlight Reels", "Press Release Video Assets", "Global Social Cutdowns"],
     process: "Permit Acquisition → Landmark Selection → Cinematic Production → Viral Cut Editing → Final Global Release"
+  },
+  {
+    id: "real-estate-videography",
+    title: "Real Estate Videography",
+    src: "/services/realestate.png",
+    valueProp: "Cinematic production capturing the grandeur of real estate.",
+    outcome: "World-class visual assets that dominate global social media and travel platforms.",
+    overview: "Capturing real estate requires technical precision and creative vision. We produce high-end real estate content specifically tailored for global digital audiences.",
+    deliverables: ["Landmark Feature Films", "Sightseeing Highlight Reels", "Press Release Video Assets", "Global Social Cutdowns"],
+    process: "Property Walkthrough → Cinematic Production → Viral Cut Editing → Final Global Release"
   }
 ]
 
@@ -95,7 +114,7 @@ const allServices = [
 function ServiceSection({ service }) {
   return (
     <section id={service.id} className="py-24 border-b border-white/5 scroll-mt-20">
-      <div className="container mx-auto px-6 max-w-7xl">
+      <div className="container mx-auto px-6 max-w-8xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
 
           {/* Content Column */}
@@ -108,10 +127,10 @@ function ServiceSection({ service }) {
               <span className="font-outfit text-[0.72rem] font-bold tracking-[0.22em] uppercase text-yellow-500 block mb-4">
                 Specialized Service
               </span>
-              <h2 className="text-section-title text-white mb-4 uppercase">
+              <h2 className="text-section-title text-white text-2xl mb-4 uppercase">
                 {service.title}
               </h2>
-              <p className="font-outfit text-xl text-yellow-500/80 tracking-wide mb-2 italic">
+              <p className="font-outfit text-lg text-yellow-500/80 tracking-wide mb-2 italic">
                 "{service.valueProp}"
               </p>
               <p className="font-outfit font-medium text-white mb-8 border-l-2 border-yellow-500 pl-4 py-1">
@@ -120,7 +139,7 @@ function ServiceSection({ service }) {
 
               <div className="flex gap-4 mb-12">
                 <Link href="/contact">
-                  <button className="bg-yellow-500 text-white font-outfit text-[0.82rem] font-bold tracking-[0.18em] uppercase px-[30px] py-[13px] [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))] hover:bg-yellow-600 transition-all">
+                  <button className="bg-yellow-500 text-white font-outfit text-[0.82rem] font-semibold tracking-[0.18em] uppercase px-[30px] py-[13px] [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))] hover:bg-yellow-600 transition-all">
                     Request Proposal
                   </button>
                 </Link>
@@ -128,7 +147,7 @@ function ServiceSection({ service }) {
 
               <div className="space-y-8">
                 <div>
-                  <h4 className="font-montserrat font-black text-xl text-white tracking-tight mb-3 uppercase">SERVICE OVERVIEW</h4>
+                  <h4 className="font-montserrat font-black text-lg text-white tracking-tight mb-3 uppercase">SERVICE OVERVIEW</h4>
                   <p className="font-outfit font-light text-textMuted leading-relaxed">
                     {service.overview}
                   </p>
@@ -154,7 +173,7 @@ function ServiceSection({ service }) {
                 </div>
 
                 <Link href="/contact">
-                  <button className="flex items-center gap-2 group text-white font-outfit text-sm font-bold tracking-[0.2em] uppercase opacity-60 hover:opacity-100 transition-opacity">
+                  <button className="flex items-center mt-6 gap-2 group text-white font-outfit text-sm font-bold tracking-[0.2em] uppercase opacity-60 hover:opacity-100 transition-opacity">
                     Start Your Project
                     <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                   </button>
@@ -163,29 +182,35 @@ function ServiceSection({ service }) {
             </motion.div>
           </div>
 
-          {/* Visual Column - Placeholder Decoration */}
+          {/* Visual Column - Actual Image Display */}
           <div className="relative pt-10">
-            <div className="aspect-[4/5] relative rounded-2xl overflow-hidden border border-yellow-500/20 group hover-lift">
-              <div className="absolute inset-0 bg-card animate-pulse" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <span className="font-montserrat font-black text-white/5 text-[10rem] select-none pointer-events-none uppercase">
-                  {service.id.charAt(0)}
-                </span>
-              </div>
+            <div className="aspect-[4/5] relative rounded-2xl overflow-hidden border border-yellow-500/20 group hover-lift shadow-2xl">
+              <Image
+                src={service.src}
+                alt={service.title}
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300" />
               <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black to-transparent" />
               <div className="absolute bottom-10 left-10">
                 <div className="w-12 h-1 bg-yellow-500 mb-4" />
                 <h3 className="font-montserrat font-black text-3xl text-white tracking-tight leading-none uppercase">
-                  {service.id.replace(/-/g, ' ')}
+                  {service.title}
                 </h3>
               </div>
             </div>
-            {/* Decorative background glow removed */}
           </div>
         </div>
       </div>
     </section>
   )
+}
+
+export const metadata = {
+  title: 'Cinematic Production Services | Skylume Productions',
+  description: 'Premium production services including Real Estate Videography, Brand Films, Wedding Productions, and Podcast Editing. Scale your identity across Dubai and India.',
 }
 
 export default function ServicesPage() {
@@ -279,12 +304,12 @@ export default function ServicesPage() {
       {/* FINAL CTA */}
       <section className="py-40 bg-background border-t border-white/5 text-center px-6 overflow-hidden relative">
         <div className="relative z-10">
-          <h2 className="text-hero text-white leading-[0.9] mb-10 uppercase">
+          <h2 className="text-section-title text-white leading-[0.9] mb-10 uppercase">
             READY TO CRAFT <br />
             YOUR NEXT <span className="text-yellow-500">MASTERPIECE?</span>
           </h2>
           <Link href="/contact">
-            <button className="bg-yellow-500 text-white font-outfit text-[1rem] font-bold tracking-[0.2em] uppercase px-[60px] py-[20px] [clip-path:polygon(0_0,calc(100%-12px)_0,100%_12px,100%_100%,12px_100%,0_calc(100%-12px))] hover:bg-yellow-600 transition-all hover:scale-105 active:scale-95">
+            <button className="bg-yellow-500 text-white font-outfit text-sm font-bold tracking-[0.2em] uppercase px-[50px] py-[15px] [clip-path:polygon(0_0,calc(100%-12px)_0,100%_12px,100%_100%,12px_100%,0_calc(100%-12px))] hover:bg-yellow-600 transition-all hover:scale-105 active:scale-95">
               Book a Consultation Now
             </button>
           </Link>

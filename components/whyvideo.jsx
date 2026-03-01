@@ -96,7 +96,7 @@ export default function WhyVideography() {
         </div>
 
         {/* ───────────── MAIN GRID ───────────── */}
-        <div className="grid lg:grid-cols-2 gap-20 items-start">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
 
           {/* LEFT CONTENT */}
           <div className="space-y-12">
@@ -109,11 +109,11 @@ export default function WhyVideography() {
                 viewport={{ once: true }}
                 className="group relative"
               >
-                <div className="flex gap-8">
+                <div className="flex flex-col sm:flex-row gap-6 sm:gap-8 text-center sm:text-left items-center sm:items-start">
                   {/* Stat Card */}
                   <div className="shrink-0">
-                    <div className="w-20 h-20 rounded-2xl bg-pf-card border border-white/10 flex items-center justify-center transition-all duration-300 group-hover:border-yellow group-hover:bg-yellow-500/5 shadow-2xl">
-                      <span className="font-montserrat font-black text-3xl text-yellow-500 uppercase">
+                    <div className="w-20 h-20 rounded-xl bg-pf-card border border-white/10 flex items-center justify-center transition-all duration-300 group-hover:border-yellow group-hover:bg-yellow-500/5 shadow-2xl">
+                      <span className="font-montserrat font-black text-2xl text-yellow-500 uppercase">
                         {item.stat}
                       </span>
                     </div>
@@ -123,7 +123,7 @@ export default function WhyVideography() {
                   </div>
 
                   {/* Info */}
-                  <div className="pt-2">
+                  <div className="pt-2 flex flex-col items-center sm:items-start">
                     <div className="flex items-center gap-4 mb-3">
                       <span className="font-montserrat font-black text-sm tracking-widest text-yellow-500/40 uppercase">{item.n}</span>
                       <div className="h-px w-8 bg-yellow-500/20" />
@@ -133,7 +133,7 @@ export default function WhyVideography() {
                       {item.title}
                     </h3>
 
-                    <p className="font-outfit font-light text-[0.95rem] text-textMuted leading-[1.7] max-w-[520px] transition-colors duration-300 group-hover:text-slate-200">
+                    <p className="font-outfit font-light text-[0.85rem] md:text-[0.95rem] text-textMuted leading-[1.7] max-w-[520px] transition-colors duration-300 group-hover:text-slate-200">
                       {item.body}
                     </p>
                   </div>
@@ -146,9 +146,12 @@ export default function WhyVideography() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
               viewport={{ once: true }}
-              className="pt-10"
+              className="pt-10 flex justify-center lg:justify-start"
             >
-              <Link href="/services" className="bg-yellow-500 text-white font-outfit text-[0.9rem] font-bold tracking-[0.2em] uppercase px-[48px] py-[18px] border-none cursor-pointer transition-all duration-250 [clip-path:polygon(0_0,calc(100%-12px)_0,100%_12px,100%_100%,12px_100%,0_calc(100%-12px))] hover:bg-yellow-600 hover:-translate-y-1 shadow-xl">
+              <Link
+                href="/services"
+                className="inline-block bg-yellow-500 text-white font-outfit text-[0.75rem] sm:text-[0.85rem] md:text-[0.9rem] font-bold tracking-[0.15em] sm:tracking-[0.2em] uppercase px-8 sm:px-10 md:px-[48px] py-4 md:py-[18px] border-none cursor-pointer transition-all duration-250 [clip-path:polygon(0_0,calc(100%-12px)_0,100%_12px,100%_100%,12px_100%,0_calc(100%-12px))] hover:bg-yellow-600 hover:-translate-y-1 shadow-xl text-center"
+              >
                 Scale Your Brand With Video
               </Link>
             </motion.div>
@@ -181,7 +184,7 @@ export default function WhyVideography() {
               {/* <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-3xl" /> */}
 
               {/* Content on Video */}
-              <div className="absolute bottom-10 left-10 right-10 z-10">
+              <div className="absolute bottom-6 sm:bottom-10 left-6 sm:left-10 right-6 sm:right-10 z-10">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}

@@ -99,7 +99,7 @@ const team = [
   {
     name: "Ankit ",
     role: "Lead Post-Production Specialist",
-    img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800&q=80",
+    img: "/team/ankit.png",
     note: "Delivering refined cinematic edits and advanced VFX integration."
   },
   {
@@ -117,13 +117,13 @@ const team = [
   {
     name: "Saima",
     role: "Project & Client Manager",
-    img: "/team/abhi.jpeg",
+    img: "/team/saima.jpg",
     note: "Managing production workflows and ensuring seamless client experience."
   },
   {
     name: "Anu",
     role: "Creative Designer",
-    img: "/team/abhi.jpeg",
+    img: "/team/anu.jpg",
     note: "Shaping brand aesthetics and visual systems for modern productions"
   }
 ]
@@ -366,7 +366,7 @@ function TimelineSection({
             {/* Year chip */}
             <div className="mb-8">
               <span
-                className="inline-flex items-center gap-2 font-mono text-[0.65rem] tracking-[0.4em] uppercase text-yellow-400 border border-yellow-400/20 bg-yellow-400/5 px-4 py-2"
+                className="inline-flex items-center gap-2 font-outfit text-[0.65rem] tracking-[0.4em] uppercase text-yellow-400 border border-yellow-400/20 bg-yellow-400/5 px-4 py-2"
                 style={{ clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))' }}
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-yellow-400 animate-pulse" />
@@ -396,7 +396,7 @@ function TimelineSection({
               {item.body.map((para, i) => (
                 <p
                   key={i}
-                  className="leading-relaxed tracking-wide font-sans font-semibold"
+                  className="leading-relaxed tracking-wide font-outfit font-semibold"
                   style={{
                     color: i === 0 ? 'rgba(255,255,255,0.95)' : 'rgba(255,255,255,0.45)',
                     fontSize: i === 0 ? '1.125rem' : '1rem',
@@ -411,11 +411,11 @@ function TimelineSection({
             {/* Index counter */}
             <div className="mt-14 flex items-center gap-4">
               <div className="flex items-baseline gap-1">
-                <span className="font-mono text-yellow-400 text-4xl font-black leading-none italic">
+                <span className="font-outfit text-yellow-400 text-4xl font-black leading-none italic">
                   {String(index + 1).padStart(2, '0')}
                 </span>
-                <span className="font-mono text-white/5 text-xl">/</span>
-                <span className="font-mono text-white/10 text-xl">
+                <span className="font-outfit text-white/5 text-xl">/</span>
+                <span className="font-outfit text-white/10 text-xl">
                   {String(timeline.length).padStart(2, '0')}
                 </span>
               </div>
@@ -432,7 +432,12 @@ function TimelineSection({
 }
 
 // ─── Main Component ───────────────────────────────────────────────────────────
-export default function CinematicTimeline() {
+export const metadata = {
+  title: 'About Skylume Productions | Our Cinematic Vision',
+  description: 'Learn about the team behind Skylume Productions. A group of creative storytellers and filmmakers dedicated to high-end cinematic production in Dubai and India.',
+}
+
+export default function About() {
   const wrapperRef = useRef(null)
   const timelineEntriesRef = useRef(null)
   const [activeIndex, setActiveIndex] = useState(0)
@@ -493,16 +498,15 @@ export default function CinematicTimeline() {
         <div className="relative h-screen flex flex-col items-center justify-center text-center px-6 overflow-hidden">
           {/* Video Background */}
           <div className="absolute inset-0 z-0">
-            <video
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="absolute inset-0 w-full h-full object-cover opacity-50 grayscale contrast-125 brightness-50"
-            >
-              <source src="https://player.vimeo.com/external/517090025.hd.mp4?s=34f3b0636f2f0c79774653a992e92c6cc1d59646&profile_id=175" type="video/mp4" />
-            </video>
-            <div className="absolute inset-0 bg-black/60" />
+            <iframe
+              src="https://www.youtube.com/embed/6fySMsilxJQ?autoplay=1&mute=1&loop=1&playlist=6fySMsilxJQ&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&playsinline=1"
+              title="Skylume Hero Video"
+              className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2 object-cover"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+
           </div>
 
           <motion.div
@@ -562,7 +566,7 @@ export default function CinematicTimeline() {
             <div className="w-4 h-4 rounded-full bg-yellow-400 shadow-[0_0_24px_rgba(250,204,21,0.8)]" />
             <div className="h-px w-24 bg-yellow-400/40" />
           </div>
-          <p className="font-mono text-xs tracking-[0.3em] uppercase text-yellow-400/60">
+          <p className="font-outfit text-xs tracking-[0.3em] uppercase text-yellow-400/60">
             Chapter Continues
           </p>
           <p

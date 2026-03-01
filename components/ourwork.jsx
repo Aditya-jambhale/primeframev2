@@ -74,7 +74,13 @@ const works = [
         category: 'Teaser',
         youtubeUrl: 'https://youtu.be/9ssG-MtEE6A',
     },
-  
+    {
+        id: 6,
+        title: 'Cinematic Drone Shoot',
+        category: ' Drone Shoot',
+        youtubeUrl: 'https://youtu.be/R9ifqDe2dF0',
+    },
+
     // ───────── Cinematic Events ─────────
     {
         id: 7,
@@ -307,7 +313,7 @@ export default function OurWork({ hideHeading = false, hideButton = false }) {
     }, [close])
 
     return (
-        <section className="relative bg-black overflow-hidden py-24">
+        <section id='ourwork' className="relative bg-black overflow-hidden py-24">
 
             {/* ── Header ── */}
             <div className="container mx-auto px-6 max-w-[1300px] mb-16">

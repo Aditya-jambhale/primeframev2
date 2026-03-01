@@ -63,6 +63,12 @@ const allServices = [
     description: 'Exclusive cinematic production capturing the grandeur of Dubai landmarks.',
     icon: Sparkles
   },
+  {
+    id: 'Real Estate Videography',
+    title: 'Real Estate Videography',
+    description: 'Showcase properties with cinematic drone and interior shots that drive faster sales.',
+    icon: Home
+  },
 ]
 
 export default function ServicesSection() {

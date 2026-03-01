@@ -11,7 +11,12 @@ const fadeIn = {
 }
 
 // High-quality cinematic camera/production background from Unsplash
-const BG_IMAGE = 'https://images.unsplash.com/photo-1574717024453-354056afd6fc?q=80&w=2070&auto=format&fit=crop'
+const BG_IMAGE = '/contact/contact.png'
+
+export const metadata = {
+  title: 'Contact Skylume Productions | Start Your Production Journey',
+  description: 'Ready to scale your brand? Contact Skylume Productions for high-end cinematic video production inquiries in Dubai and India. Let\'s build your story.',
+}
 
 export default function Contact() {
   const [formData, setFormData] = useState({
