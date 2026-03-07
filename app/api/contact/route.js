@@ -23,14 +23,6 @@ export async function POST(req) {
       },
     });
 
-    // Verify connection configuration
-    try {
-      await transporter.verify();
-    } catch (verifyError) {
-      console.error('Transporter Verification Error:', verifyError);
-      return NextResponse.json({ message: 'Email configuration error' }, { status: 500 });
-    }
-
     // Modern HTML Email Template
     const htmlContent = `
       <!DOCTYPE html>

@@ -146,9 +146,9 @@ export default function ProcessSection() {
                     </div>
 
                     {/* ── Text ── */}
-                    <div className="xl:pt-8 transition-all duration-300 group-hover:translate-y-1">
+                    <div className="lg:pt-8 transition-all duration-300 group-hover:translate-y-1 flex flex-col items-center text-center lg:items-start lg:text-left">
 
-                      <div className="flex items-center gap-2 mb-2">
+                      <div className="flex items-center gap-2 mb-2 w-full">
                         <span className="font-inter font-black text-yellow-500 text-sm tracking-widest uppercase">
                           {step.n}
                         </span>

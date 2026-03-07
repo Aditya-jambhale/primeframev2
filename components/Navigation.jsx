@@ -52,14 +52,15 @@ export default function Navigation() {
                 width={40}
                 height={40}
                 className="transition-transform duration-300 group-hover:scale-110"
+                style={{ height: 'auto' }}
               />
               <div className={`flex flex-col transition-colors duration-300 ${scrolled ? 'text-black' : 'text-white'}`}>
                 <span className="font-inter font-bold uppercase text-xl lg:text-2xl tracking-[0.06em] leading-[0.9]">
                   Skylume
                 </span>
-                <span className="font-inter font-semibold uppercase text-[9px] lg:text-[10px] tracking-[0.3em] leading-none mt-1 opacity-90">
+                {/* <span className="font-inter font-semibold uppercase text-[9px] lg:text-[10px] tracking-[0.3em] leading-none mt-1 opacity-90">
                   Production
-                </span>
+                </span> */}
               </div>
             </Link>
 
@@ -112,7 +113,7 @@ export default function Navigation() {
             mobileOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0',
           ].join(' ')}
         >
-          <div className="bg-black/95 backdrop-blur-lg border-t border-white/5 px-6 py-6 flex flex-col gap-1">
+          <div className="bg-black/95 backdrop-blur-lg border-t border-white/5 px-6 py-6 flex flex-col items-center gap-1">
             {navLinks.map(link => {
               const isActive =
                 link.href === '/'
@@ -126,7 +127,7 @@ export default function Navigation() {
                   onClick={() => setMobileOpen(false)}
                   className={[
                     'no-underline font-inter text-sm font-bold tracking-[0.14em] uppercase',
-                    'py-3 border-b border-white/5 transition-colors duration-200 flex items-center gap-3',
+                    'py-3 border-b border-white/5 transition-colors duration-200 flex items-center justify-center gap-3 w-full',
                     isActive
                       ? 'text-yellow-500'
                       : 'text-slate-300 hover:text-white',

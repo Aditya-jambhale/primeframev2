@@ -53,12 +53,18 @@ const works = [
     },
     {
         id: 2,
+        title: 'Banaras Shoot',
+        category: 'Cinematic Event',
+        youtubeUrl: 'https://youtu.be/q26hmHa1CmM',
+    },
+    {
+        id: 21,
         title: 'Wedding Cinematic (Fiverr)',
         category: 'Cinematic Event',
         youtubeUrl: 'https://youtu.be/A8CiBHvhvI4',
     },
     {
-        id: 3,
+        id: 25,
         title: 'Podcast Video Editing (Fiverr)',
         category: 'Talking Head',
         youtubeUrl: 'https://youtu.be/iY63uEVqZv4',
@@ -76,7 +82,7 @@ const works = [
         youtubeUrl: 'https://youtu.be/9ssG-MtEE6A',
     },
     {
-        id: 6,
+        id: 8,
         title: 'Cinematic Drone Shoot',
         category: ' Drone Shoot',
         youtubeUrl: 'https://youtu.be/R9ifqDe2dF0',
@@ -84,13 +90,13 @@ const works = [
 
     // ───────── Cinematic Events ─────────
     {
-        id: 7,
+        id: 17,
         title: 'Banaras Shoot',
         category: 'Cinematic Event',
         youtubeUrl: 'https://youtu.be/q26hmHa1CmM',
     },
     {
-        id: 8,
+        id: 10,
         title: 'Cinematic Event Film 01',
         category: 'Cinematic Event',
         youtubeUrl: 'https://youtu.be/7M_OefKamys',
@@ -102,25 +108,25 @@ const works = [
         youtubeUrl: 'https://youtu.be/LuMMDt9q-yY',
     },
     {
-        id: 10,
+        id: 11,
         title: 'Cinematic Film 03',
         category: 'Cinematic Event',
         youtubeUrl: 'https://youtu.be/4OhRJYVYR4g',
     },
     {
-        id: 11,
+        id: 12,
         title: 'Cinematic Film 04',
         category: 'Cinematic Event',
         youtubeUrl: 'https://youtu.be/Gh41UDTDZjU',
     },
     {
-        id: 12,
+        id: 13,
         title: 'Cinematic Short 01',
         category: 'Cinematic Event',
         youtubeUrl: 'https://youtube.com/shorts/5RB1Y0V6bx0',
     },
     {
-        id: 13,
+        id: 14,
         title: 'Cinematic Short 02',
         category: 'Cinematic Event',
         youtubeUrl: 'https://youtube.com/shorts/G8IbSWVY63A',
@@ -128,19 +134,19 @@ const works = [
 
     // ───────── Teasers ─────────
     {
-        id: 14,
+        id: 15,
         title: 'Teaser 02',
         category: 'Teaser',
         youtubeUrl: 'https://youtu.be/LuMMDt9q-yY?si=hTKudK2TDeX4ES0R',
     },
     {
-        id: 15,
+        id: 16,
         title: 'Podcast Teaser',
         category: 'Teaser',
         youtubeUrl: 'https://youtu.be/ioGZz97KM3g',
     },
     {
-        id: 16,
+        id: 7,
         title: 'Teaser 03',
         category: 'Teaser',
         youtubeUrl: 'https://youtu.be/z_nv6uan9aw',
@@ -148,13 +154,13 @@ const works = [
 
     // ───────── Talking Head ─────────
     {
-        id: 17,
+        id: 18,
         title: 'Talking Head 01',
         category: 'Talking Head',
         youtubeUrl: 'https://youtu.be/_HCVxpLZ04A',
     },
     {
-        id: 18,
+        id: 19,
         title: 'Talking Head 02',
         category: 'Talking Head',
         youtubeUrl: 'https://youtu.be/XQoDR4XROaM',
@@ -162,31 +168,31 @@ const works = [
 
     // ───────── Podcast Highlights ─────────
     {
-        id: 19,
+        id: 20,
         title: 'Podcast Highlight 02',
         category: 'Podcast Highlight',
         youtubeUrl: 'https://youtu.be/Y53-xv-XsiU',
     },
     {
-        id: 20,
+        id: 6,
         title: 'Podcast Highlight 03',
         category: 'Podcast Highlight',
         youtubeUrl: 'https://youtu.be/0bVpcr1YYRE',
     },
     {
-        id: 21,
+        id: 22,
         title: 'Podcast Highlight 04',
         category: 'Podcast Highlight',
         youtubeUrl: 'https://youtu.be/wsyOcy5p04k',
     },
     {
-        id: 22,
+        id: 23,
         title: 'Podcast Highlight 05',
         category: 'Podcast Highlight',
         youtubeUrl: 'https://youtu.be/0tpZrqOvLrk',
     },
     {
-        id: 23,
+        id: 24,
         title: 'Podcast Highlight 06',
         category: 'Podcast Highlight',
         youtubeUrl: 'https://youtu.be/dAV4T9p8qSM',
@@ -194,7 +200,7 @@ const works = [
 
     // ───────── Wedding Production ─────────
     {
-        id: 24,
+        id: 3,
         title: 'Wedding Production',
         category: 'Wedding',
         youtubeUrl: 'https://youtu.be/_withIfYaxc',
@@ -202,7 +208,7 @@ const works = [
 
     // ───────── Real Estate ─────────
     {
-        id: 25,
+        id: 26,
         title: 'Real Estate Film 02',
         category: 'Real Estate',
         youtubeUrl: 'https://youtu.be/W3lnzB-ES_4',
@@ -210,13 +216,13 @@ const works = [
 
     // ───────── Short Form ─────────
     {
-        id: 26,
+        id: 27,
         title: 'Banaras Short',
         category: 'Short Form',
         youtubeUrl: 'https://youtube.com/shorts/2a9e4BsQBw0',
     },
     {
-        id: 27,
+        id: 28,
         title: 'Short Form 02',
         category: 'Short Form',
         youtubeUrl: 'https://youtube.com/shorts/K1boQewZU7g',
@@ -271,7 +277,7 @@ function WorkCard({ item, onPlay }) {
             </div>
 
             {/* Title — bottom, slides up on hover */}
-            <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-2 group-hover:translate-y-0 transition-transform duration-400 ease-out">
+            <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-2 group-hover:translate-y-0 transition-transform duration-400 ease-out text-center lg:text-left">
                 <h3
                     className="text-white font-black leading-tight uppercase font-inter"
                     style={{
@@ -290,8 +296,11 @@ function WorkCard({ item, onPlay }) {
 export default function OurWork({ hideHeading = false, hideButton = false }) {
     const [active, setActive] = useState(null)
 
+    // Sort works by ID numerically
+    const sortedWorks = [...works].sort((a, b) => a.id - b.id);
+
     // On the homepage (when hideButton is false), we only show the first 6 projects
-    const visibleWorks = hideButton ? works : works.slice(0, 6)
+    const visibleWorks = hideButton ? sortedWorks : sortedWorks.slice(0, 9)
 
     const open = useCallback((item) => {
         setActive(item)
@@ -405,7 +414,7 @@ export default function OurWork({ hideHeading = false, hideButton = false }) {
                             </div>
 
                             {/* Below player info */}
-                            <div className="mt-5 flex items-center justify-between">
+                            <div className="mt-5 flex flex-col items-center text-center sm:flex-row sm:items-start sm:text-left sm:justify-between gap-5">
                                 <div>
                                     <h4
                                         className="text-white font-black uppercase font-inter"

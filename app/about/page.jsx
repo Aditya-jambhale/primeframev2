@@ -317,7 +317,7 @@ function TimelineSection({
           </div>
 
           {/* Text column */}
-          <div className={`lg:col-span-12 xl:col-span-5 ${isEven ? 'lg:order-2' : 'lg:order-1'}`}>
+          <div className={`lg:col-span-12 xl:col-span-5 ${isEven ? 'lg:order-2' : 'lg:order-1'} flex flex-col items-center text-center lg:items-start lg:text-left`}>
             {/* Year chip */}
             <div className="mb-8">
               <span
@@ -349,7 +349,7 @@ function TimelineSection({
             {/* Body paragraphs */}
             <div>
               <p
-                className="leading-relaxed tracking-wide font-inter text-justify"
+                className="leading-relaxed tracking-wide font-inter text-justify "
                 style={{
                   color: "rgba(228, 223, 223, 0.95)",
                   fontSize: "1.05rem",
@@ -443,16 +443,17 @@ export default function About() {
 
         {/* Section header - Full Screen */}
         <div className="relative h-screen flex flex-col items-center justify-center text-center px-6 overflow-hidden">
-          {/* Video Background */}
-          <div className="absolute inset-0 z-0">
-            <iframe
-              src="https://www.youtube.com/embed/6fySMsilxJQ?autoplay=1&mute=1&loop=1&playlist=6fySMsilxJQ&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&playsinline=1"
-              title="Skylume Hero Video"
-              className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2 object-cover"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
+          {/* Video Background - Self-hosted for performance */}
+          <div className="absolute inset-0 z-0 opacity-60">
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2 object-cover"
+            >
+              <source src="https://ewxi2xhm73cm53ki.public.blob.vercel-storage.com/bts4.mp4" type="video/mp4" />
+            </video>
             <div className="absolute inset-0 bg-black/40" />
             <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/80" />
           </div>
@@ -514,24 +515,36 @@ export default function About() {
           </p>
         </motion.div> */}
 
-        <section className="bg-background py-28 relative overflow-hidden">
+        <section className="bg-background py-32 relative overflow-hidden border-y border-white/5">
+
+          {/* Background Image & Cinematic Overlay */}
+          <div className="absolute inset-0 z-0">
+            <Image
+              src="/vision.jpg"
+              alt="Vision Background"
+              fill
+              className="object-cover opacity-20 lg:opacity-30 grayscale saturate-0"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-background via-background/60 to-background" />
+          </div>
 
           <div
             className="about-vision-watermark absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
                      font-bebas tracking-[0.15em] pointer-events-none select-none whitespace-nowrap
-                     text-[clamp(4rem,14vw,13rem)] text-white/5"
+                     text-[clamp(4rem,14vw,13rem)] text-white/[0.03] z-0"
           >
             VISION
           </div>
 
-          <div className="container mx-auto px-6 max-w-5xl text-center relative z-10">
+          <div className="container mx-auto px-6 max-w-5xl text-center lg:text-left relative z-10">
             <Reveal>
               <span className="font-inter text-[0.72rem] font-bold tracking-[0.22em] uppercase text-yellow-400">The Vision</span>
               <h2 className="text-section-title text-white mt-4 uppercase">
                 The Vision Behind <span className="text-yellow-500">Skylume</span>
               </h2>
               <div
-                className="w-12 h-0.5 mx-auto my-5 bg-yellow-500"
+                className="w-12 h-0.5 mx-auto lg:mx-0 my-5 bg-yellow-500"
               />
             </Reveal>
 
@@ -545,7 +558,7 @@ export default function About() {
                   <motion.div
                     whileHover={{ y: -5 }}
                     transition={{ duration: 0.3 }}
-                    className="about-vision-card group relative rounded-xl p-7 text-left border border-white/5
+                    className="about-vision-card group relative rounded-xl p-7 text-justify border border-white/5
                              bg-pf-card overflow-hidden transition-colors duration-300
                              hover:border-yellow/30"
                   >
@@ -564,14 +577,14 @@ export default function About() {
           TEAM
       ════════════════════════════════════ */}
         <section className="bg-background py-28">
-          <div className="container mx-auto px-6 max-w-6xl">
+          <div className="container mx-auto px-6 max-w-6xl text-center lg:text-left">
             <Reveal className="mb-12">
               <span className="font-inter text-[0.72rem] font-bold tracking-[0.22em] uppercase text-yellow-400">The People</span>
-              <h2 className="text-section-title text-white mt-4 mb-3 uppercase">
+              <h2 className="text-section-title text-white mt-4 mb-3 uppercase text-center lg:text-left">
                 Meet the Team
               </h2>
-              <div className="w-10 h-0.5 mb-4 bg-yellow-500" />
-              <p className="text-white/90 text-sm max-w-md leading-relaxed font-inter">
+              <div className="w-10 h-0.5 mb-4 bg-yellow-500 mx-auto lg:mx-0" />
+              <p className="text-white/90 text-sm max-w-md leading-relaxed font-inter text-center lg:text-left">
                 Every great production is a collective. Skylume is built by individuals who care deeply about their craft.
               </p>
             </Reveal>

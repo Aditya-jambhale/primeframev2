@@ -143,7 +143,7 @@ export default function Contact() {
               </p>
               <div className="flex flex-col gap-3">
                 <a
-                  href="https://wa.me/971XXXXXXXXX"
+                  href="https://wa.me/+919792347498"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2.5 px-7 py-3.5 bg-green-500/10 border border-green-500/30 text-green-500 font-inter font-bold text-[0.8rem] tracking-[0.18em] uppercase transition-all duration-300 [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))] hover:bg-green-500/20 hover:border-green-500/50"
@@ -152,7 +152,7 @@ export default function Contact() {
                   WhatsApp Us
                 </a>
                 <a
-                  href="tel:+971XXXXXXXXX"
+                  href="tel:+919792347498"
                   className="flex items-center justify-center gap-2.5 px-7 py-3 bg-transparent border border-yellow/40 text-white font-inter font-bold text-[0.8rem] tracking-[0.18em] uppercase transition-all duration-300 [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))] hover:border-yellow hover:text-yellow-500 hover:bg-yellow-500/5"
                 >
                   <Phone size={15} />

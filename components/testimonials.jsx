@@ -7,19 +7,24 @@ import ScrollReveal from './ScrollReveal'
 
 const videos = [
   {
-    url: 'https://youtube.com/shorts/vOHPMhu_r9c?si=M2HvczBXiTM5wCZv',
+    url: 'https://youtu.be/47jzFqDFlCE',
+    name: 'Betsy',
+    company: 'Author',
+  },
+  {
+    url: 'https://youtube.com/shorts/5OSjGFWSeuw?feature=share',
+    name: 'Arabella',
+    company: 'Author',
+  },
+  {
+    url: 'https://youtube.com/shorts/vOHPMhu_r9c?feature=share',
     name: 'Dr Eric Weiss',
     company: 'Clamp Time',
   },
   {
-    url: 'https://youtube.com/shorts/0oQ2103A6H8?si=z1TuS7S9yqN8Mnte',
+    url: 'https://youtube.com/shorts/0oQ2103A6H8?feature=share',
     name: 'Dr Brenda',
     company: 'TedX Speaker',
-  },
-  {
-    url: 'https://youtu.be/WecJOuguoRA?si=SrnICxGV0kHbvdsb',
-    name: 'Lynne B',
-    company: 'Podcast Host',
   }
 ]
 
@@ -42,9 +47,9 @@ export default function TestimonialSection() {
       <div className="max-w-[1100px] mx-auto px-6">
 
         {/* Header */}
-        <div className="flex justify-between items-end flex-wrap gap-8 mb-16">
+        <div className="flex flex-col items-center text-center lg:flex-row lg:justify-between lg:items-end lg:text-left flex-wrap gap-8 mb-16">
           <ScrollReveal animation="fade-up">
-            <div>
+            <div className="flex flex-col items-center lg:items-start">
               <div className="inline-flex items-center gap-2.5 px-6 py-2 rounded-full bg-yellow-500 mb-6 group transition-all duration-300 hover:scale-105 shadow-[0_0_25px_rgba(234,179,8,0.35)]">
                 <MessageSquare size={14} className="text-white fill-white/20" />
                 <span className="font-inter text-[0.6rem] font-bold tracking-[0.2em] uppercase text-white">
@@ -67,45 +72,59 @@ export default function TestimonialSection() {
           </ScrollReveal>
         </div>
 
-        {/* Vertical Video Grid */}
-        <ScrollReveal animation="stagger-list" stagger={0.15}>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-12 justify-center">
-
-            {videos.map((video, i) => (
-              <div
-                key={i}
-                className="flex flex-col items-center"
-              >
-                {/* Video Frame */}
-                <div className="relative w-full max-w-[340px] aspect-[9/16] rounded-xl overflow-hidden border border-white/10 shadow-2xl transition-transform duration-500 hover:scale-[1.02]">
-
-                  <iframe
-                    src={getYoutubeEmbedUrl(video.url)}
-                    title={`Testimonial from ${video.name}`}
-                    className="w-full h-full object-cover"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  />
-
-                  {/* Subtle overlay gradient */}
-                  <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/30 via-transparent to-transparent" />
-                </div>
-
-                {/* Caption */}
-                <div className="mt-6 text-center text-white">
-                  <p className="font-inter font-black text-lg tracking-wide uppercase">
-                    {video.name}
-                  </p>
-                  <p className="font-inter text-[0.65rem] font-bold tracking-[0.18em] uppercase text-yellow-500/60 mt-1">
-                    {video.company}
-                  </p>
-                </div>
-
+        {/* Video Grid */}
+        <div className="flex flex-col gap-16">
+          {/* First Video - Horizontal */}
+          <ScrollReveal animation="fade-up">
+            <div className="flex flex-col items-center">
+              <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-2xl transition-transform duration-500 hover:scale-[1.01] bg-[#050505]">
+                <iframe
+                  src={getYoutubeEmbedUrl(videos[0].url)}
+                  title={`Testimonial from ${videos[0].name}`}
+                  className="w-full h-full"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
               </div>
-            ))}
+              <div className="mt-8 text-center text-white">
+                <p className="font-inter font-black text-xl tracking-wider uppercase">
+                  {videos[0].name}
+                </p>
+                <p className="font-inter text-[0.7rem] font-bold tracking-[0.2em] uppercase text-yellow-500 mt-2">
+                  {videos[0].company}
+                </p>
+              </div>
+            </div>
+          </ScrollReveal>
 
-          </div>
-        </ScrollReveal>
+          {/* Remaining Videos - Vertical */}
+          <ScrollReveal animation="stagger-list" stagger={0.15}>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+              {videos.slice(1).map((video, i) => (
+                <div key={i} className="flex flex-col items-center">
+                  <div className="relative w-full aspect-[9/16] rounded-2xl overflow-hidden border border-white/10 shadow-2xl transition-transform duration-500 hover:scale-[1.02] bg-[#050505]">
+                    <iframe
+                      src={getYoutubeEmbedUrl(video.url)}
+                      title={`Testimonial from ${video.name}`}
+                      className="w-full h-full object-cover"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                    <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                  </div>
+                  <div className="mt-6 text-center text-white">
+                    <p className="font-inter font-black text-lg tracking-wide uppercase">
+                      {video.name}
+                    </p>
+                    <p className="font-inter text-[0.65rem] font-bold tracking-[0.18em] uppercase text-yellow-500/60 mt-1">
+                      {video.company}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </ScrollReveal>
+        </div>
       </div>
     </section>
   )

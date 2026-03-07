@@ -35,10 +35,10 @@ export default function AgencyPillars() {
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: index * 0.1 }}
                         viewport={{ once: true }}
-                        className="group flex flex-row sm:flex-col items-center sm:items-start gap-5 sm:gap-2 text-left p-6 sm:p-8 xl:p-9 border-b sm:border-b-0 sm:border-r border-white/5 last:border-b-0 sm:[&:nth-child(2)]:border-r-0 xl:[&:nth-child(2)]:border-r border-white/5 transition-all duration-500 h-full hover:bg-white/5"
+                        className="group flex flex-col items-center lg:items-start gap-5 sm:gap-2 text-center lg:text-left p-8 sm:p-8 xl:p-9 border-b sm:border-b-0 sm:border-r border-white/5 last:border-b-0 sm:[&:nth-child(2)]:border-r-0 xl:[&:nth-child(2)]:border-r border-white/5 transition-all duration-500 h-full hover:bg-white/5"
                     >
                         {/* GIF Container */}
-                        <div className="relative w-14 h-14 sm:w-16 sm:h-16 xl:w-20 xl:h-20 flex-shrink-0 flex items-center justify-center overflow-hidden">
+                        <div className="relative w-16 h-16 sm:w-16 sm:h-16 xl:w-20 xl:h-20 flex-shrink-0 flex items-center justify-center overflow-hidden">
                             <Image
                                 src={pillar.gif}
                                 alt={pillar.title}
@@ -49,11 +49,11 @@ export default function AgencyPillars() {
                         </div>
 
                         {/* Text Content */}
-                        <div className="flex flex-col flex-1 mt-0 sm:mt-2">
+                        <div className="flex flex-col flex-1 mt-2">
                             <h3 className="font-inter font-bold text-lg sm:text-xl text-white tracking-widest mb-1 sm:mb-2 transition-colors duration-300 group-hover:text-yellow-500 uppercase">
                                 {pillar.title}
                             </h3>
-                            <p className="font-inter  font-light text-[0.85rem] sm:text-[0.95rem] xl:text-[1rem] text-white/90 leading-relaxed transition-colors duration-300 group-hover:text-slate-200 line-clamp-2 sm:line-clamp-none">
+                            <p className="font-inter font-light text-[0.85rem] sm:text-[0.95rem] xl:text-[1rem] text-white/90 leading-relaxed transition-colors duration-300 group-hover:text-slate-200 line-clamp-none">
                                 {pillar.description}
                             </p>
                         </div>

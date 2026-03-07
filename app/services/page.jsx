@@ -119,9 +119,9 @@ function ServiceSection({ service }) {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
 
           {/* Content Column */}
-          <div>
+          <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
             <ScrollReveal animation="fade-up">
-              <div className="inline-flex items-center gap-2.5 px-6 py-2 rounded-full bg-yellow-500 mb-6 group transition-all duration-300 hover:scale-105 shadow-[0_0_25px_rgba(234,179,8,0.35)]">
+              <div className="inline-flex items-center gap-2.5 px-6 py-2 rounded-full bg-yellow-500 mb-6 group transition-all duration-300 hover:scale-105 shadow-[0_0_25px_rgba(234,179,8,0.35)] mx-auto lg:mx-0">
                 <Play size={12} className="text-white fill-white" />
                 <span className="font-inter text-[0.6rem] font-bold tracking-[0.2em] uppercase text-white">
                   Specialized Service
@@ -133,11 +133,11 @@ function ServiceSection({ service }) {
               <p className="font-inter text-lg text-yellow-500/80 tracking-wide mb-2 italic">
                 "{service.valueProp}"
               </p>
-              <p className="font-inter font-medium text-white mb-8 border-l-2 border-yellow-500 pl-4 py-1">
+              <p className="font-inter font-medium text-white mb-8 border-l-2 border-yellow-500 lg:border-l-2 lg:border-y-0 border-y-0 pl-4 py-1">
                 {service.outcome}
               </p>
 
-              <div className="flex gap-4 mb-12">
+              <div className="flex justify-center lg:justify-start gap-4 mb-12">
                 <Link href="/contact">
                   <button className="bg-yellow-500 text-white font-inter text-[0.82rem] font-semibold tracking-[0.18em] uppercase px-[30px] py-[13px] [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))] hover:bg-yellow-600 transition-all">
                     Request Proposal
@@ -145,17 +145,17 @@ function ServiceSection({ service }) {
                 </Link>
               </div>
 
-              <div className="space-y-8">
+              <div className="space-y-8 flex flex-col items-center lg:items-start">
                 <div>
                   <h4 className="font-inter font-black text-lg text-white tracking-tight mb-3 uppercase">SERVICE OVERVIEW</h4>
-                  <p className="font-inter font-light text-white/90 leading-relaxed">
+                  <p className="font-inter font-light text-white/90 leading-relaxed max-w-2xl">
                     {service.overview}
                   </p>
                 </div>
 
-                <div>
-                  <h4 className="font-inter font-black text-xl text-white tracking-tight mb-4 uppercase">WHAT WE DELIVER</h4>
-                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3">
+                <div className="w-full">
+                  <h4 className="font-inter font-black text-xl text-white tracking-tight mb-4 uppercase text-center lg:text-left">WHAT WE DELIVER</h4>
+                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 justify-items-center lg:justify-items-start">
                     {service.deliverables.map((item, i) => (
                       <li key={i} className="flex items-center gap-3 text-sm text-foreground font-inter">
                         <CheckCircle size={16} className="text-yellow-500 flex-shrink-0" />
@@ -165,7 +165,7 @@ function ServiceSection({ service }) {
                   </ul>
                 </div>
 
-                <div className="p-6 bg-card rounded-xl border border-white/5">
+                <div className="p-6 bg-card rounded-xl border border-white/5 w-full">
                   <h4 className="font-inter text-[0.6rem] font-bold tracking-[0.2em] uppercase text-yellow-500 mb-2">Our Process</h4>
                   <p className="font-inter font-light text-xs text-white/90 leading-relaxed">
                     {service.process}

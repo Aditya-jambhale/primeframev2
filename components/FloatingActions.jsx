@@ -6,7 +6,7 @@ export default function FloatingActions() {
 
       {/* WhatsApp */}
       <a
-        href="https://wa.me/971XXXXXXXXX"
+        href="https://wa.me/+919792347498"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="WhatsApp"
@@ -20,7 +20,7 @@ export default function FloatingActions() {
 
       {/* Call */}
       <a
-        href="tel:+971XXXXXXXXX"
+        href="tel:+919792347498"
         aria-label="Call us"
         className="no-underline w-11 h-11 rounded-full flex items-center justify-center shadow-lg transition-all duration-200 hover:scale-110 bg-pf-card border border-white/10 hover:border-yellow"
       >

@@ -8,6 +8,7 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const syne = Syne({ subsets: ['latin'], variable: '--font-syne' })
 
 export const metadata = {
+  metadataBase: new URL('https://skylumeproduction.com'),
   title: 'Skylume Productions | Cinematic Video Production Dubai & India',
   description: 'Expert cinematic video production house in Dubai & India. Specialized in brand films, high-end real estate videography, wedding films, and podcast production. Scale your brand with precision.',
   keywords: 'video production dubai, cinematic videography india, real estate videography dubai, brand films, podcast production, commercial film house',

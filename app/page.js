@@ -123,21 +123,34 @@ export default function Home() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     setStatus({ loading: true, success: false, error: null })
+
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
-      })
-      if (res.ok) {
-        setStatus({ loading: false, success: true, error: null })
-        setFormData({ name: '', email: '', phone: '', projectType: '', details: '' })
-      } else {
-        const error = await res.json()
-        throw new Error(error.message || 'Something went wrong')
+      });
+
+      if (!res.ok) {
+        let errorMessage = 'Something went wrong';
+        try {
+          const errorData = await res.json();
+          errorMessage = errorData.message || errorMessage;
+        } catch (jsonErr) {
+          errorMessage = `Server Error: ${res.status}`;
+        }
+        throw new Error(errorMessage);
       }
+
+      setStatus({ loading: false, success: true, error: null })
+      setFormData({ name: '', email: '', phone: '', projectType: '', details: '' })
     } catch (err) {
-      setStatus({ loading: false, success: false, error: err.message })
+      console.error('Submission Error:', err);
+      // Handle the "Failed to fetch" error specifically
+      const msg = err.message === 'Failed to fetch'
+        ? 'Network error: Please check your connection or try again later.'
+        : err.message;
+      setStatus({ loading: false, success: false, error: msg });
     }
   }
 
@@ -151,16 +164,17 @@ export default function Home() {
         {/* Background */}
         <div ref={parallaxRef} className="absolute inset-0 z-0 scale-110">
 
-          {/* Video Background - Hidden on mobile, shown on md+ */}
-          <div className="absolute inset-0 w-full h-full pointer-events-none">
-            <iframe
-              src="https://www.youtube.com/embed/6fySMsilxJQ?autoplay=1&mute=1&loop=1&playlist=6fySMsilxJQ&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&playsinline=1"
-              title="Skylume Hero Video"
-              className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2 object-cover "
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
+          {/* Video Background - Self-hosted for performance */}
+          <div className="absolute inset-0 w-full h-full pointer-events-none opacity-60">
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2 object-cover"
+            >
+              <source src="https://ewxi2xhm73cm53ki.public.blob.vercel-storage.com/bts4.mp4" type="video/mp4" />
+            </video>
           </div>
           {/* Cinematic Shade - Multi-layer overlay for depth */}
           <div className="absolute inset-0 bg-black/40" />
@@ -188,12 +202,13 @@ export default function Home() {
                 width={80}
                 height={80}
                 className="opacity-90"
+                style={{ height: 'auto' }}
               />
             </motion.div>
             <h1 className="font-inter text-[clamp(2.5rem,10vw,6rem)] font-black leading-none uppercase tracking-[0.1em] text-white italic">
               SKYLUME
             </h1>
-            <h2 className="font-inter text-[clamp(1.5rem,6vw,3rem)] font-bold leading-none uppercase tracking-[0.3em] text-white/90 mt-2">
+            <h2 className="font-inter text-[clamp(1.5rem,6vw,2.5rem)] font-bold leading-none uppercase tracking-[0.3em] text-white/90 mt-2">
               PRODUCTION
             </h2>
           </div>
@@ -303,7 +318,7 @@ export default function Home() {
 
             {/* Left Content */}
             <ScrollReveal animation="fade-up">
-              <div className="sticky ">
+              <div className="sticky flex flex-col items-center text-center lg:items-start lg:text-left">
                 <div className="inline-flex items-center gap-2.5 px-6 py-2 rounded-full bg-yellow-500 mb-6 group transition-all duration-300 hover:scale-105 shadow-[0_0_25px_rgba(234,179,8,0.35)]">
                   <Info size={14} className="text-white fill-white/20" />
                   <span className="font-inter text-[0.6rem] font-bold tracking-[0.2em] uppercase text-white">
@@ -314,7 +329,7 @@ export default function Home() {
                   BUILT AROUND <span className="text-yellow-500">STORY,</span> EXECUTION AND DETAIL.
                 </h2>
                 <div className="w-6 h-px bg-yellow-500 mb-10" />
-                <p className="font-inter font-light text-[1.05rem] text-justify text-white/90 leading-[1.8] tracking-wide mb-10">
+                <p className="font-inter font-light text-[1.05rem] text-center lg:text-justify text-white/90 leading-[1.8] tracking-wide mb-10">
                   Skylume Productions was built on a simple belief - <span className=" font-semibold">Every frame must serve a purpose.</span>
                   We don’t create content for attention. We create visuals that drive meaning, memory, and measurable impact.
                   From concept to post-production, every detail is engineered with clarity, discipline, and cinematic precision.
@@ -409,6 +424,7 @@ export default function Home() {
                         alt={item.title}
                         fill
                         className="object-contain filter drop-shadow-[0_20px_40px_rgba(0,0,0,0.7)] group-hover:scale-110 group-hover:-rotate-2 transition-transform duration-1000 ease-out"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
                     </div>
                   </div>
@@ -442,134 +458,147 @@ export default function Home() {
       <TestimonialSection />
 
       {/* 10. CONTACT FORM */}
-      <section className="py-32 bg-background relative">
+      <section className="py-24 md:py-32 bg-background relative overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-yellow-500/20 to-transparent" />
 
-        <div className="max-w-[840px] mx-auto px-6">
-          <div className="mb-16 text-center">
-            <ScrollReveal animation="fade-up">
-              <div className="inline-flex items-center gap-2.5 px-6 py-2 rounded-full bg-yellow-500 mb-6 group transition-all duration-300 hover:scale-105 shadow-[0_0_25px_rgba(234,179,8,0.35)] mx-auto">
-                <MessageSquare size={14} className="text-white fill-white/20" />
-                <span className="font-inter text-[0.6rem] font-bold tracking-[0.2em] uppercase text-white">
-                  Reach Out to us
-                </span>
+        <div className="max-w-[1200px] mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr] gap-12 lg:gap-20 items-center">
+
+            {/* Left Side: Image & Info */}
+            <ScrollReveal animation="slide-right">
+              <div className="relative group">
+                <div className="relative aspect-[4/5] rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+                  <Image
+                    src="/contact.jpeg"
+                    alt="Contact Skylume"
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+
+                  {/* Overlay Info */}
+                  <div className="absolute bottom-10 left-10 right-10">
+                    <h3 className="text-white font-black text-2xl uppercase mb-2 tracking-tight">
+                      LET'S BUILD YOUR <br />
+                      <span className="text-yellow-500">LEGACY.</span>
+                    </h3>
+                    <p className="text-white/60 font-inter text-sm leading-relaxed max-w-xs">
+                      Join the list of global brands that trust Skylume for high-impact cinematic storytelling.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Refined Small CTAs below image for desktop, or inside for aesthetic */}
+                <div className="flex gap-6 mt-8">
+                  <a href="mailto:info@skylumeproduction.com" className="group flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-yellow-500 group-hover:bg-yellow-500 group-hover:text-black transition-all">
+                      <MessageSquare size={14} />
+                    </div>
+                    <span className="text-[0.7rem] font-bold tracking-[0.1em] uppercase text-white/40 group-hover:text-white transition-colors">info@skylumeproduction.com</span>
+                  </a>
+                </div>
               </div>
             </ScrollReveal>
 
-            <ScrollReveal animation="fade-up" delay={0.2}>
-              <h2 className="text-section-title text-white leading-[0.9] mb-6 uppercase">
-                LET'S FUEL YOUR<br /><span className="text-yellow-500">NEXT VISION</span>
-              </h2>
-            </ScrollReveal>
+            {/* Right Side: Form */}
+            <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
+              <div className="mb-10 w-full">
+                <ScrollReveal animation="fade-up">
+                  <div className="inline-flex items-center gap-2.5 px-5 py-1.5 rounded-full bg-yellow-500/10 border border-yellow-500/20 mb-6 transition-all duration-300">
+                    <MessageSquare size={12} className="text-yellow-500" />
+                    <span className="font-inter text-[0.6rem] font-bold tracking-[0.2em] uppercase text-yellow-500">
+                      Direct Briefing
+                    </span>
+                  </div>
+                </ScrollReveal>
 
-            <ScrollReveal animation="fade-up" delay={0.3}>
-              <p className="font-inter font-light text-[1rem] text-white/90 max-w-lg mx-auto leading-relaxed">
-                Drop us a line about your production requirements. Our directors will review and get back within 24 business hours.
-              </p>
-            </ScrollReveal>
-          </div>
+                <ScrollReveal animation="fade-up" delay={0.2}>
+                  <h2 className="text-white font-black uppercase leading-[1.1] mb-5
+                           text-[clamp(1.8rem,4vw,2.8rem)] tracking-tight">
+                    FUEL YOUR <span className="text-yellow-500 italic underline decoration-white/10 underline-offset-8">NEXT VISION</span>
+                  </h2>
+                </ScrollReveal>
 
-          <ScrollReveal animation="fade-up" delay={0.4}>
-            <form onSubmit={handleSubmit} className="bg-pf-card/30 border border-white/5 p-8 md:p-12 rounded-3xl backdrop-blur-sm shadow-2xl">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                {[
-                  { label: 'Full Name', name: 'name', type: 'text', placeholder: 'John Doe' },
-                  { label: 'Work Email', name: 'email', type: 'email', placeholder: 'john@company.com' },
-                  { label: 'Phone Number', name: 'phone', type: 'tel', placeholder: '+971 50 000 0000' },
-                  { label: 'Project Type', name: 'projectType', type: 'text', placeholder: 'e.g. Brand Film, Social Campaign' },
-                ].map(({ label, name, type, placeholder }) => (
-                  <div key={name} className="flex flex-col">
-                    <label className="font-inter text-[0.6rem] tracking-[0.2em] uppercase text-yellow-500 font-bold block mb-3">
-                      {label}
+                <ScrollReveal animation="fade-up" delay={0.3}>
+                  <p className="font-inter text-white/50 text-[0.9rem] leading-relaxed max-w-lg mx-auto lg:mx-0">
+                    Drop us a line about your production requirements. Our directors will
+                    review and get back within 24 business hours.
+                  </p>
+                </ScrollReveal>
+              </div>
+
+              <ScrollReveal animation="fade-up" delay={0.4}>
+                <form
+                  onSubmit={handleSubmit}
+                  className="bg-pf-card/20 border border-white/5 p-8 md:p-10 rounded-2xl backdrop-blur-sm shadow-2xl"
+                >
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    {[
+                      { label: 'Full Name', name: 'name', type: 'text', placeholder: 'John Doe' },
+                      { label: 'Work Email', name: 'email', type: 'email', placeholder: 'john@company.com' },
+                      { label: 'Phone Number', name: 'phone', type: 'tel', placeholder: '+971 50 000 0000' },
+                      { label: 'Project Type', name: 'projectType', type: 'text', placeholder: 'e.g. Brand Film, Campaign' },
+                    ].map(({ label, name, type, placeholder }) => (
+                      <div key={name} className="flex flex-col">
+                        <label className="font-inter text-[0.6rem] tracking-[0.15em] uppercase text-yellow-500/80 font-bold mb-2.5">
+                          {label}
+                        </label>
+                        <input
+                          required
+                          type={type}
+                          name={name}
+                          value={formData[name]}
+                          onChange={(e) => setFormData({ ...formData, [name]: e.target.value })}
+                          placeholder={placeholder}
+                          className="bg-white/5 border border-white/10 text-white p-4 rounded-xl font-inter text-[0.9rem] outline-none transition-all focus:border-yellow-500 focus:bg-white/10"
+                        />
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="mb-8">
+                    <label className="font-inter text-[0.6rem] tracking-[0.15em] uppercase text-yellow-500/80 font-bold mb-2.5 block">
+                      Brief Overview
                     </label>
-                    <input
+                    <textarea
                       required
-                      type={type}
-                      name={name}
-                      value={formData[name]}
-                      onChange={(e) => setFormData({ ...formData, [name]: e.target.value })}
-                      placeholder={placeholder}
-                      className="bg-white/5 border border-white/10 text-white p-5 rounded-xl font-inter text-[0.9rem] w-full outline-none transition-all focus:border-yellow-500 focus:bg-white/10"
+                      name="details"
+                      value={formData.details}
+                      onChange={(e) => setFormData({ ...formData, details: e.target.value })}
+                      placeholder="Tell us about your objectives, timeline, and references..."
+                      rows={4}
+                      className="bg-white/5 border border-white/10 text-white p-4 rounded-xl font-inter text-[0.9rem] outline-none transition-all focus:border-yellow-500 focus:bg-white/10 resize-none w-full"
                     />
                   </div>
-                ))}
-              </div>
 
-              <div className="mb-10">
-                <label className="font-inter text-[0.6rem] tracking-[0.2em] uppercase text-yellow-500 font-bold block mb-3">
-                  Brief Overview
-                </label>
-                <textarea
-                  required
-                  name="details"
-                  value={formData.details}
-                  onChange={(e) => setFormData({ ...formData, details: e.target.value })}
-                  placeholder="Tell us about your objectives, timeline, and any creative references..."
-                  rows={5}
-                  className="bg-white/5 border border-white/10 text-white p-5 rounded-xl font-inter text-[0.9rem] w-full outline-none transition-all focus:border-yellow-500 focus:bg-white/10 resize-none"
-                />
-              </div>
+                  <button
+                    disabled={status.loading}
+                    type="submit"
+                    className="group relative w-full overflow-hidden rounded-xl bg-yellow-500 transition-all duration-300 hover:bg-yellow-400 active:scale-[0.98]"
+                  >
+                    <div className="relative font-inter font-bold uppercase text-black py-4
+                              text-[0.75rem] tracking-[0.15em] flex items-center justify-center gap-3">
+                      {status.loading ? 'Transmitting...' : 'Initiate Briefing'}
+                      <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </button>
 
-              <button
-                disabled={status.loading}
-                type="submit"
-                className="group relative w-full overflow-hidden rounded-xl"
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-yellow-600 to-yellow-400 transition-transform group-hover:scale-105" />
-                <div className="relative font-inter text-[0.9rem] font-bold tracking-[0.25em] uppercase text-white py-5 flex items-center justify-center gap-3">
-                  {status.loading ? 'Transmitting...' : 'Initiate Briefing'}
-                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                </div>
-              </button>
-
-              {status.success && (
-                <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-green-400 font-inter text-center mt-6 text-sm">
-                  Briefing received. Our team will contact you shortly.
-                </motion.p>
-              )}
-              {status.error && (
-                <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-red-400 font-inter text-center mt-6 text-sm">
-                  {status.error}
-                </motion.p>
-              )}
-            </form>
-          </ScrollReveal>
-
-          {/* Direct Contact CTAs */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-12 overflow-hidden">
-            <ScrollReveal animation="slide-right" delay={0.1}>
-              <motion.a
-                whileHover={{ y: -4 }}
-                href="https://wa.me/971XXXXXXXXX"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-4 py-6 rounded-2xl bg-green-500/5 border border-green-500/20 group hover:border-green-500/40 transition-all shadow-[0_0_30px_rgba(34,197,94,0.05)] w-full"
-              >
-                <div className="w-10 h-10 rounded-full bg-green-500/10 flex items-center justify-center text-green-500 group-hover:scale-110 transition-transform">
-                  <Smartphone size={20} />
-                </div>
-                <div className="text-left">
-                  <span className="block font-inter text-[0.6rem] tracking-[0.25em] uppercase text-green-500/60 font-bold mb-0.5">Instant Chat</span>
-                  <span className="block font-inter font-black text-xl tracking-wider text-white uppercase">WHATSAPP US</span>
-                </div>
-              </motion.a>
-            </ScrollReveal>
-
-            <ScrollReveal animation="slide-left" delay={0.2}>
-              <motion.a
-                whileHover={{ y: -4 }}
-                href="tel:+971XXXXXXXXX"
-                className="flex items-center justify-center gap-4 py-6 rounded-2xl bg-yellow-500/5 border border-yellow-500/20 group hover:border-yellow-500/40 transition-all shadow-[0_0_30px_rgba(234,179,8,0.05)] w-full"
-              >
-                <div className="w-10 h-10 rounded-full bg-yellow-500/10 flex items-center justify-center text-yellow-500 group-hover:scale-110 transition-transform">
-                  <MessageSquare size={20} />
-                </div>
-                <div className="text-left">
-                  <span className="block font-inter text-[0.6rem] tracking-[0.25em] uppercase text-yellow-500/60 font-bold mb-0.5">Speak with a Director</span>
-                  <span className="block font-inter font-black text-xl tracking-wider text-white uppercase">CALL US NOW</span>
-                </div>
-              </motion.a>
-            </ScrollReveal>
+                  {/* Status messages */}
+                  <div className="min-h-[24px] mt-4 text-center">
+                    {status.success && (
+                      <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-green-400 font-inter text-xs">
+                        Briefing received. We'll contact you shortly.
+                      </motion.p>
+                    )}
+                    {status.error && (
+                      <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-red-400 font-inter text-xs">
+                        {status.error}
+                      </motion.p>
+                    )}
+                  </div>
+                </form>
+              </ScrollReveal>
+            </div>
           </div>
         </div>
       </section>

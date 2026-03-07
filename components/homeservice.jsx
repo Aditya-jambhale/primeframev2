@@ -111,14 +111,14 @@ export default function ServicesSection() {
                   <motion.div
                     key={service.id}
                     layout
-                    className="group bg-pf-card border border-white/5 p-8 rounded-xl transition-all duration-500 hover:border-yellow-500/30 hover:bg-yellow-500/5 hover:-translate-y-1 relative overflow-hidden h-full"
+                    className="group bg-black/95 border border-white/20 p-8 rounded-xl transition-all duration-500 hover:border-yellow-500/30 hover:bg-yellow-500/5 hover:-translate-y-1 relative overflow-hidden h-full"
                   >
                     {/* Decorative Glow */}
                     <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-500/10 blur-[50px] -translate-y-1/2 translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity" />
 
-                    <div className="relative z-10 h-full flex flex-col">
-                      <div className="w-12 h-12 bg-white/5 rounded-lg flex items-center justify-center mb-6 transition-colors group-hover:bg-yellow-500/10">
-                        <Icon className="text-yellow-500" size={24} />
+                    <div className="relative z-10 h-full flex flex-col items-center text-center lg:items-start lg:text-left">
+                      <div className="w-12 h-12 bg-white/5 rounded-lg flex items-center text-center justify-center mb-6 transition-colors group-hover:bg-yellow-500/10 border border-white/10 ">
+                        <Icon className="text-white-500" size={24} />
                       </div>
 
                       <h3 className="font-inter font-bold text-2xl text-white tracking-wide mb-3 transition-colors group-hover:text-yellow-500 uppercase">
@@ -130,7 +130,7 @@ export default function ServicesSection() {
                       </p>
 
                       <Link href={`/services#${service.id}`}>
-                        <button className="flex items-center gap-2 font-inter text-[0.6rem] font-bold tracking-[0.2em] uppercase text-white/50 group-hover:text-yellow-500 transition-all">
+                        <button className="flex items-center gap-2 font-inter text-[0.6rem] font-bold tracking-[0.2em] uppercase text-white/50 group-hover:text-yellow-500 transition-all ">
                           Explore More
                           <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
                         </button>
@@ -162,8 +162,8 @@ export default function ServicesSection() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-20 p-10 bg-pf-card border border-white/5 rounded-xl flex flex-col md:flex-row items-center justify-between gap-10">
-          <div className="text-left">
+        <div className="mt-20 p-10 bg-pf-card border border-white/5 rounded-xl flex flex-col lg:flex-row items-center justify-between gap-10 text-center lg:text-left">
+          <div className="flex flex-col items-center lg:items-start">
             <h4 className="font-inter font-black text-2xl text-white tracking-tight mb-2 uppercase">
               READY TO <span className="text-yellow-500">START?</span>
             </h4>
